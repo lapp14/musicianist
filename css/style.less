@@ -1,0 +1,371 @@
+@weight-sm:     300;
+@weight-lg:     400;
+
+@grey-dark:     #333;
+@grey-md-dark:  #555;
+@grey-md:       #777;
+@grey-md-light: #ccc;
+@grey-light:    #eee;
+
+@lime:          #bf5;
+@blue-bright:   #0bf;
+
+@navy-dark:     #445966;
+
+@body-bg:       @navy-dark;
+@container-bg:  @grey-light;
+
+@header-bg:     @grey-dark;//@grey-dark;
+@header-text:   @grey-light;
+@header-active: @grey-md-dark;
+
+@button-bg:     @grey-dark;
+
+@instrument-bg:         @grey-md-dark;
+@instrument-active:     @grey-md;
+
+@footer-bg:     @navy-dark;//@grey-md-light;
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    line-height: 2em;
+    background: @body-bg;
+    font-family: 'Oxygen', sans-serif;
+}
+
+h1 {
+    margin: 0 0 6px 0;
+    font-weight: @weight-sm;
+    border-bottom: 1px solid @grey-light;
+}
+
+span.subtitle {
+    font-size: 1.5em;
+    font-weight: @weight-sm;
+}
+
+div {
+    /*border: 1px solid black;*/
+}
+
+div .div-inline {
+    display: table-cell;
+    vertical-align: top;
+    padding: 16px;
+}
+
+select, input, button, a.button {
+    font-size: 1em;
+    height: 1.8em;
+    padding: 4px;
+    margin: 5px 2px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    //box-shadow: 3px 3px 2px #888;
+    //-moz-box-shadow: 3px 3px 2px #888;
+    //-webkit-box-shadow: 3px 3px 2px #888;
+    
+    border: 1px solid #eee;
+    color: @grey-light;
+    background-color: @navy-dark;
+}
+
+select.select-sm {
+    min-width: 80px;   
+}
+
+select.select-lg {
+    min-width: 180px;   
+}
+
+select option {
+    padding-right: 20px;   
+}
+
+a.button {
+    padding-left:  12px;
+    padding-right: 12px;
+    text-decoration: none;
+}
+
+button:hover, input[type=submit]:hover, a.button:hover {
+    background-color: #bf5;
+    border: 1px solid #333;
+    color: @button-bg;
+}
+
+table tr td {
+    padding-right: 6px;   
+}
+
+.container {
+    position: relative;
+    width: 90%;
+    background: @container-bg;
+    margin: 0 auto;
+    top: 0px;
+
+    border-top: 0;
+    //box-shadow: 4px 4px 20px @grey-dark;
+    //-moz-box-shadow: 4px 4px 20px @grey-dark;
+    //-webkit-box-shadow: 4px 4px 20px @grey-dark;
+}
+
+.container-sm {
+    width: 76%;
+}
+
+.card {
+    border: 1px solid @grey-dark;
+    display: inline-block;
+    width: 30%;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.title-header{
+    width: 100%;
+    display: inline-block;
+    //border-bottom: 1px solid @grey-dark;
+}
+
+.title-header > .main-text {
+    display: inline-block;
+    padding-top: 12px;
+    padding-left: 20px;
+}
+
+.title-header > .main-text > span {
+
+}
+
+.title-header > .main-text > .scale {
+    font-size: 2em;
+}
+
+.title-header > .main-text > .notes {
+    font-size: 1.5em;
+}
+
+.header {
+    color: #eee;
+    background-color: @header-bg;
+}
+
+
+.container-dark {
+    border-top: 1px solid @grey-dark;
+    color: @grey-light;
+    background-color: @footer-bg;
+}
+
+.footer {
+    width: 100%;
+    min-height: 400px;
+    margin-top: 40px;
+    border-top: 4px solid #eee;
+    background-color: @grey-dark;   
+}
+
+.footer-content {
+    margin: 0 5%;
+    padding: 24px 0;
+    color: @grey-light;    
+}
+
+#svg-surface {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+}
+
+.learn-more {
+    float: right;
+}
+
+.instrument-menu {
+    display: inline-block; 
+    height: 90px;
+    padding: 0 15px 0 30px;
+    float: right; 
+    
+    background-color: @instrument-bg;
+    box-shadow: 2px 2px 4px @grey-dark;
+    -moz-box-shadow: 2px 2px 4px @grey-dark;
+    -webkit-box-shadow: 2px 2px 4px @grey-dark;
+}
+
+.instrument-menu > ul{
+    float: right;
+    height: 90px;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    background-color: @instrument-bg;
+}
+
+.instrument-menu li {
+    display: inline;
+    height: 90px;
+}
+
+li.instrument-icon img {
+    width: 90px;
+    height: 90px;
+}
+
+li.instrument-icon.active {
+    background-color: @instrument-active; 
+    display: inline-block; 
+}
+
+.brand {
+    display: inline-block;
+    margin: 8px;
+    font-size: 1.6em;
+}
+
+.brand a {
+    text-decoration: none;
+    color: @header-text;
+}
+
+/*#scale-name, #instrument-name {
+    font-weight: @weight-sm;
+    font-size: 2.1em;
+    border-bottom: 1px solid @grey-light;
+    width: 100%
+}*/
+
+/*#scale-pitches, #tuning-notes {
+    font-size: 1.5em;
+}*/
+
+.header-menu {    
+    float: right;
+    margin-right: 60px;
+    display: inline-block;
+}
+
+.header-menu a {
+    color: @header-text;
+    padding: 8px 16px;
+    height: 32px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.header-menu a.active {
+    background-color: @header-active; 
+    color: @header-text;  
+}
+
+.header-menu a:hover {
+    background-color: #555;   
+    color: @header-text;   
+}
+
+.modal-dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.5);
+
+    opacity: 0;
+    -webkit-transition: opacity 100ms ease-in;
+    -moz-transition: opacity 100ms ease-in;
+    transition: opacity 100ms ease-in;
+    pointer-events: none;
+}
+
+.modal-show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-dialog > .modal-sm {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    background: #eee;
+    padding: 20px;        
+}
+
+.modal-dialog > .modal-lg {
+    position: fixed;
+    margin: 0 auto;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+    background: #eee;
+    padding: 20px;        
+    overflow-y: auto;
+}
+
+.modal-close {
+    background: @grey-dark;
+    color: #FFFFFF;
+    padding: 0 7px;
+    text-decoration: none;
+    font-weight: bold;    
+}
+
+.modal-close:hover { 
+    background-color: @lime; 
+    color: @grey-dark;
+}
+
+.modal-sm > .modal-close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
+
+.modal-lg > .modal-close {
+    position: fixed;
+    margin-top: 20px;
+    margin-right: 30px;
+    right: 10%;
+    top: 10%;
+}
+
+.tooltip {
+    position: absolute;
+    content: attr(tooltip);
+    opacity: 0;
+    padding: 6px 12px;
+    
+    bottom: 230px;
+    max-width: 80%;
+    line-height: 1.3em;
+    
+    color: @grey-dark;
+    background-color: @grey-light;
+    border: 1px solid @grey-dark; 
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px @grey-dark;
+    -moz-box-shadow: 2px 2px 4px @grey-dark;
+    -webkit-box-shadow: 2px 2px 4px @grey-dark;
+}
+
+.tooltip h3 {
+    line-height: 0;   
+}
+
+.tooltip-show {
+    opacity: 1;   
+}

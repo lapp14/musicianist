@@ -1,0 +1,50 @@
+{"chords": [
+	{
+		"name": 		"Major", 
+		"suffix": 		"",
+		"semitones":	[0, 4, 7],
+		"tones":		["1", "3", "5"]
+	}, {
+		"name": 		"Minor",
+		"suffix": 		"m",
+		"semitones":	[0, 3, 7],
+		"tones":		["1", "b3", "5"]
+	}, {
+		"name":			"Dominant Seventh",
+		"alt":			"7th",
+		"suffix": 		"7",
+		"semitones":	[0, 4, 7, 10],
+		"tones":		["1", "3", "5", "b7"]
+	}, {
+		"name":			"Dominant Ninth",
+		"alt":			"9th",
+		"suffix": 		"9",
+		"semitones":	[0, 4, 7, 10, 14],
+		"tones":		["1", "3", "5", "b7", "9"]
+	}
+
+],
+
+"guitar": {
+	"open": {
+		"Major": {}
+	},
+
+	"movable": {
+		"Major": [{
+			"notes": 	[-1, 0, 2, 2, 2, 0],
+			"fingers":	[-1, 1, 3, 3, 3, 1]
+		}, {
+			"notes": 	[0, 2, 2, 1, 0, 0],
+			"fingers":	[1, 3, 4, 2, 1, 1]
+		}],
+
+		"Minor": [{
+			"notes": 	[-1, 0, 2, 2, 1, 0],
+			"fingers":	[-1, 1, 3, 4, 2, 1]
+		}, {
+			"notes": 	[0, 2, 2, 0, 0, 0],
+			"fingers":	[1, 3, 4, 1, 1, 1]
+		}]
+	}
+}}
