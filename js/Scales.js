@@ -1,81 +1,5 @@
 var Scales = Scales || {
-    notes: [
-        'C', //0
-        '-', //1
-        'D', //2
-        '-', //3
-        'E', //4
-        'F', //5
-        '-', //6
-        'G', //7
-        '-', //8
-        'A', //9
-        '-', //10
-        'B'  //11
-    ],
-
-    Guitar: {
-        coords: {
-            markerY: [109, 92, 75, 58, 41, 24, 7],
-            markerX: [-10, 50, 117, 180, 242, 306, 361, 415, 466, 516, 558, 602, 642, 682, 719, 754, 789, 820, 848, 877, 904, 927, 949, 969, 989],
-            fretNumbers: 130
-        }, 
-
-        snapAttributes: { viewBox: "-50 -75 1100 300" }, // { viewBox: "-30 -15 1050 160" },
-        svg: '../svg/guitar_fretboard2.svg'
-
-    },
-
-    'Bass Guitar': {
-        coords: {
-            markerY: [109, 92, 75, 58, 41, 24, 7],
-            markerX: [-10, 50, 117, 180, 242, 306, 361, 415, 466, 516, 558, 602, 642, 682, 719, 754, 789, 820, 848, 877, 904, 927, 949, 969, 989],
-            fretNumbers: 130
-        }, 
-
-        snapAttributes: { viewBox: "-50 -75 1100 300" },  //{ viewBox: "-30 -15 1050 160" },
-        svg: '../svg/guitar_fretboard.svg'
-    },
-
-    Piano: {
-        coords: {
-            whiteKeys: {
-                x: 12.5,
-                y: 130,
-                increment: 23
-            },
-
-            blackKeys: {
-                x: 90,
-                y: 85
-            },
-
-            labels: {
-                y: 165,
-                x: 12,
-                increment: 23
-            },
-        },
-
-        notes: [
-            {x: 12.5, y: 130},  //C
-            {x: 22, y: 85},     //C#/Db
-            {x: 35.5, y: 130},  //D
-            {x: 49.2, y: 85},   //D#
-            {x: 58.5, y: 130},  //E
-            {x: 81.5, y: 130},  //F
-            {x: 90.6, y: 85},  //F#
-            {x: 104.5, y: 130},  //G
-            {x: 115.5, y: 85},  //G#
-            {x: 127.5, y: 130},  //A
-            {x: 140.5, y: 85},  //A#
-            {x: 150.5, y: 130},  //B
-        ],
-
-        snapAttributes: { viewBox: "-110 -16 700 200" },//{ viewBox: "-30 -70 550 300" },
-        svg: '../svg/piano_keys.svg'
-    },
-
+    
     key: {
         tonicNotes: [
             'C', 
@@ -117,15 +41,15 @@ var Scales = Scales || {
             note %= 12;
 
             var text;
-            if(Scales.notes[note] == '-') {
+            if(core.notes[note] == '-') {
                 //check to see if scale[root] defaults to sharp or flat (ex Ab vs G#)
                 if(scale.defaults[root] == '#') {
-                    text = Scales.notes[note - 1] + '#';
+                    text = core.notes[note - 1] + '#';
                 } else {
-                    text = Scales.notes[note + 1] + 'b';
+                    text = core.notes[note + 1] + 'b';
                 }
             } else {
-                text = Scales.notes[note];
+                text = core.notes[note];
             }
 
             return text;
@@ -137,14 +61,14 @@ var Scales = Scales || {
             for(var i = 0; i < scale.halfSteps.length; i++) {
                 var index = (scale.halfSteps[i] + root) % 12; 
 
-                if(Scales.notes[index] == '-') {
+                if(core.notes[index] == '-') {
                     if(scale.defaults[root] == '#') {
-                        string += Scales.notes[index - 1] + '# ';
+                        string += core.notes[index - 1] + '# ';
                     } else {
-                        string += Scales.notes[index + 1] + 'b ';
+                        string += core.notes[index + 1] + 'b ';
                     }
                 } else {
-                    string += Scales.notes[index] + ' ';
+                    string += core.notes[index] + ' ';
                 }
             }
 
@@ -354,11 +278,11 @@ var Scales = Scales || {
          *      scale.defaults
          */
 
-        var surface = Scales.svg.surface;
-        var background = Scales.svg.background;
+        var surface = core.svg.surface;
+        var background = core.svg.background;
 
-        if(Scales.svg.markers) {
-            Scales.svg.markers.remove();
+        if(core.svg.markers) {
+            core.svg.markers.remove();
         }
 
         var markers = surface.g(), m;  
@@ -370,8 +294,8 @@ var Scales = Scales || {
                 var note = (scale.halfSteps[i] + root) % 12;
                 var markerColour = '#0cf';
 
-                x = Scales.Piano.notes[note].x;
-                y = Scales.Piano.notes[note].y;
+                x = core.Piano.notes[note].x;
+                y = core.Piano.notes[note].y;
 
                 if(Scales.key.isRootNote(root, note)) {
                     markerColour = '#bf5';
@@ -413,8 +337,8 @@ var Scales = Scales || {
             }*/
 
         } else {
-            var markerY = Scales[instrument].coords.markerY;
-            var markerX = Scales[instrument].coords.markerX.slice(); //make COPY of markerX
+            var markerY = core[instrument].coords.markerY;
+            var markerX = core[instrument].coords.markerX.slice(); //make COPY of markerX
             //reverse scale for leftys
             if(handedness == 'Left') {
                 for(var i = 0, end = markerX.length; i < end; i++) {
@@ -445,7 +369,7 @@ var Scales = Scales || {
             }
         }
         
-        Scales.svg.markers = markers;
+        core.svg.markers = markers;
     },
 
     drawTitle: function(scale, tonic, tuning) {
@@ -466,19 +390,19 @@ var Scales = Scales || {
          */
 
 
-        if(Scales.svg.title) {
-            Scales.svg.title.remove();
+        if(core.svg.title) {
+            core.svg.title.remove();
         }
 
-        var title = Scales.svg.surface.g(), key, notes;
+        var title = core.svg.surface.g(), key, notes;
 
         var text = Scales.key.tonicNotes[tonic] + ' ' + scale.name;
         
-        key = Scales.svg.surface.text(0, -32, text).attr({ fontSize: '22px', opacity: 1});
-        notes = Scales.svg.surface.text(0, -10, Scales.key.getNotesString(scale, tonic)).attr({ fontSize: '16px', opacity: 1});
+        key = core.svg.surface.text(0, -32, text).attr({ fontSize: '22px', opacity: 1});
+        notes = core.svg.surface.text(0, -10, Scales.key.getNotesString(scale, tonic)).attr({ fontSize: '16px', opacity: 1});
         title.add(key, notes);
 
-        Scales.svg.title = title;
+        core.svg.title = title;
     }
 };
    

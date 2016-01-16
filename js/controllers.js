@@ -81,26 +81,26 @@ musicianist.factory('async', function ($http, $q) {
 		        var background;      
 		        instrument = instrument || 'Guitar';
 
-		        if(Scales.svg.surface) {
-		        	Scales.svg.surface.clear();
+		        if(core.svg.surface) {
+		        	core.svg.surface.clear();
 		        }
 		        
-		        Scales.svg.surface = Snap('#svg-surface');
-		        Scales.svg.surface.attr(Scales[instrument].snapAttributes);
+		        core.svg.surface = Snap('#svg-surface');
+		        core.svg.surface.attr(core[instrument].snapAttributes);
 
 		        Snap.load(file, function(f) {
-		            var s = Scales.svg.surface;
+		            var s = core.svg.surface;
 		            
-		            background = Scales.svg.surface.g();
+		            background = core.svg.surface.g();
 		            background.append(f.select("g"));
 		            background.append(f.select("defs"));
 		            s.append(background);
 
 		            if(instrument == 'Piano') {
-		            	var coords = Scales['Piano'].coords;
+		            	var coords = core['Piano'].coords;
 		            	var x = coords.labels.x;
 		            	var notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-		            	var noteLabels = Scales.svg.surface.g();
+		            	var noteLabels = core.svg.surface.g();
 		            	
 		            	for(var i = 0, lim = 21; i < lim; i++) {
 		            		noteLabels.append(s.text(x, coords.labels.y, notes[i % 7]).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
@@ -109,9 +109,9 @@ musicianist.factory('async', function ($http, $q) {
 			        	background.append(noteLabels);
 
 		            } else {
-				        var markerY = Scales[instrument].coords.markerY;
-				        var markerX = Scales[instrument].coords.markerX.slice(); //create a COPY of the coords
-			            var fretMarkers = Scales.svg.surface.g();
+				        var markerY = core[instrument].coords.markerY;
+				        var markerX = core[instrument].coords.markerX.slice(); //create a COPY of the coords
+			            var fretMarkers = core.svg.surface.g();
 			            console.log('hand ' + handedness);
 
 			        	if(handedness == 'Left') {
@@ -123,16 +123,16 @@ musicianist.factory('async', function ($http, $q) {
 			        		}
 			        	}
 
-			            fretMarkers.append(s.text(markerX[0], Scales[instrument].coords.fretNumbers, 'Open').attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+			            fretMarkers.append(s.text(markerX[0], core[instrument].coords.fretNumbers, 'Open').attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
 
 			            for(var i = 1, lim = markerX.length; i < lim; i++) {
-			                fretMarkers.append(s.text(markerX[i], Scales[instrument].coords.fretNumbers, i).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+			                fretMarkers.append(s.text(markerX[i], core[instrument].coords.fretNumbers, i).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
 			            }
 
-			        	//background.append(fretMarkers);
+			        	background.append(fretMarkers);
 			        }
 
-			        Scales.svg.background = background;
+			        core.svg.background = background;
 		            resolve(true);
 		        });
 		    });
@@ -140,16 +140,54 @@ musicianist.factory('async', function ($http, $q) {
 	};
 });
 
-musicianist.factory('scales', function() {
-	return {
-		a: function(){
+musicianist.controller('chordsCtrl', ['$scope', 'async', 'util', function ($scope, async, util) {
+	$scope.JSONData = {};
 
+	$scope.state = {
+		chordStructure: 'open',
+		chordTonic: 'A',
+		chordType: 'Major'
+	}
+
+	$scope.first = -28;
+	$scope.sec = 0;
+	$scope.third = 196;
+	$scope.fourth = 135;
+   
+	$scope.scale = 1;
+	$scope.pan = 0;
+
+	async.getJSON('../json/chords.json').then(function (data) {
+		$scope.JSONData.chords = data.chords;
+		start();
+	}, function (error) {
+		console.log('async.get error tunings.json');
+	});		
+
+	$scope.change = function() {
+		core.svg.surface.attr({ viewBox: $scope.first + ' ' + $scope.sec + ' ' + ($scope.third + 166) + ' ' + $scope.fourth});
+	};
+
+	$scope.action = function() {
+		Chords.drawChordBarre(1, 1, 6);
+	};
+
+	function start() {
+		$scope.draw.drawChord();
+	}
+
+	$scope.draw = {
+		drawChord: function() {
+			Chords.drawChord($scope.JSONData.chords.guitar[$scope.state.chordStructure][$scope.state.chordType][$scope.state.chordTonic]);
 		}
 	}
-});
+
+	async.loadBackground(core['Guitar'].svg/*, $scope.instrument, $scope.handedness*/);
+	$scope.change();
+}]);
 
 
-musicianist.controller('scalesCtrl', ['$scope', '$location', 'scales', 'async', 'util', function ($scope, $location, scales, async, util){
+musicianist.controller('scalesCtrl', ['$scope', '$location', 'async', 'util', function ($scope, $location, async, util){
 
 	$scope.JSONData = {};
 	$scope.drawing = {};
@@ -222,11 +260,11 @@ musicianist.controller('scalesCtrl', ['$scope', '$location', 'scales', 'async', 
 
 		}
 		
-		async.loadBackground(Scales[instrument].svg, instrument, $scope.handedness).then(drawScale);
+		async.loadBackground(core[instrument].svg, instrument, $scope.handedness).then(drawScale);
 	}
 
 	$scope.drawing.reload = function() {
-		async.loadBackground(Scales[$scope.instrument].svg, $scope.instrument, $scope.handedness).then(drawScale);	
+		async.loadBackground(core[$scope.instrument].svg, $scope.instrument, $scope.handedness).then(drawScale);	
 	}
 
 	function start() {
@@ -254,15 +292,14 @@ musicianist.controller('scalesCtrl', ['$scope', '$location', 'scales', 'async', 
 				tonic: 		$scope.selectedTonic,
 				scale: 		$scope.selectedScale,
 				strings: 	$scope.selectedStrings,
-				tuning: 	$scope.selectedTuning,
-				handedness: $scope.handedness
+				tuning: 	$scope.selectedTuning
 			});
 		}
 	}
 
 	$scope.action = function() {
-		Scales.svg.background.transform("t200,10");
-		Scales.svg.markers.transform("t200,10");
+		core.svg.background.transform("t200,10");
+		core.svg.markers.transform("t200,10");
 	}
 }]);
 

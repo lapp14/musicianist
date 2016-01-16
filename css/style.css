@@ -122,10 +122,16 @@ table tr td {
   padding: 24px 0;
   color: #eeeeee;
 }
-#svg-surface {
+svg.scales {
   position: relative;
   width: 100%;
   min-height: 400px;
+}
+svg.chords {
+  position: relative;
+  width: 600px;
+  height: 500px;
+  background-color: #eeeeee;
 }
 .learn-more {
   float: right;
