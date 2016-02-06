@@ -281,10 +281,8 @@ var Scales = Scales || {
         var surface = core.svg.surface;
         var background = core.svg.background;
 
-        if(core.svg.markers) {
-            core.svg.markers.remove();
-        }
-
+        core.svg.markers ? core.svg.markers.remove() : -1;
+        
         var markers = surface.g(), m;  
 
         if(instrument == 'Piano') {
@@ -308,7 +306,9 @@ var Scales = Scales || {
                 }
             }
 
-
+            core.svg.markers = markers;
+            core.svg.group = surface.g();
+            core.svg.group.add(background, markers);
 
 
             /*for(var note = 0, end = 36; note < end; note++) {
@@ -367,9 +367,12 @@ var Scales = Scales || {
                     }
                 }
             }
+
+            core.svg.markers = markers;
+            core.svg.group = surface.g();
+            core.svg.group.add(background, markers, core.svg.fretMarkers);
         }
         
-        core.svg.markers = markers;
     },
 
     drawTitle: function(scale, tonic, tuning) {
@@ -390,10 +393,8 @@ var Scales = Scales || {
          */
 
 
-        if(core.svg.title) {
-            core.svg.title.remove();
-        }
-
+        core.svg.title ? core.svg.title.remove() : -1;
+        
         var title = core.svg.surface.g(), key, notes;
 
         var text = Scales.key.tonicNotes[tonic] + ' ' + scale.name;

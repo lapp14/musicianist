@@ -183,10 +183,13 @@ table tr td {
     color: @grey-light;    
 }
 
+.surface-container {
+    padding: 18px;   
+}
+
 svg.scales {
-    position: relative;
-    width: 100%;
     min-height: 400px;
+    vertical-align: top;
 }
 
 svg.chords {
@@ -194,6 +197,54 @@ svg.chords {
     width: 600px;
     height: 500px;
     background-color: @container-bg;
+}
+
+svg.cursor-grab {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+svg.cursor-zoom {
+    cursor: move;
+    cursor: zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: -webkit-zoom-in;
+}
+
+svg.cursor-grab:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+svg.select-disable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+svg:not(:root) { 
+    overflow: hidden;
+}
+
+.zoom-pan-control {
+    display: inline-block;
+    padding: 0 12px 12px 12px;
+    float: right;
+}
+
+.zoom-pan-control a {
+    padding: 6px;
+    color: @grey-dark;
+    text-decoration: none;
+}
+
+.zoom-pan-control .active {
+    background-color: @grey-md-dark;  
+    color: @grey-light;
 }
 
 .learn-more {

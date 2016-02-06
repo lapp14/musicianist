@@ -1,4 +1,4 @@
-var musicianist = angular.module('musicianist', []);
+var musicianist = angular.module('musicianist', ['ngCookies']);
 
 
 musicianist.value('notes',  [
@@ -31,10 +31,103 @@ musicianist.value('rootNotes', [
     'B'
 ]);
 
-musicianist.directive('zoomPan', ['$document', function ($document) {
+musicianist.factory('svgSurface', function() {
+	return {
+		activeControl: 'pan',
+		setActiveControl: function(controlType) {
+			if(this.activeControl !== controlType) {
+				this.activeControl = controlType;
+			} else {
+				this.activeControl = 'none';
+			}
+		},
+
+		resetZoomPan: function() {
+			this.zoom = 1;
+			this.startZoom = 1;
+			this.pan.x = this.pan.y = 0;
+			core.svg.group.transform("s" + this.zoom + "," + this.zoom + "t" + this.pan.x + "," + this.pan.y);
+		},
+		startZoom: 1,
+		zoom: 1,
+		pan: {
+			startX: 0,
+			startY: 0,
+			x: 0,
+			y: 0
+		}	
+	}
+});
+
+musicianist.directive('zoomPan', ['$document', 'svgSurface', function ($document, svgSurface) {
 	return {
 		link: function(scope, element, attr) {
 			
+			var svgWidth, svgHeight;
+			var mouseDown = {
+				x: 0,
+				y: 0
+			}
+
+			scope.$watch('svgSurface.activeControl', function(newValue, oldValue) {
+				if(newValue) {
+
+					if(newValue === 'zoom') {
+						element.removeClass('cursor-grab');
+						element.addClass('cursor-zoom');
+					} else if(newValue === 'pan') {
+						element.removeClass('cursor-zoom');
+						element.addClass('cursor-grab');
+					} else {
+						element.removeClass('cursor-zoom');
+						element.removeClass('cursor-grab');
+					}
+				}
+			}, true);
+
+			element.on('mousedown', function(event){
+				mouseDown.x = event.pageX;
+				mouseDown.y = event.pageY;
+
+				console.log(element)
+
+				svgWidth = element[0].clientWidth;
+				svgHeight = element[0].clientHeight;
+
+				if(svgSurface.activeControl === 'pan') {	
+					event.preventDefault();
+					svgSurface.pan.startX = event.pageX - svgSurface.pan.x;
+					svgSurface.pan.startY = event.pageY - svgSurface.pan.y;
+					$document.on('mousemove', mousemove);
+					$document.on('mouseup', mouseup);
+
+					element.addClass('cursor-grab');
+
+				} else if(svgSurface.activeControl === 'zoom') {	
+					event.preventDefault();
+					svgSurface.startZoom = svgSurface.zoom;
+					$document.on('mousemove', mousemove);
+					$document.on('mouseup', mouseup);
+				}
+			});
+
+			function mousemove(event) {
+				
+				if(svgSurface.activeControl === 'pan') {
+					svgSurface.pan.y = event.pageY - svgSurface.pan.startY;
+					svgSurface.pan.x = (event.pageX - svgSurface.pan.startX) - ( event.pageX / svgWidth / 2);
+				} else if(svgSurface.activeControl === 'zoom') {
+					svgSurface.zoom = 1 - (event.pageY / mouseDown.y) + svgSurface.startZoom;
+					console.log(mouseDown.y + ' ' + event.pageY + ' zoom: ' + svgSurface.zoom)
+				} 
+
+				core.svg.group.transform("s" + svgSurface.zoom + "," + svgSurface.zoom + "t" + svgSurface.pan.x + "," + svgSurface.pan.y);
+			}
+
+			function mouseup() {
+				$document.off('mousemove', mousemove);
+				$document.off('mouseup', mouseup);
+			}
 		}
 	}
 }]);
@@ -76,7 +169,7 @@ musicianist.factory('async', function ($http, $q) {
 			});	
 		},
 
-		loadBackground:  function(file, instrument, handedness){
+		loadBackground: function(file, instrument, handedness){
 			return $q (function (resolve, reject) {
 		        var background;      
 		        instrument = instrument || 'Guitar';
@@ -110,14 +203,13 @@ musicianist.factory('async', function ($http, $q) {
 
 		            } else {
 				        var markerY = core[instrument].coords.markerY;
-				        var markerX = core[instrument].coords.markerX.slice(); //create a COPY of the coords
+				        var markerX = core[instrument].coords.markerX.slice();  //create a COPY of the coords
 			            var fretMarkers = core.svg.surface.g();
 			            console.log('hand ' + handedness);
-
+ 						
+ 						//reverse fret labels and flip fretboard for leftys
 			        	if(handedness == 'Left') {
 			        		background.transform('s-1,1');
-
-			        		//reverse fret labels for leftys
 			        		for(var i = 0, end = markerX.length; i < end; i++) {
 			        			markerX[i] = 1000 - markerX[i];
 			        		}
@@ -129,7 +221,7 @@ musicianist.factory('async', function ($http, $q) {
 			                fretMarkers.append(s.text(markerX[i], core[instrument].coords.fretNumbers, i).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
 			            }
 
-			        	background.append(fretMarkers);
+			        	core.svg.fretMarkers = fretMarkers;
 			        }
 
 			        core.svg.background = background;
@@ -139,6 +231,10 @@ musicianist.factory('async', function ($http, $q) {
 	    }
 	};
 });
+
+musicianist.factory('cookies', ['$cookies', function($cookies) {
+	
+}]);
 
 musicianist.controller('chordsCtrl', ['$scope', 'async', 'util', function ($scope, async, util) {
 	$scope.JSONData = {};
@@ -187,7 +283,7 @@ musicianist.controller('chordsCtrl', ['$scope', 'async', 'util', function ($scop
 }]);
 
 
-musicianist.controller('scalesCtrl', ['$scope', '$location', 'async', 'util', function ($scope, $location, async, util){
+musicianist.controller('scalesCtrl', ['$scope', '$location', 'svgSurface', 'async', 'util', function ($scope, $location, svgSurface, async, util){
 
 	$scope.JSONData = {};
 	$scope.drawing = {};
@@ -196,6 +292,7 @@ musicianist.controller('scalesCtrl', ['$scope', '$location', 'async', 'util', fu
 	$scope.tooltip = null;
 
 	$scope.util = util;
+	$scope.svgSurface = svgSurface;
 	$scope.instrument = 		$location.search().instrument || 'Guitar';
 	$scope.handedness = 		$location.search().handedness || 'Right';
 	$scope.selectedStrings = 	$location.search().strings || "6"; 

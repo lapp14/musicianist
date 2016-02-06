@@ -14,7 +14,7 @@ body {
 h1 {
   margin: 0 0 6px 0;
   font-weight: 300;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #eee;
 }
 span.subtitle {
   font-size: 1.5em;
@@ -40,7 +40,7 @@ a.button {
   -moz-border-radius: 4px;
   border-radius: 4px;
   border: 1px solid #eee;
-  color: #eeeeee;
+  color: #eee;
   background-color: #445966;
 }
 select.select-sm {
@@ -62,7 +62,7 @@ input[type=submit]:hover,
 a.button:hover {
   background-color: #bf5;
   border: 1px solid #333;
-  color: #333333;
+  color: #333;
 }
 table tr td {
   padding-right: 6px;
@@ -70,7 +70,7 @@ table tr td {
 .container {
   position: relative;
   width: 90%;
-  background: #eeeeee;
+  background: #eee;
   margin: 0 auto;
   top: 0px;
   border-top: 0;
@@ -79,7 +79,7 @@ table tr td {
   width: 76%;
 }
 .card {
-  border: 1px solid #333333;
+  border: 1px solid #333;
   display: inline-block;
   width: 30%;
 }
@@ -103,11 +103,11 @@ table tr td {
 }
 .header {
   color: #eee;
-  background-color: #333333;
+  background-color: #333;
 }
 .container-dark {
-  border-top: 1px solid #333333;
-  color: #eeeeee;
+  border-top: 1px solid #333;
+  color: #eee;
   background-color: #445966;
 }
 .footer {
@@ -115,23 +115,65 @@ table tr td {
   min-height: 400px;
   margin-top: 40px;
   border-top: 4px solid #eee;
-  background-color: #333333;
+  background-color: #333;
 }
 .footer-content {
   margin: 0 5%;
   padding: 24px 0;
-  color: #eeeeee;
+  color: #eee;
+}
+.surface-container {
+  padding: 18px;
 }
 svg.scales {
-  position: relative;
-  width: 100%;
   min-height: 400px;
+  vertical-align: top;
 }
 svg.chords {
   position: relative;
   width: 600px;
   height: 500px;
-  background-color: #eeeeee;
+  background-color: #eee;
+}
+svg.cursor-grab {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+svg.cursor-zoom {
+  cursor: move;
+  cursor: zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+}
+svg.cursor-grab:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+svg.select-disable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+.zoom-pan-control {
+  display: inline-block;
+  padding: 0 12px 12px 12px;
+  float: right;
+}
+.zoom-pan-control a {
+  padding: 6px;
+  color: #333;
+  text-decoration: none;
+}
+.zoom-pan-control .active {
+  background-color: #555;
+  color: #eee;
 }
 .learn-more {
   float: right;
@@ -141,10 +183,10 @@ svg.chords {
   height: 90px;
   padding: 0 15px 0 30px;
   float: right;
-  background-color: #555555;
-  box-shadow: 2px 2px 4px #333333;
-  -moz-box-shadow: 2px 2px 4px #333333;
-  -webkit-box-shadow: 2px 2px 4px #333333;
+  background-color: #555;
+  box-shadow: 2px 2px 4px #333;
+  -moz-box-shadow: 2px 2px 4px #333;
+  -webkit-box-shadow: 2px 2px 4px #333;
 }
 .instrument-menu > ul {
   float: right;
@@ -152,7 +194,7 @@ svg.chords {
   padding: 0;
   margin: 0;
   list-style-type: none;
-  background-color: #555555;
+  background-color: #555;
 }
 .instrument-menu li {
   display: inline;
@@ -163,7 +205,7 @@ li.instrument-icon img {
   height: 90px;
 }
 li.instrument-icon.active {
-  background-color: #777777;
+  background-color: #777;
   display: inline-block;
 }
 .brand {
@@ -173,7 +215,7 @@ li.instrument-icon.active {
 }
 .brand a {
   text-decoration: none;
-  color: #eeeeee;
+  color: #eee;
 }
 /*#scale-name, #instrument-name {
     font-weight: @weight-sm;
@@ -190,19 +232,19 @@ li.instrument-icon.active {
   display: inline-block;
 }
 .header-menu a {
-  color: #eeeeee;
+  color: #eee;
   padding: 8px 16px;
   height: 32px;
   display: inline-block;
   text-decoration: none;
 }
 .header-menu a.active {
-  background-color: #555555;
-  color: #eeeeee;
+  background-color: #555;
+  color: #eee;
 }
 .header-menu a:hover {
   background-color: #555;
-  color: #eeeeee;
+  color: #eee;
 }
 .modal-dialog {
   position: fixed;
@@ -241,15 +283,15 @@ li.instrument-icon.active {
   overflow-y: auto;
 }
 .modal-close {
-  background: #333333;
+  background: #333;
   color: #FFFFFF;
   padding: 0 7px;
   text-decoration: none;
   font-weight: bold;
 }
 .modal-close:hover {
-  background-color: #bbff55;
-  color: #333333;
+  background-color: #bf5;
+  color: #333;
 }
 .modal-sm > .modal-close {
   position: absolute;
@@ -271,13 +313,13 @@ li.instrument-icon.active {
   bottom: 230px;
   max-width: 80%;
   line-height: 1.3em;
-  color: #333333;
-  background-color: #eeeeee;
-  border: 1px solid #333333;
+  color: #333;
+  background-color: #eee;
+  border: 1px solid #333;
   border-radius: 4px;
-  box-shadow: 2px 2px 4px #333333;
-  -moz-box-shadow: 2px 2px 4px #333333;
-  -webkit-box-shadow: 2px 2px 4px #333333;
+  box-shadow: 2px 2px 4px #333;
+  -moz-box-shadow: 2px 2px 4px #333;
+  -webkit-box-shadow: 2px 2px 4px #333;
 }
 .tooltip h3 {
   line-height: 0;

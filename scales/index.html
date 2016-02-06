@@ -52,7 +52,14 @@
                         </li>
                     </ul>
                 </div>
-                <svg class="scales" id="svg-surface"></svg>
+                <div class="surface-container">
+                    <svg zoom-pan class="scales" id="svg-surface" preserveAspectRatio="xMidYMin meet"></svg>
+                </div>
+                <div class="zoom-pan-control">
+                    <a href="" ng-click="svgSurface.resetZoomPan()">Reset</a>
+                    <a href="" ng-click="svgSurface.setActiveControl('zoom')" ng-class="{'active': svgSurface.activeControl == 'zoom'}">Zoom</a>
+                    <a href="" ng-click="svgSurface.setActiveControl('pan')" ng-class="{'active': svgSurface.activeControl == 'pan'}">Pan</a>
+                </div>
             </div>
             
             <div class="container-dark">            
@@ -162,6 +169,7 @@
 
         <script src="../lib/angular/angular.js"></script>
         <script src="../lib/angular/angular-sanitize.js"></script>
+        <script src="../lib/angular/angular-cookies.js"></script>
         <script src="../js/controllers.js"></script>
     </body>
 </html>
