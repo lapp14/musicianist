@@ -31,13 +31,20 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
 body {
     line-height: 2em;
+    font-family: 'Oxygen', sans-serif;    
     background: @body-bg;
-    font-family: 'Oxygen', sans-serif;
+    background-image: url("/img/bg.png");    /* fallback */    
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+17,000000+44,000000+62,000000+84&0.78+17,0+44,0+62,0.75+84 */
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0.78) 17%, rgba(0,0,0,0) 44%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.75) 84%), url("/img/bg.png"); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.78) 17%,rgba(0,0,0,0) 44%,rgba(0,0,0,0) 62%,rgba(0,0,0,0.75) 84%), url("/img/bg.png"); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(0,0,0,0.78) 17%,rgba(0,0,0,0) 44%,rgba(0,0,0,0) 62%,rgba(0,0,0,0.75) 84%), url("/img/bg.png"); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c7000000', endColorstr='#bf000000',GradientType=0 ), url("/img/bg.png"); /* IE6-9 */
+    background-attachment: fixed;
 }
 
 h1 {
@@ -49,10 +56,6 @@ h1 {
 span.subtitle {
     font-size: 1.5em;
     font-weight: @weight-sm;
-}
-
-div {
-    /*border: 1px solid black;*/
 }
 
 div .div-inline {
@@ -78,17 +81,9 @@ select, input, button, a.button {
     background-color: @navy-dark;
 }
 
-select.select-sm {
-    min-width: 80px;   
-}
-
-select.select-lg {
-    min-width: 180px;   
-}
-
-select option {
-    padding-right: 20px;   
-}
+select.select-sm { min-width: 80px;  }
+select.select-lg { min-width: 180px; }
+select option  { padding-right: 20px; }
 
 a.button {
     padding-left:  12px;
@@ -102,26 +97,24 @@ button:hover, input[type=submit]:hover, a.button:hover {
     color: @button-bg;
 }
 
-table tr td {
-    padding-right: 6px;   
-}
+table tr td { padding-right: 6px; }
 
 .container {
     position: relative;
     width: 90%;
-    background: @container-bg;
     margin: 0 auto;
     top: 0px;
 
     border-top: 0;
-    //box-shadow: 4px 4px 20px @grey-dark;
-    //-moz-box-shadow: 4px 4px 20px @grey-dark;
-    //-webkit-box-shadow: 4px 4px 20px @grey-dark;
 }
 
-.container-sm {
-    width: 76%;
+.container .title-header {
+    background: @container-bg;    
+    box-shadow: 4px 4px 20px darken(@grey-dark, 20%);
+    -moz-box-shadow: 4px 4px 20px darken(@grey-dark, 20%);
+    -webkit-box-shadow: 4px 4px 20px darken(@grey-dark, 20%);
 }
+
 
 .card {
     border: 1px solid @grey-dark;
@@ -129,9 +122,7 @@ table tr td {
     width: 30%;
 }
 
-.inline-block {
-    display: inline-block;
-}
+.inline-block { display: inline-block; }
 
 .title-header{
     width: 100%;
@@ -162,11 +153,9 @@ table tr td {
     background-color: @header-bg;
 }
 
-
-.container-dark {
-    border-top: 1px solid @grey-dark;
+.container-options {
+    margin-top: 18px;
     color: @grey-light;
-    background-color: @footer-bg;
 }
 
 .footer {
@@ -183,13 +172,13 @@ table tr td {
     color: @grey-light;    
 }
 
-.surface-container {
-    padding: 18px;   
-}
+div.surface-container { display: inline-block; position: relative; width: 100%; background-color: #fff; margin-bottom: 12px; }
+div.surface-container:after { display: block; content: ''; }
+div.surface-container > div { padding: 12px; background: @container-bg; }
 
 svg.scales {
-    min-height: 400px;
-    vertical-align: top;
+    min-height: 300px; 
+    max-height: 600px;    
 }
 
 svg.chords {
@@ -232,19 +221,22 @@ svg:not(:root) {
 
 .zoom-pan-control {
     display: inline-block;
-    padding: 0 12px 12px 12px;
     float: right;
+    margin-right: 12px;
 }
 
 .zoom-pan-control a {
-    padding: 6px;
     color: @grey-dark;
     text-decoration: none;
+    padding: 12px 6px 2px 6px;
 }
 
-.zoom-pan-control .active {
-    background-color: @grey-md-dark;  
-    color: @grey-light;
+.zoom-pan-control a img {
+}
+
+.zoom-pan-control a.active {
+    background-color: @lime;  
+    border: 1px solid @grey-dark;
 }
 
 .learn-more {
@@ -258,8 +250,8 @@ svg:not(:root) {
     float: right; 
     
     background-color: @instrument-bg;
-    box-shadow: 2px 2px 4px @grey-dark;
-    -moz-box-shadow: 2px 2px 4px @grey-dark;
+    box-shadow:         2px 2px 4px @grey-dark;
+    -moz-box-shadow:    2px 2px 4px @grey-dark;
     -webkit-box-shadow: 2px 2px 4px @grey-dark;
 }
 
@@ -344,8 +336,8 @@ li.instrument-icon.active {
 
     opacity: 0;
     -webkit-transition: opacity 100ms ease-in;
-    -moz-transition: opacity 100ms ease-in;
-    transition: opacity 100ms ease-in;
+    -moz-transition:    opacity 100ms ease-in;
+    transition:         opacity 100ms ease-in;
     pointer-events: none;
 }
 
@@ -411,12 +403,12 @@ li.instrument-icon.active {
     max-width: 80%;
     line-height: 1.3em;
     
-    color: @grey-dark;
-    background-color: @grey-light;
-    border: 1px solid @grey-dark; 
+    color: @grey-dark; 
     border-radius: 4px;
-    box-shadow: 2px 2px 4px @grey-dark;
-    -moz-box-shadow: 2px 2px 4px @grey-dark;
+    background-color:   @grey-light;
+    border:             1px solid @grey-dark;
+    box-shadow:         2px 2px 4px @grey-dark;
+    -moz-box-shadow:    2px 2px 4px @grey-dark;
     -webkit-box-shadow: 2px 2px 4px @grey-dark;
 }
 
@@ -427,3 +419,52 @@ li.instrument-icon.active {
 .tooltip-show {
     opacity: 1;   
 }
+
+/* New settings panels */
+div.settings-panel {
+    display: inline-block;
+    background-color: #111;
+    min-width: 250px;
+}   
+
+div.settings-panel div.header {    
+    background-color: #000;
+    padding: 6px 12px;
+    font-size: 1.3em;
+    border: 3px solid darken(@lime, 20%);
+} 
+
+div.settings-panel div.header span {
+    font-weight: bold;
+    padding: 2px 12px 2px 0;
+    margin-right: 12px;
+    border-right: 3px solid darken(@lime, 20%);
+}
+
+div.settings-panel div.content {
+    border-left: 1px solid @grey-md-light;
+    border-top: 1px solid #111;
+    border-right: 1px solid @grey-md-light;
+    border-bottom: 1px solid @grey-md-light;
+}
+
+div.settings-panel div.content table {
+    border-spacing: 0 10px;
+}
+
+div.settings-panel div.content table tr {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b6b6b+0,545454+20,1c1c1c+93,383838+100 */
+background: rgb(107,107,107); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(107,107,107,1) 0%, rgba(84,84,84,1) 20%, rgba(28,28,28,1) 93%, rgba(56,56,56,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(107,107,107,1) 0%,rgba(84,84,84,1) 20%,rgba(28,28,28,1) 93%,rgba(56,56,56,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(107,107,107,1) 0%,rgba(84,84,84,1) 20%,rgba(28,28,28,1) 93%,rgba(56,56,56,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b6b6b', endColorstr='#383838',GradientType=0 ); /* IE6-9 */
+  
+}
+
+div.settings-panel div.content table tr td{
+    padding: 4px 12px;
+  
+}
+    
+/******/

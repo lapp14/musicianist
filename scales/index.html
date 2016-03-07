@@ -53,18 +53,23 @@
                     </ul>
                 </div>
                 <div class="surface-container">
-                    <svg zoom-pan class="scales" id="svg-surface" preserveAspectRatio="xMidYMin meet"></svg>
+                    <div><svg zoom-pan class="scales select-disable" id="svg-surface" preserveAspectRatio="xMidYMin meet"></svg></div>
                 </div>
                 <div class="zoom-pan-control">
-                    <a href="" ng-click="svgSurface.resetZoomPan()">Reset</a>
-                    <a href="" ng-click="svgSurface.setActiveControl('zoom')" ng-class="{'active': svgSurface.activeControl == 'zoom'}">Zoom</a>
-                    <a href="" ng-click="svgSurface.setActiveControl('pan')" ng-class="{'active': svgSurface.activeControl == 'pan'}">Pan</a>
+                    <a href="" ng-click="svgSurface.resetZoomPan()">
+                        <img src="../svg/icon/iconmonstr-fullscreen-12.svg" viewBox="0 0 25 25" alt="Reset"/>
+                    </a>
+                    <a href="" ng-click="svgSurface.setActiveControl('zoom')" ng-class="{'active': svgSurface.activeControl == 'zoom'}">
+                        <img src="../svg/icon/iconmonstr-magnifier-5.svg" viewBox="0 0 25 25" alt="Zoom"/>
+                    </a>
+                    <a href="" ng-click="svgSurface.setActiveControl('pan')" ng-class="{'active': svgSurface.activeControl == 'pan'}">
+                        <img src="../svg/icon/iconmonstr-cursor-23.svg" viewBox="0 0 25 25" alt="Pan"/>
+                    </a>
                 </div>
             </div>
             
-            <div class="container-dark">            
-                <div class="div-inline">
-                    
+            <div class="container-options">            
+                <div class="div-inline">                    
                     <div class="tooltip" ng-class="{'tooltip-show': tooltip == 'scale'}" ng-include="scale.infoUrl">                        
                     </div>
 
@@ -108,7 +113,7 @@
                                 <label for="input-num-strings">Strings</label>
                             </td>
                             <td>
-                                <select name="input-num-strings" class="select-sm" ng-model="selectedStrings" ng-change="drawing.drawScale()">
+                                <select name="input-num-strings" class="select-sm" ng-model="selectedStrings" ng-change="drawing.reload()">
                                     <option class="option-thin" value="{{key}}" ng-repeat="(key, val) in JSONData.tunings[instrument]">{{key}}</option>
                                 </select>
                             </td>
@@ -136,6 +141,49 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+
+                <div class="settings-panel">
+                    <div class="header">
+                        <span>12</span>
+                        Title
+                    </div>
+                    <div class="content">
+                        <table>
+                        <tr>
+                            <td>
+                                <label for="input-num-strings">Strings</label>
+                            </td>
+                            <td>
+                                <select name="input-num-strings" class="select-sm" ng-model="selectedStrings" ng-change="drawing.reload()">
+                                    <option class="option-thin" value="{{key}}" ng-repeat="(key, val) in JSONData.tunings[instrument]">{{key}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="tuning">Tuning</label>
+                            </td>
+                            <td>
+                                <select name="tuning" class="select-lg" ng-model="selectedTuning" ng-change="drawing.drawScale()">
+                                    <option value="{{key}}" ng-repeat="(key, val) in JSONData.tunings[instrument][selectedStrings]">{{val.name}}</option>                              
+                                </select>
+                                <a href="" class="button" ng-click="modal = 'edit-tuning'">Edit Tuning</a>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>
+                                <label for="tuning">Handedness</label>
+                            </td>
+                            <td>
+                                <select name="handedness" class="select-lg" ng-model="handedness" ng-change="drawing.reload()">
+                                    <option value="Right">Right-Handed</option>
+                                    <option value="Left">Left-Handed</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>                    
+                    </div>
                 </div>
 
                 <div class="learn-more">

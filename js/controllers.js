@@ -169,7 +169,7 @@ musicianist.factory('async', function ($http, $q) {
 			});	
 		},
 
-		loadBackground: function(file, instrument, handedness){
+		loadBackground: function(file, instrument, handedness, strings){
 			return $q (function (resolve, reject) {
 		        var background;      
 		        instrument = instrument || 'Guitar';
@@ -215,10 +215,10 @@ musicianist.factory('async', function ($http, $q) {
 			        		}
 			        	}
 
-			            fretMarkers.append(s.text(markerX[0], core[instrument].coords.fretNumbers, 'Open').attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+			            fretMarkers.append(s.text(markerX[0], core[instrument].coords.fretNumbers[strings], 'Open').attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
 
 			            for(var i = 1, lim = markerX.length; i < lim; i++) {
-			                fretMarkers.append(s.text(markerX[i], core[instrument].coords.fretNumbers, i).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+			                fretMarkers.append(s.text(markerX[i], core[instrument].coords.fretNumbers[strings], i).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
 			            }
 
 			        	core.svg.fretMarkers = fretMarkers;
@@ -357,11 +357,17 @@ musicianist.controller('scalesCtrl', ['$scope', '$location', 'svgSurface', 'asyn
 
 		}
 		
-		async.loadBackground(core[instrument].svg, instrument, $scope.handedness).then(drawScale);
+		if(instrument == 'Piano') {
+			var bg = core[instrument].svg;
+		} else {
+			var bg = core[instrument].svg[$scope.selectedStrings];
+		}
+		
+		async.loadBackground(bg, instrument, $scope.handedness, $scope.selectedStrings).then(drawScale);
 	}
 
 	$scope.drawing.reload = function() {
-		async.loadBackground(core[$scope.instrument].svg, $scope.instrument, $scope.handedness).then(drawScale);	
+		async.loadBackground(core[$scope.instrument].svg[$scope.selectedStrings], $scope.instrument, $scope.handedness, $scope.selectedStrings).then(drawScale);	
 	}
 
 	function start() {
