@@ -101,7 +101,7 @@
                     </table>
                 </div>
 
-                <div class="div-inline" ng-hide="instrument === 'Piano'">
+               <!-- <div class="div-inline" ng-hide="instrument === 'Piano'">
                     <div>
                         <h1>{{instrument}}</h1>
                         <span class="subtitle" ng-repeat="n in JSONData.tunings[instrument][selectedStrings][selectedTuning].notes track by $index">
@@ -141,12 +141,12 @@
                             </td>
                         </tr>
                     </table>
-                </div>
+                </div>-->
 
                 <div class="settings-panel">
                     <div class="header">
-                        <span>12</span>
-                        Title
+                        <span><img src="../img/guitar-128-2.png" alt="Scale"/></span>
+                        Instrument
                     </div>
                     <div class="content">
                         <table>
@@ -168,7 +168,9 @@
                                 <select name="tuning" class="select-lg" ng-model="selectedTuning" ng-change="drawing.drawScale()">
                                     <option value="{{key}}" ng-repeat="(key, val) in JSONData.tunings[instrument][selectedStrings]">{{val.name}}</option>                              
                                 </select>
-                                <a href="" class="button" ng-click="modal = 'edit-tuning'">Edit Tuning</a>
+                                    
+                                <img class="button" src="../svg/icon/iconmonstr-gear-6.png" alt="Edit" ng-click="modal = 'edit-tuning'"/>
+                                
                             </td>
                         </tr>
                          <tr>
@@ -183,6 +185,17 @@
                             </td>
                         </tr>
                     </table>                    
+                    </div>
+                </div>
+
+                <div class="settings-panel">
+                    <div class="header">
+                        <span><img src="../img/musicfile-128.png" alt="Scale"/></span>
+                        <span><img src="../img/free/settings.png" alt="Scale"/></span>
+                        Scale
+                    </div>
+                    <div class="content">
+                        
                     </div>
                 </div>
 

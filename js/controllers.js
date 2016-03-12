@@ -218,7 +218,10 @@ musicianist.factory('async', function ($http, $q) {
 			            fretMarkers.append(s.text(markerX[0], core[instrument].coords.fretNumbers[strings], 'Open').attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
 
 			            for(var i = 1, lim = markerX.length; i < lim; i++) {
-			                fretMarkers.append(s.text(markerX[i], core[instrument].coords.fretNumbers[strings], i).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+			            	var x = markerX[i];
+			            	var y = core[instrument].coords.fretNumbers[strings] + core[instrument].coords.fretNumberOffset * i;
+
+			                fretMarkers.append(s.text(x, y, i).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
 			            }
 
 			        	core.svg.fretMarkers = fretMarkers;

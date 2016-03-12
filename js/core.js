@@ -20,8 +20,11 @@ var core = {
 
     Guitar: {
         coords: {
-            markerY: [109, 92, 75, 58, 41, 24, 7],
-            markerX: [-10, 50, 117, 180, 242, 306, 361, 415, 466, 516, 558, 602, 642, 682, 719, 754, 789, 820, 848, 877, 904, 927, 949, 969, 989],
+            markerY:  [117, 100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
+            markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
+            stringOffset: [0.55, 0.32, 0.1, -0.1, -0.32, -0.47],
+            fretNumberOffset: 0.6,
+                                 //[-10, 50, 117, 180, 242, 306, 361, 415, 466, 516, 558, 602, 642, 682, 719, 754, 789, 820, 848, 877, 904, 927, 949, 969, 989],
             fretNumbers: {
                 6: 130,
                 7: 150
@@ -30,7 +33,7 @@ var core = {
 
         snapAttributes: { viewBox: "-50 -75 1100 300" }, // { viewBox: "-30 -15 1050 160" },
         svg: {
-            6: '../svg/guitar_fretboard2.svg',
+            6: '../svg/les-paul-fretboard.svg',
             7: '../svg/guitar_fretboard_7str.svg'
         }
 
@@ -45,7 +48,7 @@ var core = {
 
         snapAttributes: { viewBox: "-50 -75 1100 300" },  //{ viewBox: "-30 -15 1050 160" },
         svg: {
-            4: '../svg/guitar_fretboard.svg'
+            4: '../svg/precision-bass-fretboard.svg'
         }
     },
 

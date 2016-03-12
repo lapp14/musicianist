@@ -339,6 +339,7 @@ var Scales = Scales || {
         } else {
             var markerY = core[instrument].coords.markerY;
             var markerX = core[instrument].coords.markerX.slice(); //make COPY of markerX
+            var stringOffset = core[instrument].coords.stringOffset;
             //reverse scale for leftys
             if(handedness == 'Left') {
                 for(var i = 0, end = markerX.length; i < end; i++) {
@@ -354,12 +355,12 @@ var Scales = Scales || {
                     var note = openNote + fret;
 
                     if(Scales.key.isNoteInKey(scale, root, note)) { 
-                        var x = markerX[fret], y = markerY[string + markerY.length - end];
+                        var x = markerX[fret], y = markerY[string + markerY.length - end] + (stringOffset[string] * fret);
 
                         if(Scales.key.isRootNote(root, note)) {
-                            m = surface.circle(x, y - 0.5, 8).attr({ fill: '#bf5', stroke: '#333', strokeWidth: 0.75, opacity: 0.8 });
+                            m = surface.circle(x, y - 0.5, 8).attr({ fill: '#bf5', stroke: '#333', strokeWidth: 0.75, opacity: 1 });
                         } else {
-                            m = surface.circle(x, y - 0.5, 8).attr({ fill: '#0cf', stroke: '#333', strokeWidth: 0.75, opacity: 0.8 });
+                            m = surface.circle(x, y - 0.5, 8).attr({ fill: '#0cf', stroke: '#333', strokeWidth: 0.75, opacity: 1 });
                         }
 
                         var label = surface.text(x, y + 2, Scales.key.getNote(scale, root, note)).attr({ fontSize: '8px', opacity: 1, "text-anchor": "middle" });

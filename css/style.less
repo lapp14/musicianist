@@ -64,7 +64,7 @@ div .div-inline {
     padding: 16px;
 }
 
-select, input, button, a.button {
+select, input, button, a.button, img.button {
     font-size: 1em;
     height: 1.8em;
     padding: 4px;
@@ -78,7 +78,7 @@ select, input, button, a.button {
     
     border: 1px solid #eee;
     color: @grey-light;
-    background-color: @navy-dark;
+    background-color: @header-bg;
 }
 
 select.select-sm { min-width: 80px;  }
@@ -95,6 +95,11 @@ button:hover, input[type=submit]:hover, a.button:hover {
     background-color: #bf5;
     border: 1px solid #333;
     color: @button-bg;
+    
+}
+
+img.button:hover {
+    cursor: pointer;
 }
 
 table tr td { padding-right: 6px; }
@@ -437,7 +442,12 @@ div.settings-panel div.header {
 div.settings-panel div.header span {
     font-weight: bold;
     padding: 2px 12px 2px 0;
-    margin-right: 12px;
+}
+
+div.settings-panel div.header span img{
+    height: 2em;
+    margin-top: 5px;
+    padding-right: 12px;
     border-right: 3px solid darken(@lime, 20%);
 }
 
@@ -465,6 +475,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b6b6b', end
 div.settings-panel div.content table tr td{
     padding: 4px 12px;
   
+}
+
+img.button  {
+    margin: -8.5px 0;
+    height: 1.2em;
 }
     
 /******/
