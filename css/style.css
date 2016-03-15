@@ -34,7 +34,6 @@ span.subtitle {
 div .div-inline {
   display: table-cell;
   vertical-align: top;
-  padding: 16px;
 }
 select,
 input,
@@ -91,6 +90,9 @@ table tr td {
   box-shadow: 4px 4px 20px #000000;
   -moz-box-shadow: 4px 4px 20px #000000;
   -webkit-box-shadow: 4px 4px 20px #000000;
+}
+.pull-right {
+  float: right;
 }
 .card {
   border: 1px solid #333;
@@ -203,35 +205,51 @@ svg:not(:root) {
 .learn-more {
   float: right;
 }
-.instrument-menu {
-  display: inline-block;
-  height: 90px;
-  padding: 0 15px 0 30px;
-  float: right;
-  background-color: #555;
-  box-shadow: 2px 2px 4px #333;
-  -moz-box-shadow: 2px 2px 4px #333;
-  -webkit-box-shadow: 2px 2px 4px #333;
-}
-.instrument-menu > ul {
-  float: right;
-  height: 90px;
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  background-color: #555;
-}
-.instrument-menu li {
-  display: inline;
-  height: 90px;
-}
-li.instrument-icon img {
+.instrument-icon img {
   width: 90px;
   height: 90px;
 }
-li.instrument-icon.active {
-  background-color: #777;
-  display: inline-block;
+.tab-menu {
+  display: table-cell;
+  vertical-align: top;
+  position: relative;
+  text-align: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.tab-menu:after {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  border-right: 1px solid #333;
+  z-index: 100;
+  content: "";
+}
+.tab-menu li {
+  position: relative;
+  border: 1px solid #333;
+  border-radius: 10px 0 0 10px;
+  border-right: 0;
+  background: #555;
+  margin: 10px 0;
+  width: 90px;
+  height: 90px;
+  z-index: 0;
+}
+.tab-menu li.active {
+  background: #eee;
+  z-index: 200;
+}
+.tab-menu ~ div.content {
+  display: table-cell;
+  width: 100%;
+  padding: 12px;
+  border-right: 1px solid #333;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
 }
 .brand {
   display: inline-block;
@@ -291,12 +309,13 @@ li.instrument-icon.active {
 }
 .modal-dialog > .modal-sm {
   width: 400px;
+  max-width: 90%;
   position: relative;
   margin: 10% auto;
   background: #eee;
   padding: 20px;
 }
-.modal-dialog > .modal-lg {
+.modal-dialog .modal-lg {
   position: fixed;
   margin: 0 auto;
   top: 10%;
@@ -306,6 +325,9 @@ li.instrument-icon.active {
   background: #eee;
   padding: 20px;
   overflow-y: auto;
+}
+.modal-lg h2 {
+  line-height: 0;
 }
 .modal-close {
   background: #333;

@@ -18,7 +18,8 @@ var core = {
         'B'  //11
     ],
 
-    Guitar: {
+  /*  Guitar: {
+
         coords: {
             markerY:  [117, 100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
             markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
@@ -33,13 +34,13 @@ var core = {
 
         snapAttributes: { viewBox: "-50 -75 1100 300" }, // { viewBox: "-30 -15 1050 160" },
         svg: {
-            6: '../svg/les-paul-fretboard.svg',
+            6: '../svg/stratocaster-fretboard.svg',
             7: '../svg/guitar_fretboard_7str.svg'
         }
 
-    },
+    },*/
 
-    'Bass Guitar': {
+   /* 'Bass Guitar': {
         coords: {
             markerY: [109, 92, 75, 58, 41, 24, 7],
             markerX: [-10, 50, 117, 180, 242, 306, 361, 415, 466, 516, 558, 602, 642, 682, 719, 754, 789, 820, 848, 877, 904, 927, 949, 969, 989],
@@ -50,9 +51,9 @@ var core = {
         svg: {
             4: '../svg/precision-bass-fretboard.svg'
         }
-    },
+    },*/
 
-    Piano: {
+  /* Piano: {
         coords: {
             whiteKeys: {
                 x: 12.5,
@@ -89,5 +90,5 @@ var core = {
 
         snapAttributes: { viewBox: "-110 -16 700 200" },//{ viewBox: "-30 -70 550 300" },
         svg: '../svg/piano_keys.svg'
-    }	
+    }*/
 }

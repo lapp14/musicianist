@@ -285,15 +285,15 @@ var Scales = Scales || {
         
         var markers = surface.g(), m;  
 
-        if(instrument == 'Piano') {
+        if(!tuning) {
             var x, y;
 
             for(var i = 0, end = scale.halfSteps.length; i < end; i++) {
                 var note = (scale.halfSteps[i] + root) % 12;
                 var markerColour = '#0cf';
 
-                x = core.Piano.notes[note].x;
-                y = core.Piano.notes[note].y;
+                x = instrument.notes[note].x;
+                y = instrument.notes[note].y;
 
                 if(Scales.key.isRootNote(root, note)) {
                     markerColour = '#bf5';
@@ -337,9 +337,9 @@ var Scales = Scales || {
             }*/
 
         } else {
-            var markerY = core[instrument].coords.markerY;
-            var markerX = core[instrument].coords.markerX.slice(); //make COPY of markerX
-            var stringOffset = core[instrument].coords.stringOffset;
+            var markerY = instrument.markerY;
+            var markerX = instrument.markerX.slice(); //make COPY of markerX
+            var stringOffset = instrument.stringOffset;
             //reverse scale for leftys
             if(handedness == 'Left') {
                 for(var i = 0, end = markerX.length; i < end; i++) {
