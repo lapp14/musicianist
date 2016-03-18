@@ -30,12 +30,13 @@ musicianist.value('rootNotes', [
     'B'
 ]);
 
-musicianist.value('instruments', {
-	Guitar: {
-		6: [{ 
+musicianist.value('instruments', 
+		[{ 
             name:  'Les Paul',
-            thumb: '../img/thumb/les-paul.png',
+            thumb: '../img/instrument/les-paul.png',
             path:  '../svg/les-paul-fretboard.svg',
+            type: 'Guitar',
+            strings: 6,
 
             markerY:  [100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
             markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
@@ -45,8 +46,10 @@ musicianist.value('instruments', {
             attr: { viewBox: "-50 -75 1100 300" }
         }, {
             name:  'Stratocaster',
-            thumb: '../img/thumb/les-paul.png',
+            thumb: '../img/instrument/stratocaster.png',
             path:  '../svg/stratocaster-fretboard.svg',
+            type: 'Guitar',
+            strings: 6,
 
             markerY:  [100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
             markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
@@ -54,12 +57,18 @@ musicianist.value('instruments', {
             fretNumbers: 130,
             fretNumberOffset: 0.6,
             attr: { viewBox: "-50 -75 1100 300" }            
-	    }],
+	    },
 
-	    7: [{
-            name:  'Stratocaster',
-            thumb: '../img/thumb/les-paul.png',
+
+
+
+
+	    {
+            name:  '7 string',
+            thumb: '../img/instrument/stratocaster.png',
             path:  '../svg/stratocaster-fretboard.svg',
+            type: 'Guitar',
+            strings: 7,
 
             markerY:  [109, 92, 75, 58, 41, 24, 7],
             markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
@@ -67,15 +76,16 @@ musicianist.value('instruments', {
             fretNumbers: 130,
             fretNumberOffset: 0.6,
             attr: { viewBox: "-50 -75 1100 300" }            
-	    }],
-	    8: []
-	},
+	    },
 
-	'Bass Guitar': {
-		4: [{
+
+
+		{
 			name:  'Precision Bass',
-            thumb: '../img/thumb/les-paul.png',
+            thumb: '../img/instrument/precision-bass.png',
             path:  '../svg/precision-bass-fretboard.svg',
+            type: 'Bass Guitar',
+            strings: 4,
 
             markerY:  [100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
             markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
@@ -85,8 +95,10 @@ musicianist.value('instruments', {
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Jazz Bass',
-            thumb: '../img/thumb/les-paul.png',
+            thumb: '../img/instrument/jazz-bass.png',
             path:  '../svg/jazz-bass-fretboard.svg',
+            type: 'Bass Guitar',
+            strings: 4,
 
             markerY:  [100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
             markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
@@ -94,81 +106,96 @@ musicianist.value('instruments', {
             fretNumbers: 130,
             fretNumberOffset: 0.6,
             attr: { viewBox: "-50 -75 1100 300" }
-		}],
+		}, {
+			name:  'Jazz Bass',
+            thumb: '../img/instrument/jazz-bass2.png',
+            path:  '../svg/jazz-bass2-fretboard.svg',
+            type: 'Bass Guitar',
+            strings: 4,
 
-		5: [],
-		6: []
-    },
+            markerY:  [100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
+            markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
+            stringOffset: [0.55, 0.32, 0.1, -0.1, -0.32, -0.47],
+            fretNumbers: 130,
+            fretNumberOffset: 0.6,
+            attr: { viewBox: "-50 -75 1100 300" }
+		},
 
-    Piano: {
-    	coords: {
-            whiteKeys: {
-                x: 12.5,
-                y: 130,
-                increment: 23
-            },
 
-            blackKeys: {
-                x: 90,
-                y: 85
-            },
 
-            labels: {
-                y: 165,
-                x: 12,
-                increment: 23
-            },
-        },
 
-        notes: [
-            {x: 12.5, y: 130},  //C
-            {x: 22, y: 85},     //C#/Db
-            {x: 35.5, y: 130},  //D
-            {x: 49.2, y: 85},   //D#
-            {x: 58.5, y: 130},  //E
-            {x: 81.5, y: 130},  //F
-            {x: 90.6, y: 85},  //F#
-            {x: 104.5, y: 130},  //G
-            {x: 115.5, y: 85},  //G#
-            {x: 127.5, y: 130},  //A
-            {x: 140.5, y: 85},  //A#
-            {x: 150.5, y: 130},  //B
-        ],
 
-        attr: { viewBox: "-110 -16 700 200" },//{ viewBox: "-30 -70 550 300" },
-        path: '../svg/piano_keys.svg'
-    }
-})
+
+		 {
+			name: 'Piano',
+			thumb: '',
+			path: '',
+			type: 'Piano',
+			strings: 0,
+	    	coords: {
+	            whiteKeys: {
+	                x: 12.5,
+	                y: 130,
+	                increment: 23
+	            },
+
+	            blackKeys: {
+	                x: 90,
+	                y: 85
+	            },
+
+	            labels: {
+	                y: 165,
+	                x: 12,
+	                increment: 23
+	            },
+	        },
+
+	        notes: [
+	            {x: 12.5, y: 130},  //C
+	            {x: 22, y: 85},     //C#/Db
+	            {x: 35.5, y: 130},  //D
+	            {x: 49.2, y: 85},   //D#
+	            {x: 58.5, y: 130},  //E
+	            {x: 81.5, y: 130},  //F
+	            {x: 90.6, y: 85},  //F#
+	            {x: 104.5, y: 130},  //G
+	            {x: 115.5, y: 85},  //G#
+	            {x: 127.5, y: 130},  //A
+	            {x: 140.5, y: 85},  //A#
+	            {x: 150.5, y: 130},  //B
+	        ],
+
+	        attr: { viewBox: "-110 -16 700 200" },//{ viewBox: "-30 -70 550 300" },
+	        path: '../svg/piano_keys.svg'
+    	}]);
 
 musicianist.factory('instrument', ['instruments', function(instruments) {
+
 	return {
-		instrumentType: '',
+		arr: instruments,
+		instrumentType: 'Guitar',
 		selectedStrings: {
 			'Guitar': '6',
-			'Bass Guitar': '4'
+			'Bass Guitar': '4',
+			'Piano': '0'
 		},
+
+		index: 0,
 		handedness: '',
 
-		getCurrentInstrument: function() {
-			if(this.instrumentType == 'Piano') {
-				return instruments.Piano;
-			} else {
-				console.log(this.instrumentType)
-				console.log(this.selectedStrings[this.instrumentType])
-				return instruments[this.instrumentType][this.selectedStrings[this.instrumentType]][0];
-			}
+		getCurrentInstrument: function() {			
+
+			return instruments[this.index];
+			
 		},
 
-		getInstrumentStrings: function() {
-			if(this.instrumentType != 'Piano') {
-
-			}
-
-			return Object.keys(instruments[this.instrumentType]);
-		},
-
-		getInstruments: function() {
-			return instruments;
+		setSelection: function(index) {
+			index = parseInt(index);
+			this.index = index;
+			console.log(index)
+			console.log(instruments[index])
+			this.instrumentType = instruments[index].type;
 		}
 	}
 }]);
@@ -312,7 +339,7 @@ musicianist.factory('async', function ($http, $q) {
 		},
 
 		//Takes an 'Instrument' object from instrument value
-		loadBackground: function(instrument, handedness, strings){
+		loadBackground: function(instrument, handedness){
 			return $q (function (resolve, reject) {
 		        var background;      
 		        
@@ -331,7 +358,7 @@ musicianist.factory('async', function ($http, $q) {
 		            background.append(f.select("defs"));
 		            s.append(background);
 
-		            if(!strings) {
+		            if(!instrument.strings) {
 		            	var coords = instrument.coords;
 		            	var x = coords.labels.x;
 		            	var notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
@@ -475,7 +502,7 @@ musicianist.controller('scalesCtrl', ['$scope', '$location', 'svgSurface', 'asyn
 		var scale      = $scope.JSONData.scales[$scope.selectedScale];
 		var tonic      = parseInt($scope.selectedTonic);
 		var instrument = $scope.instrument.getCurrentInstrument();
-		var tuning     = $scope.instrument.instrumentType == 'Piano' ? null : $scope.JSONData.tunings[$scope.instrument.instrumentType][$scope.instrument.selectedStrings[$scope.instrument.instrumentType]][$scope.selectedTuning];
+		var tuning     = $scope.instrument.instrumentType == 'Piano' ? null : $scope.JSONData.tunings[instrument.type][instrument.strings][0];
 		var handedness = $scope.instrument.handedness;
 
 		Scales.drawScale(scale, tonic, instrument, tuning, handedness);
@@ -485,9 +512,12 @@ musicianist.controller('scalesCtrl', ['$scope', '$location', 'svgSurface', 'asyn
 
 	$scope.drawing.drawScale = drawScale;
 
-	$scope.setInstrument = function(instrument) {
-		$scope.instrument.instrumentType = instrument;
+	$scope.setInstrument = function(index) {
+		var ins = $scope.instrument;		
+		$scope.instrument.setSelection(index || 0);
+		
 		$scope.updateURL();
+
 
 		/*switch(instrument) {
 			case 'Guitar':
@@ -507,12 +537,13 @@ musicianist.controller('scalesCtrl', ['$scope', '$location', 'svgSurface', 'asyn
 		}	*/
 
 		var i = $scope.instrument;
-		async.loadBackground(i.getCurrentInstrument(), i.handedness, i.selectedStrings[instrument]).then(drawScale);
+		async.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);
 	}
 
 	$scope.drawing.reload = function() {
 		var i = $scope.instrument;
-		async.loadBackground(i.getCurrentInstrument(), i.handedness, i.selectedStrings[i.instrumentType]).then(drawScale);	
+		console.log('reload()');
+		async.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);	
 	}
 
 	function start() {
@@ -524,7 +555,7 @@ musicianist.controller('scalesCtrl', ['$scope', '$location', 'svgSurface', 'asyn
 	}
 
 	$scope.updateURL = function() {
-		if($scope.JSONData.scales) {
+	/*	if($scope.JSONData.scales) {
 			$scope.scale.infoUrl = $scope.JSONData.scales[$scope.selectedScale].infoUrl;
 		}
 
@@ -543,7 +574,7 @@ musicianist.controller('scalesCtrl', ['$scope', '$location', 'svgSurface', 'asyn
 				strings: 	$scope.instrument.selectedStrings[$scope.instrument.instrumentType],
 				tuning: 	$scope.selectedTuning
 			});
-		}
+		}*/
 	}
 
 	$scope.action = function() {

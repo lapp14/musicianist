@@ -247,13 +247,13 @@
                 <h2>Instrument</h2>
                 
                 <ul class="tab-menu">
-                    <li class="instrument-icon" ng-click="setInstrument('Guitar')" ng-class="{'active': instrument.instrumentType == 'Guitar'}">
+                    <li class="instrument-icon" ng-click="instrument.instrumentType = 'Guitar'" ng-class="{'active': instrument.instrumentType == 'Guitar'}">
                         <img src="../svg/menu/main_guitar_o.svg" viewBox="0 0 100 100" alt="Guitar Scales"/>
                     </li>
-                    <li class="instrument-icon" ng-click="setInstrument('Bass Guitar')" ng-class="{'active': instrument.instrumentType == 'Bass Guitar'}">
+                    <li class="instrument-icon" ng-click="instrument.instrumentType = 'Bass Guitar'" ng-class="{'active': instrument.instrumentType == 'Bass Guitar'}">
                         <img src="../svg/menu/main_bass_o.svg" viewBox="0 0 100 100" alt="Bass Guitar Scales"/>
                     </li>
-                    <li class="instrument-icon" ng-click="setInstrument('Piano')" ng-class="{'active': instrument.instrumentType == 'Piano'}">
+                    <li class="instrument-icon" ng-click="instrument.instrumentType = 'Piano'" ng-class="{'active': instrument.instrumentType == 'Piano'}">
                         <img src="../svg/menu/main_piano_o.svg" viewBox="0 0 100 100" alt="Piano Scales"/>
                     </li>
                 </ul>
@@ -262,9 +262,21 @@
                         <li ng-hide="instrument.instrumentType == 'Piano'" ng-repeat="str in instrument.getInstrumentStrings()">{{str}}</li>
                     </ul>-->
                     <label for="strings" ng-hide="instrument.instrumentType == 'Piano'">Strings</label>
-                    <select name="strings" class="select-sm" ng-model="instrument.selectedStrings[instrument.instrumentType]" ng-change="drawing.reload()" ng-hide="instrument.instrumentType == 'Piano'">     
-                        <option value="{{str}}" ng-repeat="str in instrument.getInstrumentStrings()">{{str}}</option>                           
+                    <select name="strings" class="select-sm" ng-model="instrument.selectedStrings[instrument.instrumentType]" ng-hide="instrument.instrumentType == 'Piano'">     
+                        <option value="{{key}}" ng-repeat="(key, val) in JSONData.tunings[instrument.instrumentType]">{{key}}</option>                           
                     </select>
+
+
+
+                    <div style="border: 1px solid black; display: inline-block;" 
+                         ng-repeat="i in instrument.arr track by $index" 
+                         ng-show  ="i.type == instrument.instrumentType && (i.strings == instrument.selectedStrings[instrument.instrumentType] || i.strings == 0)" 
+                         ng-click ="setInstrument($index)">
+                        
+                        {{$index}} - {{i.name}}<br/>
+                        <img src="{{i.thumb}}"/>
+                    </div>
+
 
                 </div>
 
