@@ -421,6 +421,16 @@ div.settings-panel div.content table tr {
 div.settings-panel div.content table tr td {
   padding: 4px 12px;
 }
+div.instrument-modal .instrument {
+  display: inline-block;
+}
+div.instrument-modal .instrument img {
+  padding: 12px;
+  max-height: 400px;
+}
+div.instrument-modal .instrument img.selected {
+  background: #ccc;
+}
 img.button {
   margin: -8.5px 0;
   height: 1.2em;

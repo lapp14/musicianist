@@ -33,8 +33,8 @@ musicianist.value('rootNotes', [
 musicianist.value('instruments', 
 		[{ 
             name:  'Les Paul',
-            thumb: '../img/instrument/les-paul.png',
-            path:  '../svg/les-paul-fretboard.svg',
+            thumb: { path:'../svg/instruments/profile/les-paul.svg', viewbox: '0 0 52 168' },
+            path:  '../svg/instruments/les-paul-fretboard.svg',
             type: 'Guitar',
             strings: 6,
 
@@ -46,8 +46,21 @@ musicianist.value('instruments',
             attr: { viewBox: "-50 -75 1100 300" }
         }, {
             name:  'Stratocaster',
-            thumb: '../img/instrument/stratocaster.png',
-            path:  '../svg/stratocaster-fretboard.svg',
+            thumb: { path: '../svg/instruments/profile/stratocaster.svg', viewbox: '0 0 512 168' },
+            path:  '../svg/instruments/stratocaster-fretboard.svg',
+            type: 'Guitar',
+            strings: 6,
+
+            markerY:  [100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
+            markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
+            stringOffset: [0.55, 0.32, 0.1, -0.1, -0.32, -0.47],
+            fretNumbers: 130,
+            fretNumberOffset: 0.6,
+            attr: { viewBox: "-50 -75 1100 300" }            
+	    }, {
+            name:  'Telecaster',
+            thumb: { path: '../svg/instruments/profile/telecaster.svg', viewbox: '0 0 512 168' },
+            path:  '../svg/instruments/telecaster-fretboard.svg',
             type: 'Guitar',
             strings: 6,
 
@@ -60,13 +73,10 @@ musicianist.value('instruments',
 	    },
 
 
-
-
-
 	    {
-            name:  '7 string',
-            thumb: '../img/instrument/stratocaster.png',
-            path:  '../svg/stratocaster-fretboard.svg',
+            name:  'JBM 27',
+            thumb: { path: '../svg/instruments/profile/jbm27-7.svg', viewbox: '0 0 512 168' },
+            path:  '../svg/instruments/jbm27-7-fretboard.svg',
             type: 'Guitar',
             strings: 7,
 
@@ -78,12 +88,26 @@ musicianist.value('instruments',
             attr: { viewBox: "-50 -75 1100 300" }            
 	    },
 
+	    {
+            name:  'TAM 100',
+            thumb: { path: '../svg/instruments/profile/tam100-8.svg', viewbox: '0 0 512 168' },
+            path:  '../svg/instruments/tam100-8-fretboard.svg',
+            type: 'Guitar',
+            strings: 8,
+
+            markerY:  [130, 109, 92, 75, 58, 41, 24, 7],
+            markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
+            stringOffset: [0.55, 0.32, 0.1, -0.1, -0.32, -0.47, 0, 0],
+            fretNumbers: 130,
+            fretNumberOffset: 0.6,
+            attr: { viewBox: "-50 -75 1100 300" }            
+	    },
 
 
 		{
 			name:  'Precision Bass',
-            thumb: '../img/instrument/precision-bass.png',
-            path:  '../svg/precision-bass-fretboard.svg',
+            thumb: { path: '../svg/instruments/profile/precision-bass.svg', viewbox: '0 0 512 168' },
+            path:  '../svg/instruments/precision-bass-fretboard.svg',
             type: 'Bass Guitar',
             strings: 4,
 
@@ -95,8 +119,8 @@ musicianist.value('instruments',
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Jazz Bass',
-            thumb: '../img/instrument/jazz-bass.png',
-            path:  '../svg/jazz-bass-fretboard.svg',
+            thumb: { path: '../svg/instruments/profile/jazz-bass.svg', viewbox: '0 0 512 168' },
+            path:  '../svg/instruments/jazz-bass-fretboard.svg',
             type: 'Bass Guitar',
             strings: 4,
 
@@ -108,21 +132,44 @@ musicianist.value('instruments',
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Jazz Bass',
-            thumb: '../img/instrument/jazz-bass2.png',
-            path:  '../svg/jazz-bass2-fretboard.svg',
+            thumb: { path: '../svg/instruments/profile/jazz-bass2.svg', viewbox: '0 0 512 168' },
+            path:  '../svg/instruments/jazz-bass2-fretboard.svg',
             type: 'Bass Guitar',
             strings: 4,
 
             markerY:  [100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
             markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
             stringOffset: [0.55, 0.32, 0.1, -0.1, -0.32, -0.47],
+            fretNumbers: 130,
+            fretNumberOffset: 0.6,
+            attr: { viewBox: "-50 -75 1100 300" }
+		}, {
+			name:  'Precision Bass 5',
+            thumb: { path: '../svg/instruments/profile/precision-bass-5.svg', viewbox: '0 0 512 168' },
+            path:  '../svg/instruments/precision-bass-5-fretboard.svg',
+            type: 'Bass Guitar',
+            strings: 5,
+
+            markerY:  [10, 100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
+            markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
+            stringOffset: [0.55, 0.32, 0.1, -0.1, -0.32, -0.47, 0],
+            fretNumbers: 130,
+            fretNumberOffset: 0.6,
+            attr: { viewBox: "-50 -75 1100 300" }
+		}, {
+			name:  'Stiletto 6',
+            thumb: { path: '../svg/instruments/profile/stiletto-6.svg', viewbox: '0 0 512 168' },
+            path:  '../svg/instruments/stiletto-6-fretboard.svg',
+            type: 'Bass Guitar',
+            strings: 6,
+
+            markerY:  [10, 100, 84, 67, 50, 33, 16],  //[109, 92, 75, 58, 41, 24, 7],
+            markerX: [-3, 50, 130, 210, 280, 348, 412, 471, 526, 580, 630, 678, 723, 766, 805, 843, 878, 911, 943, 972, 1001, 1027, 1052],
+            stringOffset: [0.55, 0.32, 0.1, -0.1, -0.32, -0.47, 0],
             fretNumbers: 130,
             fretNumberOffset: 0.6,
             attr: { viewBox: "-50 -75 1100 300" }
 		},
-
-
-
 
 
 
@@ -167,7 +214,7 @@ musicianist.value('instruments',
 	        ],
 
 	        attr: { viewBox: "-110 -16 700 200" },//{ viewBox: "-30 -70 550 300" },
-	        path: '../svg/piano_keys.svg'
+	        path: '../svg/instruments/piano_keys.svg'
     	}]);
 
 musicianist.factory('instrument', ['instruments', function(instruments) {

@@ -241,7 +241,7 @@
             </div>
         </div>
 
-        <div class="modal-dialog" ng-class="{'modal-show': modal == 'instrument'}">
+        <div class="modal-dialog instrument-modal" ng-class="{'modal-show': modal == 'instrument'}">
             <div class="modal-lg">
                 <a href="" title="Close" class="modal-close" ng-click="modal = null">X</a>
                 <h2>Instrument</h2>
@@ -268,13 +268,13 @@
 
 
 
-                    <div style="border: 1px solid black; display: inline-block;" 
+                    <div class="instrument"
                          ng-repeat="i in instrument.arr track by $index" 
                          ng-show  ="i.type == instrument.instrumentType && (i.strings == instrument.selectedStrings[instrument.instrumentType] || i.strings == 0)" 
                          ng-click ="setInstrument($index)">
                         
                         {{$index}} - {{i.name}}<br/>
-                        <img src="{{i.thumb}}"/>
+                        <img src="{{i.thumb.path}}" viewBox="i.thumb.viewbox" ng-class="{'selected': $index == instrument.index }"/>
                     </div>
 
 

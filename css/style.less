@@ -502,8 +502,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b6b6b', end
 }
 
 div.settings-panel div.content table tr td{
-    padding: 4px 12px;
-  
+    padding: 4px 12px;  
+}
+
+div.instrument-modal { }
+div.instrument-modal .instrument {
+    display: inline-block;   
+}
+
+div.instrument-modal .instrument img {
+    padding: 12px;
+    max-height: 400px;
+}
+
+div.instrument-modal .instrument img.selected {
+    background: @grey-md-light;
 }
 
 img.button  {
