@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="shortcut icon" href="">
         <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
 
@@ -57,13 +58,13 @@
                 </div>
                 <div class="zoom-pan-control">
                     <a href="" ng-click="svgSurface.resetZoomPan()">
-                        <img src="../svg/icon/iconmonstr-fullscreen-12.svg" viewBox="0 0 25 25" alt="Reset"/>
+                        <i class="fa fa-arrows-alt"></i>
                     </a>
                     <a href="" ng-click="svgSurface.setActiveControl('zoom')" ng-class="{'active': svgSurface.activeControl == 'zoom'}">
-                        <img src="../svg/icon/iconmonstr-magnifier-5.svg" viewBox="0 0 25 25" alt="Zoom"/>
+                        <i class="fa fa-search"></i>
                     </a>
                     <a href="" ng-click="svgSurface.setActiveControl('pan')" ng-class="{'active': svgSurface.activeControl == 'pan'}">
-                        <img src="../svg/icon/iconmonstr-cursor-23.svg" viewBox="0 0 25 25" alt="Pan"/>
+                        <i class="fa fa-hand-paper-o"></i>
                     </a>
                 </div>
             </div>
@@ -159,7 +160,7 @@
                                 <label>Instrument</label>
                             </td>
                             <td>
-                                <img class="button pull-right" src="../svg/icon/iconmonstr-gear-6.png" alt="Edit" ng-click="modal = 'instrument'"/>
+                                <i class="fa fa-gear button pull-right" ng-click="modal = 'instrument'"></i>
 
 
                                 <!--<select name="input-num-strings" class="select-sm" ng-model="selectedStrings" ng-change="drawing.reload()">
@@ -176,6 +177,7 @@
                                     <option value="{{key}}" ng-repeat="(key, val) in JSONData.tunings[instrument.instrumentType][instrument.selectedStrings]">{{val.name}}</option>                              
                                 </select>
                                     
+                                <i class="fa fa-gear button pull-right" ng-click="modal = 'instrument'"></i>
                                 <img class="button" src="../svg/icon/iconmonstr-gear-6.png" alt="Edit" ng-click="modal = 'edit-tuning'"/>
                                 
                             </td>
