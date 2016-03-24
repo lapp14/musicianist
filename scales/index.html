@@ -40,19 +40,7 @@
                     <span class="scale">{{JSONData.tonics[selectedTonic] + ' ' + JSONData.scales[selectedScale].name}}</span><br/>
                     <span class="notes">{{scaleNotes}}</span>
                 </div>
-                <!--<div class="instrument-menu">
-                    <ul>
-                        <li class="instrument-icon" ng-click="setInstrument('Guitar')" ng-class="{'active': instrument == 'Guitar'}">
-                            <img src="../svg/menu/main_guitar_o.svg" viewBox="0 0 100 100" alt="Guitar Scales"/>
-                        </li>
-                        <li class="instrument-icon" ng-click="setInstrument('Bass Guitar')" ng-class="{'active': instrument == 'Bass Guitar'}">
-                            <img src="../svg/menu/main_bass_o.svg" viewBox="0 0 100 100" alt="Bass Guitar Scales"/>
-                        </li>
-                        <li class="instrument-icon" ng-click="setInstrument('Piano')" ng-class="{'active': instrument == 'Piano'}">
-                            <img src="../svg/menu/main_piano_o.svg" viewBox="0 0 100 100" alt="Piano Scales"/>
-                        </li>
-                    </ul>
-                </div>-->
+
                 <div class="surface-container">
                     <div><svg zoom-pan class="scales select-disable" id="svg-surface" preserveAspectRatio="xMidYMin meet"></svg></div>
                 </div>
@@ -74,80 +62,7 @@
                         <h1>{{JSONData.scales[selectedScale].name}} Scale</h1>
                         <span class="subtitle" ng-repeat="pitch in JSONData.scales[selectedScale].steps">{{pitch + ' '}}</span>
                         </div>        
-             <!--     <div class="div-inline">                    
-                    <div class="tooltip" ng-class="{'tooltip-show': tooltip == 'scale'}" ng-include="scale.infoUrl">                        
-                    </div>
-
-                    <div ng-mouseover="tooltip = 'scale'" ng-mouseout="tooltip = null">
-                        <h1>{{JSONData.scales[selectedScale].name}} Scale</h1>
-                        <span class="subtitle" ng-repeat="pitch in JSONData.scales[selectedScale].steps">{{pitch + ' '}}</span>
-                    </div>
-                    <table>
-                        <tr>
-                            <td>
-                                <label for="tonic">Tonic</label>
-                            </td>
-                            <td>
-                                <select name="tonic" class="select-sm" ng-model="selectedTonic" ng-change="drawing.drawScale()">
-                                    <option value="{{key}}" ng-repeat="(key, val) in JSONData.tonics">{{val}}</option>  
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="scale">Scale</label>
-                            </td>
-                            <td>
-                                <select name="scale" class="select-lg" ng-model="selectedScale" ng-change="drawing.drawScale()">     
-                                    <option value="{{key}}" ng-repeat="(key, val) in JSONData.scales">{{val.name}}</option>                           
-                                </select>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
-              <div class="div-inline" ng-hide="instrument === 'Piano'">
-                    <div>
-                        <h1>{{instrument}}</h1>
-                        <span class="subtitle" ng-repeat="n in JSONData.tunings[instrument][selectedStrings][selectedTuning].notes track by $index">
-                            {{util.halfStepToNote(n)}}</span>
-                    </div>
-                    <table>
-                        <tr>
-                            <td>
-                                <label for="input-num-strings">Strings</label>
-                            </td>
-                            <td>
-                                <select name="input-num-strings" class="select-sm" ng-model="selectedStrings" ng-change="drawing.reload()">
-                                    <option class="option-thin" value="{{key}}" ng-repeat="(key, val) in JSONData.tunings[instrument]">{{key}}</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="tuning">Tuning</label>
-                            </td>
-                            <td>
-                                <select name="tuning" class="select-lg" ng-model="selectedTuning" ng-change="drawing.drawScale()">
-                                    <option value="{{key}}" ng-repeat="(key, val) in JSONData.tunings[instrument][selectedStrings]">{{val.name}}</option>                              
-                                </select>
-                                <a href="" class="button" ng-click="modal = 'edit-tuning'">Edit Tuning</a>
-                            </td>
-                        </tr>
-                         <tr>
-                            <td>
-                                <label for="tuning">Handedness</label>
-                            </td>
-                            <td>
-                                <select name="handedness" class="select-lg" ng-model="handedness" ng-change="drawing.reload()">
-                                    <option value="Right">Right-Handed</option>
-                                    <option value="Left">Left-Handed</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </table>
-                </div>-->
-
+             
                 <div class="settings-panel div-inline">
                     <div class="header">
                         <span><img src="../img/guitar-128-2.png" alt="Scale"/></span>
@@ -267,8 +182,6 @@
                     <select name="strings" class="select-sm" ng-model="instrument.selectedStrings[instrument.instrumentType]" ng-hide="instrument.instrumentType == 'Piano'">     
                         <option value="{{key}}" ng-repeat="(key, val) in JSONData.tunings[instrument.instrumentType]">{{key}}</option>                           
                     </select>
-
-
 
                     <div class="instrument"
                          ng-repeat="i in instrument.arr track by $index" 

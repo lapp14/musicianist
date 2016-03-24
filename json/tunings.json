@@ -20,7 +20,7 @@
 	
 
 			{
-				"name": "Drop D",
+				"name": "Dropped D",
 				"notes": [2, 9, 2, 7, 11, 4]
 			},
 
@@ -29,7 +29,6 @@
 				"tags": ["fripp", "robert fripp", "NST", "all fifths"],
 				"notes": [0, 7, 2, 9, 4, 7]
 			}
-
 		],
 
 		"7":  [
@@ -44,7 +43,12 @@
 			}
 		],
 
-		"8": []
+		"8": [
+			{
+				"name": "Standard",
+				"notes": [6, 11, 4, 9, 2, 7, 11, 4]
+			}
+		]
 	},
 
 	"Bass Guitar": {
@@ -62,7 +66,12 @@
 			}
 		],
 
-		"6": []
+		"6": [
+			{
+				"name": "Standard",
+				"notes": [11, 4, 9, 2, 7, 0]
+			}
+		]
 	}		
 }}
 

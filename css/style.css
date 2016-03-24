@@ -189,14 +189,16 @@ svg:not(:root) {
   overflow: hidden;
 }
 .zoom-pan-control {
-  display: inline-block;
   float: right;
   margin-right: 12px;
 }
 .zoom-pan-control a {
+  display: inline-block;
   color: #333;
   text-decoration: none;
-  padding: 12px 6px 2px 6px;
+  font-size: 1.2em;
+  padding: 3px 6px;
+  margin-bottom: 12px;
 }
 .zoom-pan-control a.active {
   background-color: #bf5;
