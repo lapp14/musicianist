@@ -287,7 +287,6 @@ musicianist.directive('zoomPan', ['$document', 'svgSurface', function ($document
 
 			scope.$watch('svgSurface.activeControl', function(newValue, oldValue) {
 				if(newValue) {
-
 					if(newValue === 'zoom') {
 						element.removeClass('cursor-grab');
 						element.addClass('cursor-zoom');
@@ -302,15 +301,22 @@ musicianist.directive('zoomPan', ['$document', 'svgSurface', function ($document
 			}, true);
 
 			element.on('mousedown', function(event){
-				mouseDown.x = event.pageX;
-				mouseDown.y = event.pageY;
-
-				console.log(element)
-
-				svgWidth = element[0].clientWidth;
+				svgWidth = element[0].clientWidth; //1688.6875
 				svgHeight = element[0].clientHeight;
+				mouseDown.x = event.pageX - ((window.innerWidth - svgWidth) / 2);
+				mouseDown.y = event.pageY - ((window.innerHeight - svgHeight) / 2);
 
-				if(svgSurface.activeControl === 'pan') {	
+				console.log(element);
+				console.log('pageX: ' + mouseDown.x + ', pageY: ' + mouseDown.y);
+
+				console.log('clientWidth: ' + svgWidth + ', clientHeight: ' + svgHeight);
+				console.log('wid: ' + window.innerWidth);
+
+
+
+
+
+				/*if(svgSurface.activeControl === 'pan') {	
 					event.preventDefault();
 					svgSurface.pan.startX = event.pageX - svgSurface.pan.x;
 					svgSurface.pan.startY = event.pageY - svgSurface.pan.y;
@@ -324,18 +330,18 @@ musicianist.directive('zoomPan', ['$document', 'svgSurface', function ($document
 					svgSurface.startZoom = svgSurface.zoom;
 					$document.on('mousemove', mousemove);
 					$document.on('mouseup', mouseup);
-				}
+				}*/
 			});
 
 			function mousemove(event) {
 				
-				if(svgSurface.activeControl === 'pan') {
+				/*if(svgSurface.activeControl === 'pan') {
 					svgSurface.pan.y = event.pageY - svgSurface.pan.startY;
 					svgSurface.pan.x = (event.pageX - svgSurface.pan.startX) - ( event.pageX / svgWidth / 2);
 				} else if(svgSurface.activeControl === 'zoom') {
 					svgSurface.zoom = 1 - (event.pageY / mouseDown.y) + svgSurface.startZoom;
-					console.log(mouseDown.y + ' ' + event.pageY + ' zoom: ' + svgSurface.zoom)
-				} 
+					//console.log(mouseDown.y + ' ' + event.pageY + ' zoom: ' + svgSurface.zoom)
+				} */
 
 				core.svg.group.transform("s" + svgSurface.zoom + "," + svgSurface.zoom + "t" + svgSurface.pan.x + "," + svgSurface.pan.y);
 			}
@@ -507,7 +513,7 @@ musicianist.controller('scalesCtrl', ['$scope', '$location', 'svgSurface', 'asyn
 	$scope.JSONData = {};
 	$scope.drawing = {};
 
-	$scope.modal = 'instrument';//null;
+	$scope.modal = null;
 	$scope.tooltip = null;
 
 	$scope.util = util;
