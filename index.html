@@ -1,75 +1,70 @@
 <!DOCTYPE html>
 <html ng-app="musicianist">
-    <head>
-        <title>Musicianist</title> 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="">
-        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+<head>
+    <title>TODO</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <base href="/">
 
-    </head>
-    <body ng-controller="Main">   
 
-        <div class="header">
-            <div class="brand"><a href="/">Musicianist</a></div>
-            <div class="header-menu">
-                <a href="/scales/">Scales</a>
-                <a href="/chords/">Chords</a>
-                <a href="/circle-of-fifths/">Circle of Fifths</a>
-            </div>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+
+    <!-- AngularJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-cookies.js"></script>
+
+</head>
+<body ng-controller="mainController">
+
+
+    <div class="header">
+        <div class="brand"><a href="/">Musicianist</a></div>
+        <div class="header-menu">
+            <a href="/scales/">Scales</a>
+            <a href="/chords/">Chords</a>
+            <a href="/circle-of-fifths/">Circle of Fifths</a>
         </div>
+    </div>
 
-        <div class="container container-sm">
-            <div class="row">
-                <h2>Learn and Practice</h2>
+    <div class="container">    
+        <div ng-view></div>
+    </div>
 
-                <div class="card">
-                    <h3>Guitar, Piano &amp; Bass</h3>
 
-                    <div>
-                        asd
-                    </div>
-
-                </div>
-                <div class="card">
-                    <h3>Guitar, Piano &amp; Bass</h3>
-
-                    <div>
-                        asd
-                    </div>
-
-                </div>
-                <div class="card">
-                    <h3>Guitar, Piano &amp; Bass</h3>
-
-                    <div>
-                        asd
-                    </div>
-
-                </div>
-              <!--  <div class="part">
-                    <h3>Guitar and Bass</h3>
-                    <div>
-                        asd
-                    </div>
-
-                    <p>
-                        Different Tunings? No problem. 7 strings? We handle all types of Guitar and Bass tunings and string configurations.
-                    </p>
-
-                </div>
-                <div class="part">
-                    <h3>Guitar, Piano &amp; Bass</h3>
-
-                </div>-->
-            </div>
-
+    <div class="footer">
+        <div class="footer-content">
+            <a href="javascript:(function(){document.body.innerHTML+=%22<style>*{background:%20#000%20!important;color:%20#0f0%20!important;outline:%20solid%20#f00%201px%20!important;}</style>%22;})();">ghost</a>
+            <br/>
+            asdasd
         </div>
+    </div>
 
-        <!--
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="lib/angular/angular.js"></script>
-        <script src="js/controllers.js"></script>-->
-    </body>
+
+    <script src="/app/app.module.js"></script>
+    <script src="/app/app.routes.js"></script>
+    <script src="/assets/lib/snap/snap.svg.js"></script>
+
+    <script src="/app/shared/asyncFactory.js"></script>
+    <script src="/app/shared/svgSurfaceFactory.js"></script>
+    <script src="/app/shared/instrumentFactory.js"></script>
+    <script src="/app/shared/cookiesFactory.js"></script>
+
+    <script src="/app/components/scales/controllers.js"></script>
+    <script src="/app/components/scales/scalesController.js"></script>
+    <script src="/app/components/scales/Scales.js"></script>
+
+    <script>
+
+    angular.module('musicianist').controller('mainController', function($scope) {
+
+    });
+
+    </script>
+
+</body>
 </html>
+

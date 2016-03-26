@@ -1,6 +1,6 @@
-var musicianist = angular.module('musicianist', ['ngCookies']);
+angular.module('musicianist', ['ngCookies']);
 
-musicianist.value('notes',  [
+angular.module('musicianist').value('notes',  [
     'C', //0
     '-', //1
     'D', //2
@@ -15,7 +15,7 @@ musicianist.value('notes',  [
     'B'  //11
 ]);
 
-musicianist.value('rootNotes', [
+angular.module('musicianist').value('rootNotes', [
     'C', 
     'C#/Db',
     'D', 
@@ -30,7 +30,7 @@ musicianist.value('rootNotes', [
     'B'
 ]);
 
-musicianist.value('instruments', 
+angular.module('musicianist').value('instruments', 
 		[{ 
             name:  'Les Paul',
             thumb: { path:'../svg/instruments/profile/les-paul.svg', viewbox: '0 0 52 168' },
@@ -217,7 +217,7 @@ musicianist.value('instruments',
 	        path: '../svg/instruments/piano_keys.svg'
     	}]);
 
-musicianist.factory('instrument', ['instruments', function(instruments) {
+angular.module('musicianist').factory('instrument', ['instruments', function(instruments) {
 
 	return {
 		arr: instruments,
@@ -247,7 +247,7 @@ musicianist.factory('instrument', ['instruments', function(instruments) {
 	}
 }]);
 
-musicianist.factory('svgSurface', function() {
+angular.module('musicianist').factory('svgSurface', function() {
 	return {
 		activeControl: 'pan',
 		setActiveControl: function(controlType) {
@@ -275,7 +275,7 @@ musicianist.factory('svgSurface', function() {
 	}
 });
 
-musicianist.directive('zoomPan', ['$document', 'svgSurface', function ($document, svgSurface) {
+angular.module('musicianist').directive('zoomPan', ['$document', 'svgSurface', function ($document, svgSurface) {
 	return {
 		link: function(scope, element, attr) {
 			
@@ -354,7 +354,7 @@ musicianist.directive('zoomPan', ['$document', 'svgSurface', function ($document
 	}
 }]);
 
-musicianist.factory('util', ['notes', 'rootNotes', function (notes, rootNotes, n) {
+angular.module('musicianist').factory('util', ['notes', 'rootNotes', function (notes, rootNotes, n) {
 	return {
 		halfStepToNote: function(n) {
 		    n %= 12;
@@ -379,7 +379,7 @@ musicianist.factory('util', ['notes', 'rootNotes', function (notes, rootNotes, n
 	}
 }]);
 
-musicianist.factory('async', function ($http, $q) {
+angular.module('musicianist').factory('async', function ($http, $q) {
 	return {
 		getJSON: function(file) {
 			return $http.get(file).then(function (response){
@@ -457,11 +457,11 @@ musicianist.factory('async', function ($http, $q) {
 	};
 });
 
-musicianist.factory('cookies', ['$cookies', function($cookies) {
+angular.module('musicianist').factory('cookies', ['$cookies', function($cookies) {
 	
 }]);
 
-musicianist.controller('chordsCtrl', ['$scope', 'async', 'util', function ($scope, async, util) {
+angular.module('musicianist').controller('chordsCtrl', ['$scope', 'async', 'util', function ($scope, async, util) {
 	$scope.JSONData = {};
 
 	$scope.state = {
@@ -508,7 +508,7 @@ musicianist.controller('chordsCtrl', ['$scope', 'async', 'util', function ($scop
 }]);
 
 
-musicianist.controller('scalesCtrl', ['$scope', '$location', 'svgSurface', 'async', 'util', 'instrument', function ($scope, $location, svgSurface, async, util, instrument){
+angular.module('musicianist').controller('scalesCtrl', ['$scope', '$location', 'svgSurface', 'async', 'util', 'instrument', function ($scope, $location, svgSurface, async, util, instrument){
 
 	$scope.JSONData = {};
 	$scope.drawing = {};
