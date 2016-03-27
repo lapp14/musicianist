@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <base href="/">
 
-
     <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
@@ -19,7 +18,6 @@
 
 </head>
 <body ng-controller="mainController">
-
 
     <div class="header">
         <div class="brand"><a href="/">Musicianist</a></div>
@@ -43,9 +41,9 @@
         </div>
     </div>
 
-
     <script src="/app/app.module.js"></script>
     <script src="/app/app.routes.js"></script>
+    <script src="/app/components/mainController.js"></script>
     <script src="/assets/lib/snap/snap.svg.js"></script>
 
     <script src="/app/shared/asyncFactory.js"></script>
@@ -53,18 +51,9 @@
     <script src="/app/shared/instrumentFactory.js"></script>
     <script src="/app/shared/cookiesFactory.js"></script>
 
-    <script src="/app/components/scales/controllers.js"></script>
+    <script src="/app/shared/values.js"></script>
     <script src="/app/components/scales/scalesController.js"></script>
-    <script src="/app/components/scales/Scales.js"></script>
-
-    <script>
-
-    angular.module('musicianist').controller('mainController', function($scope) {
-
-    });
-
-    </script>
-
+    <script src="/app/components/scales/scalesFactory.js"></script>
 </body>
 </html>
 

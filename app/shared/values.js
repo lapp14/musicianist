@@ -1,28 +1,3 @@
-
-// REMOVE THIS CRAP
-var core = {
-	svg: {
-
-	},
-
-	notes: [
-        'C', //0
-        '-', //1
-        'D', //2
-        '-', //3
-        'E', //4
-        'F', //5
-        '-', //6
-        'G', //7
-        '-', //8
-        'A', //9
-        '-', //10
-        'B'  //11
-    ]
-};
-
-
-
 angular.module('musicianist').value('notes',  [
     'C', //0
     '-', //1
@@ -198,7 +173,7 @@ angular.module('musicianist').value('instruments',
 
 		 {
 			name: 'Piano',
-			thumb: '',
+			thumb: '/assets/svg/instruments/piano_keys.svg',
 			path: '',
 			type: 'Piano',
 			strings: 0,
@@ -239,143 +214,6 @@ angular.module('musicianist').value('instruments',
 	        attr: { viewBox: "-110 -16 700 200" },//{ viewBox: "-30 -70 550 300" },
 	        path: '/assets/svg/instruments/piano_keys.svg'
     	}]);
-
-
-angular.module('musicianist').factory('svgSurface', function() {
-	return {
-		activeControl: 'pan',
-		setActiveControl: function(controlType) {
-			if(this.activeControl !== controlType) {
-				this.activeControl = controlType;
-			} else {
-				this.activeControl = 'none';
-			}
-		},
-
-		resetZoomPan: function() {
-			this.zoom = 1;
-			this.startZoom = 1;
-			this.pan.x = this.pan.y = 0;
-			core.svg.group.transform("s" + this.zoom + "," + this.zoom + "t" + this.pan.x + "," + this.pan.y);
-		},
-		startZoom: 1,
-		zoom: 1,
-		pan: {
-			startX: 0,
-			startY: 0,
-			x: 0,
-			y: 0
-		}	
-	}
-});
-
-angular.module('musicianist').directive('zoomPan', ['$document', 'svgSurface', function ($document, svgSurface) {
-	return {
-		link: function(scope, element, attr) {
-			
-			var svgWidth, svgHeight;
-			var mouseDown = {
-				x: 0,
-				y: 0
-			}
-
-			scope.$watch('svgSurface.activeControl', function(newValue, oldValue) {
-				if(newValue) {
-					if(newValue === 'zoom') {
-						element.removeClass('cursor-grab');
-						element.addClass('cursor-zoom');
-					} else if(newValue === 'pan') {
-						element.removeClass('cursor-zoom');
-						element.addClass('cursor-grab');
-					} else {
-						element.removeClass('cursor-zoom');
-						element.removeClass('cursor-grab');
-					}
-				}
-			}, true);
-
-			element.on('mousedown', function(event){
-				svgWidth = element[0].clientWidth; //1688.6875
-				svgHeight = element[0].clientHeight;
-				mouseDown.x = event.pageX - ((window.innerWidth - svgWidth) / 2);
-				mouseDown.y = event.pageY - ((window.innerHeight - svgHeight) / 2);
-
-				console.log(element);
-				console.log('pageX: ' + mouseDown.x + ', pageY: ' + mouseDown.y);
-
-				console.log('clientWidth: ' + svgWidth + ', clientHeight: ' + svgHeight);
-				console.log('wid: ' + window.innerWidth);
-
-
-
-
-
-				/*if(svgSurface.activeControl === 'pan') {	
-					event.preventDefault();
-					svgSurface.pan.startX = event.pageX - svgSurface.pan.x;
-					svgSurface.pan.startY = event.pageY - svgSurface.pan.y;
-					$document.on('mousemove', mousemove);
-					$document.on('mouseup', mouseup);
-
-					element.addClass('cursor-grab');
-
-				} else if(svgSurface.activeControl === 'zoom') {	
-					event.preventDefault();
-					svgSurface.startZoom = svgSurface.zoom;
-					$document.on('mousemove', mousemove);
-					$document.on('mouseup', mouseup);
-				}*/
-			});
-
-			function mousemove(event) {
-				
-				/*if(svgSurface.activeControl === 'pan') {
-					svgSurface.pan.y = event.pageY - svgSurface.pan.startY;
-					svgSurface.pan.x = (event.pageX - svgSurface.pan.startX) - ( event.pageX / svgWidth / 2);
-				} else if(svgSurface.activeControl === 'zoom') {
-					svgSurface.zoom = 1 - (event.pageY / mouseDown.y) + svgSurface.startZoom;
-					//console.log(mouseDown.y + ' ' + event.pageY + ' zoom: ' + svgSurface.zoom)
-				} */
-
-				core.svg.group.transform("s" + svgSurface.zoom + "," + svgSurface.zoom + "t" + svgSurface.pan.x + "," + svgSurface.pan.y);
-			}
-
-			function mouseup() {
-				$document.off('mousemove', mousemove);
-				$document.off('mouseup', mouseup);
-			}
-		}
-	}
-}]);
-
-//////////////////////////////////////////
-// REMOVE ///////////////////////////////
-angular.module('musicianist').factory('util', ['notes', 'rootNotes', function (notes, rootNotes) {
-	return {
-		halfStepToNote: function(n) {
-		    n %= 12;
-		    console.log('yeh')
-
-		    var note;
-		    if(notes[n] == '-') {
-		       // if(this.getCurrentScale().defaults[this.root] == '#') {
-		            note = notes[n - 1] + '#';
-		        //} else {
-		        //    note = notes[n + 1] + 'b';
-		        //}
-		    } else {
-		        note = notes[n];
-		    }
-
-		    return note;
-		},
-
-		getRootNotes: function() {
-			return rootNotes;
-		}
-	}
-}]);
-///////////////////////////
 
 
 

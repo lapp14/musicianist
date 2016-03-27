@@ -3,9 +3,9 @@
 
 	angular
 		.module('musicianist')
-		.controller('scalesCtrl', ['$scope', '$location', 'async', 'instrument', scalesController]);
+		.controller('scalesCtrl', ['$scope', '$location', 'async', 'svgSurface', 'scales', 'instrument', scalesController]);
 
-	function scalesController($scope, $location, async, instrument){
+	function scalesController($scope, $location, async, svgSurface, scales, instrument){
 
 		$scope.JSONData = {};
 		$scope.drawing = {};
@@ -46,14 +46,15 @@
 		function drawScale() {
 			$scope.updateURL();
 
-			var scale      = $scope.JSONData.scales[$scope.selectedScale];
-			var tonic      = parseInt($scope.selectedTonic);
-			var instrument = $scope.instrument.getCurrentInstrument();
-			var tuning     = $scope.instrument.instrumentType == 'Piano' ? null : $scope.JSONData.tunings[instrument.type][instrument.strings][0];
-			var handedness = $scope.instrument.handedness;
+			var scale      	= $scope.JSONData.scales[$scope.selectedScale];
+			var tonic      	= parseInt($scope.selectedTonic);
+			var instrument 	= $scope.instrument.getCurrentInstrument();
+			var tuningIndex = $scope.instrument.getCurrentTuning();
+			var tuning     	= $scope.instrument.instrumentType == 'Piano' ? null : $scope.JSONData.tunings[tuningIndex];
+			var handedness 	= $scope.instrument.handedness;
 
-			Scales.drawScale(scale, tonic, instrument, tuning, handedness);
-			$scope.scaleNotes = Scales.key.getNotesString(scale, tonic);
+			scales.drawScale(scale, tonic, instrument, tuning, handedness);
+			$scope.scaleNotes = scales.getNotesString(scale, tonic);
 		};
 
 		$scope.drawing.drawScale = drawScale;
@@ -83,13 +84,13 @@
 			}	*/
 
 			var i = $scope.instrument;
-			async.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);
+			svgSurface.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);
 		}
 
 		$scope.drawing.reload = function() {
 			var i = $scope.instrument;
 			console.log('reload()');
-			async.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);	
+			svgSurface.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);	
 		}
 
 		function start() {
@@ -124,8 +125,7 @@
 		}
 
 		$scope.action = function() {
-			core.svg.background.transform("t200,10");
-			core.svg.markers.transform("t200,10");
+			svgSurface.getGroup().transformGroup.transform("s0.5,0.5t200,10");
 		}
 	}
 })();

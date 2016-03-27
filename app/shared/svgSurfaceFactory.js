@@ -1,22 +1,19 @@
-(function(){	
+(function(){
 	'use strict';
 
 	angular
 		.module('musicianist')
 		.factory('svgSurface', svgSurfaceFactory);
 
-	function svgSurfaceFactory() {
+	function svgSurfaceFactory($q){
 		var activeControl = 'pan';
-		var surface = {};
+		var surface = null;
+		var groups = {};
 
 		var service = {
-			surface: surface,
-			activeControl: activeControl,
-			setActiveControl: setActiveControl,
-			resetZoomPan: resetZoomPan,
+			activeControl,
 
-
-			//refactor these variables
+			//refactor these
 			startZoom: 1,
 			zoom: 1,
 			pan: {
@@ -24,10 +21,38 @@
 				startY: 0,
 				x: 0,
 				y: 0
-			}	
+			},
+
+			setActiveControl,
+			resetZoomPan,
+			getSurface,
+
+			setGroup,
+			getGroup,
+
+			loadBackground
 		};
 
 		return service;
+
+		function getSurface() {
+			return surface;
+		}
+
+		/**
+		 *	If group is null return entire object 'group'
+		 */
+		function getGroup(group) {
+			if(group == null) {
+				return groups;
+			} 
+
+			return groups[group];
+		}
+
+		function setGroup(group, value) {
+			groups[group] = value;
+		}
 
 		function setActiveControl(controlType) {
 			if(this.activeControl !== controlType) {
@@ -36,12 +61,84 @@
 				this.activeControl = 'none';
 			}
 		};
-
+		
 		function resetZoomPan() {
 			this.zoom = 1;
 			this.startZoom = 1;
 			this.pan.x = this.pan.y = 0;
 			core.svg.group.transform("s" + this.zoom + "," + this.zoom + "t" + this.pan.x + "," + this.pan.y);
 		};
-	};
-});
+
+		//Takes an 'Instrument' object from instrument value
+		function loadBackground(instrument, handedness){
+			return $q (function (resolve, reject) {
+
+		        var background;
+		        
+		        if(surface) {
+		        	surface.clear();
+		        }
+		        
+		        surface = Snap('#svg-surface');
+		        surface.attr(instrument.attr);
+
+		        console.log('surface' + surface)
+		        console.log('surface g' + surface.g())
+
+		        Snap.load(instrument.path, function(f) {
+		            		            
+		            background = surface.g();
+		            background.append(f.select("g"));
+		            background.append(f.select("defs"));
+		            surface.append(background);
+
+		            if(!instrument.strings) {
+		            	var coords = instrument.coords;
+		            	var x = coords.labels.x;
+		            	var notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+		            	var noteLabels = surface.g();
+		            	
+		            	for(var i = 0, lim = 21; i < lim; i++) {
+		            		noteLabels.append(s.text(x, coords.labels.y, notes[i % 7]).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+		            		x += coords.labels.increment;
+			            }
+			        	background.append(noteLabels);
+
+		            } else {
+				        var markerY = instrument.markerY;
+				        var markerX = instrument.markerX.slice();  //create a COPY of the coords
+			            var fretMarkers = surface.g();
+			            console.log('hand ' + handedness);
+							
+							//reverse fret labels and flip fretboard for leftys
+			        	if(handedness == 'Left') {
+			        		background.transform('s-1,1');
+			        		for(var i = 0, end = markerX.length; i < end; i++) {
+			        			markerX[i] = 1000 - markerX[i];
+			        		}
+			        	}
+
+			            fretMarkers.append(surface.text(markerX[0], instrument.fretNumbers, 'Open').attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+
+			            for(var i = 1, lim = markerX.length; i < lim; i++) {
+			            	var x = markerX[i];
+			            	var y = instrument.fretNumbers + instrument.fretNumberOffset * i;
+
+			                fretMarkers.append(surface.text(x, y, i).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+			            }
+
+			        	groups.fretMarkers = fretMarkers;
+			        }
+
+			        groups.background = background;
+			        console.log('loadBackground done')
+		            resolve(true);
+		        });
+		    });
+	    };
+
+
+
+
+	}
+})();

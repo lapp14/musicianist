@@ -1,79 +1,81 @@
 
-
-{"tunings": {
-	"Guitar": {
-		"6":  [
-			{
-				"name": "Standard",
-				"notes": [4, 9, 2, 7, 11, 4]
-			},
-
-			{
-				"name": "Half Step Down",
-				"notes": [3, 8, 1, 6, 10, 3]
-			},
-
-			{
-				"name": "Full Step Down",
-				"notes": [2, 7, 0, 5, 9, 2]
-			},	
-	
-
-			{
-				"name": "Dropped D",
-				"notes": [2, 9, 2, 7, 11, 4]
-			},
-
-			{
-				"name": "New Standard Tuning",
-				"tags": ["fripp", "robert fripp", "NST", "all fifths"],
-				"notes": [0, 7, 2, 9, 4, 7]
-			}
-		],
-
-		"7":  [
-			{
-				"name": "Standard",
-				"notes": [11, 4, 9, 2, 7, 11, 4]
-			},
-
-			{
-				"name": "Drop A7",
-				"notes": [9, 4, 9, 2, 7, 11, 4]
-			}
-		],
-
-		"8": [
-			{
-				"name": "Standard",
-				"notes": [6, 11, 4, 9, 2, 7, 11, 4]
-			}
-		]
+{"tunings": [{
+		"type": "Guitar",
+		"strings": 6,
+		"name": "Standard",
+		"notes": [4, 9, 2, 7, 11, 4]
+	}, {
+	 	"type": "Guitar",
+		"strings": 6,
+		"name": "Half Step Down",
+		"notes": [3, 8, 1, 6, 10, 3]
+	}, {
+		"type": "Guitar",
+		"strings": 6,
+		"name": "Full Step Down",
+		"notes": [2, 7, 0, 5, 9, 2]
+	}, {
+		"type": "Guitar",
+		"strings": 6,
+		"name": "Dropped D",
+		"notes": [2, 9, 2, 7, 11, 4]
+	}, {
+		"type": "Guitar",
+		"strings": 6,
+		"name": "New Standard Tuning",
+		"tags": ["fripp", "robert fripp", "NST", "all fifths"],
+		"notes": [0, 7, 2, 9, 4, 7]
 	},
 
-	"Bass Guitar": {
-		"4":  [
-			{
-				"name": "Standard",
-				"notes": [4, 9, 2, 7]
-			}
-		],
 
-		"5":  [
-			{
-				"name": "Standard",
-				"notes": [11, 4, 9, 2, 7]
-			}
-		],
+	{
+		"type": "Guitar",
+		"strings": 7,
+		"name": "Standard",
+		"notes": [11, 4, 9, 2, 7, 11, 4]
+	}, {
+		"type": "Guitar",
+		"strings": 7,
+		"name": "Drop A7",
+		"notes": [9, 4, 9, 2, 7, 11, 4]
+	},
 
-		"6": [
-			{
-				"name": "Standard",
-				"notes": [11, 4, 9, 2, 7, 0]
-			}
-		]
-	}		
-}}
+
+	{
+
+		"type": "Guitar",
+		"strings": 8,
+		"name": "Standard",
+		"notes": [6, 11, 4, 9, 2, 7, 11, 4]
+	},
+
+
+
+	{
+		"type": "Bass Guitar",
+		"strings": 4,
+		"name": "Standard",
+		"notes": [4, 9, 2, 7]
+	},
+
+
+
+	{
+		"type": "Bass Guitar",
+		"strings": 5,
+		"name": "Standard",
+		"notes": [11, 4, 9, 2, 7]
+	},
+
+
+
+	{
+		"type": "Bass Guitar",
+		"strings": 6,
+		"name": "Standard",
+		"notes": [11, 4, 9, 2, 7, 0]
+	}]
+}
 
 
 
