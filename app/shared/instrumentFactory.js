@@ -1,17 +1,19 @@
+(function(){
+	'use strict';
 
+	angular.module('musicianist').factory('instrument', ['instruments', instrumentFactory]);
 
-angular.module('musicianist').factory('instrument', ['instruments', function(instruments) {
+	function instrumentFactory(instruments) {
 
-	return {
-		arr: instruments,
-		instrumentType: 'Guitar',
-		selectedStrings: {
+		var instrumentType = 'Guitar';
+		var index = 0;
+		var handedness = 'Right';
+		var selectedStrings = {
 			'Guitar': '6',
 			'Bass Guitar': '4',
 			'Piano': '0'
-		},
-
-		selectedTuning: {
+		};
+		var selectedTuning = {
 			'Guitar': {
 				'6': '0',
 				'7': '5',
@@ -24,27 +26,40 @@ angular.module('musicianist').factory('instrument', ['instruments', function(ins
 			},
 
 			'Piano': null
-		},
+		};
 
-		index: 0,
-		handedness: '',
+		var service = {
+			arr: instruments,
+			instrumentType,
+			selectedStrings,
+			selectedTuning,
+			index,
+			handedness,
 
-		getCurrentInstrument: function() {			
+			getCurrentInstrument,
+			getCurrentTuning,
+			setSelection
+		}
+
+		return service;
+			
+
+		function getCurrentInstrument() {			
 			return instruments[this.index];			
-		},
+		};
 
-		getCurrentTuning: function() {
+		function getCurrentTuning() {
 			var i = this.instrumentType;
 
 			return this.selectedTuning[i][this.selectedStrings[i]];
-		},
+		};
 
-		setSelection: function(index) {
+		function setSelection(index) {
 			index = parseInt(index);
 			this.index = index;
 			console.log(index)
 			console.log(instruments[index])
 			this.instrumentType = instruments[index].type;
-		}
+		};	
 	}
-}]);
+})();

@@ -14,7 +14,8 @@
 
 		.when('/scales', {
 			templateUrl : 'app/components/scales/scales.html',
-			controller  : 'scalesCtrl'
+			controller  : 'scalesCtrl',
+			controllerAs: 'Scales'
 		})
 
 		.when('/chords', {

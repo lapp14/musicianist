@@ -3,11 +3,17 @@
 
     angular
         .module('musicianist')
-        .factory('scales', ['notes', 'svgSurface', scalesFactory]);
+        .factory('scales', ['notes', 'instrument', 'svgSurface', scalesFactory]);
 
-    function scalesFactory(notes, svgSurface) {
+    function scalesFactory(notes, instrument, svgSurface) {
+
+        var selection = {
+            scale: '0',
+            tonic: '0'
+        }
 
         var service =  {
+            selection,
             getNote,
             getNotesString,
             isNoteInKey,
@@ -78,24 +84,10 @@
             return false;
         }
 
-        function drawScale(scale, root, instrument, tuning, handedness) {
+        function drawScale(scale, root, tuning) {
 
-            //References
-
-            /**
-             * tuning (array numbers)
-             * scale half steps
-             * root
-             *
-             *  Scales.key.isNoteInKey(note)
-                    scale.halfSteps
-             *  Scales.key.isRootNote(note)
-                    root
-
-             *  Scales.key.getNote(note)
-             *      scale.defaults
-             */
-
+            var inst       = instrument.getCurrentInstrument();
+            var handedness = instrument.handedness;
             var surface = svgSurface.getSurface();
             var background = svgSurface.getGroup().background;
 
@@ -131,9 +123,9 @@
 
 
             } else {
-                var markerY = instrument.markerY;
-                var markerX = instrument.markerX.slice(); //make COPY of markerX
-                var stringOffset = instrument.stringOffset;
+                var markerY = inst.markerY;
+                var markerX = inst.markerX.slice(); //make COPY of markerX
+                var stringOffset = inst.stringOffset;
                 //reverse scale for leftys
                 if(handedness == 'Left') {
                     for(var i = 0, end = markerX.length; i < end; i++) {

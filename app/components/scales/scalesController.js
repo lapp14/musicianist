@@ -3,128 +3,71 @@
 
 	angular
 		.module('musicianist')
-		.controller('scalesCtrl', ['$scope', '$location', 'async', 'svgSurface', 'scales', 'instrument', scalesController]);
+		.controller('scalesCtrl', scalesController);
 
-	function scalesController($scope, $location, async, svgSurface, scales, instrument){
+	scalesController.$inject = ['$location', 'async', 'svgSurface', 'scales', 'instrument'];
 
-		$scope.JSONData = {};
-		$scope.drawing = {};
+	function scalesController($location, async, svgSurface, scales, instrument){
+		var vm = this;
 
-		$scope.modal = null;
-		$scope.tooltip = null;
+		vm.JSONData = {};
+		vm.drawing = {};
 
-		$scope.instrument = instrument;	
-		$scope.instrument.instrumentType = 	$location.search().instrument || 'Guitar';
-		$scope.instrument.handedness = 			$location.search().handedness || 'Right';
-		//$scope.instrument.selectedStrings = 	$scope.instrument.instrumentType == 'Piano' ? null : $location.search().strings || "6"; 
+		vm.selection = scales.selection;
+		vm.instrument = instrument;
 
-		$scope.selectedTuning =		$location.search().tuning || "0";
-		$scope.selectedScale = 		$location.search().scale || "0";
-		$scope.selectedTonic = 		$location.search().tonic ||"0";
-
-		$scope.scale = {
-			infoUrl: null
-		};
-
-		$scope.loc = $location.search();
+		vm.modal = null;
+		vm.tooltip = null;
+			
+		vm.setInstrument = setInstrument;
+		vm.drawing.drawScale = drawScale;
+		vm.drawing.reload = reload;
+		vm.action = action; //testing only
 
 		async.getJSON('/assets/json/tunings.json').then(function (data) {
-			$scope.JSONData.tunings = data.tunings;
+			vm.JSONData.tunings = data.tunings;
 			start();
 		}, function (error) {
 			console.log('async.get error tunings.json');
 		});		
 
 		async.getJSON('/assets/json/scales.json').then(function (data) {
-			$scope.JSONData.scales = data.scales;		
-			$scope.JSONData.tonics = data.tonics;	
+			vm.JSONData.scales = data.scales;		
+			vm.JSONData.tonics = data.tonics;	
 			start();
 		}, function (error) {
 			console.log('async.get error scales.json');
 		});		
 
 		function drawScale() {
-			$scope.updateURL();
+			var scale      	= vm.JSONData.scales[scales.selection.scale];
+			var tonic      	= parseInt(scales.selection.tonic);
+			var tuningIndex = vm.instrument.getCurrentTuning();
+			var tuning     	= vm.instrument.instrumentType == 'Piano' ? null : vm.JSONData.tunings[tuningIndex];
 
-			var scale      	= $scope.JSONData.scales[$scope.selectedScale];
-			var tonic      	= parseInt($scope.selectedTonic);
-			var instrument 	= $scope.instrument.getCurrentInstrument();
-			var tuningIndex = $scope.instrument.getCurrentTuning();
-			var tuning     	= $scope.instrument.instrumentType == 'Piano' ? null : $scope.JSONData.tunings[tuningIndex];
-			var handedness 	= $scope.instrument.handedness;
-
-			scales.drawScale(scale, tonic, instrument, tuning, handedness);
-			$scope.scaleNotes = scales.getNotesString(scale, tonic);
+			scales.drawScale(scale, tonic,  tuning);
+			vm.scaleNotes = scales.getNotesString(scale, tonic);
 		};
 
-		$scope.drawing.drawScale = drawScale;
-
-		$scope.setInstrument = function(index) {
-			var ins = $scope.instrument;		
-			$scope.instrument.setSelection(index || 0);
-			
-			$scope.updateURL();
-
-
-			/*switch(instrument) {
-				case 'Guitar':
-					$scope.instrument.selectedStrings = "6"; 
-					break;
-
-				case 'Bass Guitar':
-					$scope.instrument.selectedStrings = "4"; 
-					break;
-
-				case 'Piano':
-					$scope.instrument.selectedStrings = null; 
-					break;
-
-				default:
-
-			}	*/
-
-			var i = $scope.instrument;
+		function setInstrument(index) {
+			var i = vm.instrument;		
+			vm.instrument.setSelection(index || 0);
 			svgSurface.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);
 		}
 
-		$scope.drawing.reload = function() {
-			var i = $scope.instrument;
+		function reload() {
+			var i = vm.instrument;
 			console.log('reload()');
 			svgSurface.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);	
 		}
 
 		function start() {
-			if($scope.JSONData.tunings && $scope.JSONData.scales && $scope.JSONData.tonics) {
-				$scope.drawing.reload();
+			if(vm.JSONData.tunings && vm.JSONData.scales && vm.JSONData.tonics) {
+				vm.drawing.reload();
 			}
-
-			$scope.updateURL();
 		}
 
-		$scope.updateURL = function() {
-		/*	if($scope.JSONData.scales) {
-				$scope.scale.infoUrl = $scope.JSONData.scales[$scope.selectedScale].infoUrl;
-			}
-
-			if($scope.instrument.instrumentType == 'Piano') {
-				$location.path('/').search({
-					instrument: $scope.instrument.instrumentType,
-					tonic: 		$scope.selectedTonic,
-					scale: 		$scope.selectedScale
-				});
-
-			} else {
-				$location.path('/').search({
-					instrument: $scope.instrument.instrumentType,
-					tonic: 		$scope.selectedTonic,
-					scale: 		$scope.selectedScale,
-					strings: 	$scope.instrument.selectedStrings[$scope.instrument.instrumentType],
-					tuning: 	$scope.selectedTuning
-				});
-			}*/
-		}
-
-		$scope.action = function() {
+		function action() {
 			svgSurface.getGroup().transformGroup.transform("s0.5,0.5t200,10");
 		}
 	}
