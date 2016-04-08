@@ -1,0 +1,570 @@
+@weight-sm:     300;
+@weight-lg:     400;
+
+@grey-dark:     #333;
+@grey-md-dark:  #555;
+@grey-md:       #777; 
+@grey-md-light: #ccc;
+@grey-light:    #eee;
+
+@lime:          #bf5;
+@blue-bright:   #0bf;
+
+@navy-dark:     #445966;
+
+@body-bg:       @navy-dark;
+@container-bg:  @grey-light;
+
+@header-bg:     @grey-dark;//@grey-dark;
+@header-text:   @grey-light;
+@header-active: @grey-md-dark;
+
+@button-bg:     @grey-dark;
+
+
+@tab-menu-inactive: @grey-md;
+@tab-menu-active:   @container-bg;
+
+@footer-bg:     @navy-dark;//@grey-md-light;
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 2em;
+    font-family: 'Oxygen', sans-serif;    
+    background: @body-bg;
+    background-image: url("/assets/img/bg.png");    /* fallback */    
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+17,000000+44,000000+62,000000+84&0.78+17,0+44,0+62,0.75+84 */
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0.78) 17%, rgba(0,0,0,0) 44%, rgba(0,0,0,0) 62%, rgba(0,0,0,0.75) 84%), url("/assets/img/bg.png"); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.78) 17%,rgba(0,0,0,0) 44%,rgba(0,0,0,0) 62%,rgba(0,0,0,0.75) 84%), url("/assets/img/bg.png"); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(0,0,0,0.78) 17%,rgba(0,0,0,0) 44%,rgba(0,0,0,0) 62%,rgba(0,0,0,0.75) 84%), url("/assets/img/bg.png"); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c7000000', endColorstr='#bf000000',GradientType=0 ), url("/assets/img/bg.png"); /* IE6-9 */
+    background-attachment: fixed;
+}
+
+h1 {
+    margin: 0 0 6px 0;
+    font-weight: @weight-sm;
+    border-bottom: 1px solid @grey-light;
+}
+
+span.subtitle {
+    font-size: 1.5em;
+    font-weight: @weight-sm;
+}
+
+div .div-inline {
+    display: table-cell;
+    vertical-align: top;
+}
+
+select, input, button, a.button, img.button {
+    font-size: 1em;
+    height: 1.8em;
+    padding: 4px;
+    margin: 5px 2px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    //box-shadow: 3px 3px 2px #888;
+    //-moz-box-shadow: 3px 3px 2px #888;
+    //-webkit-box-shadow: 3px 3px 2px #888;
+    
+    border: 1px solid #eee;
+    color: @grey-light;
+    background-color: @header-bg;
+}
+
+select.select-sm { min-width: 80px;  }
+select.select-lg { min-width: 180px; }
+select option  { padding-right: 20px; }
+
+a.button {
+    padding-left:  12px;
+    padding-right: 12px;
+    text-decoration: none;
+}
+
+button:hover, input[type=submit]:hover, a.button:hover {
+    background-color: #bf5;
+    border: 1px solid #333;
+    color: @button-bg;
+    
+}
+
+img.button:hover {
+    cursor: pointer;
+}
+
+table tr td { padding-right: 6px; }
+
+.container {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    top: 0px;
+
+    border-top: 0;
+}
+
+.container .title-header {
+    background: @container-bg;    
+    box-shadow: 4px 4px 20px darken(@grey-dark, 20%);
+    -moz-box-shadow: 4px 4px 20px darken(@grey-dark, 20%);
+    -webkit-box-shadow: 4px 4px 20px darken(@grey-dark, 20%);
+}
+
+.pull-right {
+    float: right;   
+}
+
+.card {
+    border: 1px solid @grey-dark;
+    display: inline-block;
+    width: 30%;
+}
+
+.inline-block { display: inline-block; }
+
+.title-header{
+    width: 100%;
+    display: inline-block;
+    //border-bottom: 1px solid @grey-dark;
+}
+
+.title-header > .main-text {
+    display: inline-block;
+    padding-top: 12px;
+    padding-left: 20px;
+}
+
+.title-header > .main-text > span {
+
+}
+
+.title-header > .main-text > .scale {
+    font-size: 2em;
+}
+
+.title-header > .main-text > .notes {
+    font-size: 1.5em;
+}
+
+.header {
+    color: #eee;
+    background-color: @header-bg;
+}
+
+.container-options {
+    margin-top: 18px;
+    color: @grey-light;
+}
+
+.footer {
+    width: 100%;
+    min-height: 400px;
+    margin-top: 40px;
+    border-top: 4px solid #eee;
+    background-color: @grey-dark;   
+}
+
+.footer-content {
+    margin: 0 5%;
+    padding: 24px 0;
+    color: @grey-light;    
+}
+
+div.surface-container { display: inline-block; position: relative; width: 100%; background-color: #fff; margin-bottom: 12px; }
+div.surface-container:after { display: block; content: ''; }
+div.surface-container > div { padding: 12px; background: @container-bg; }
+
+svg.scales {
+    min-height: 300px; 
+    max-height: 600px;    
+}
+
+svg.chords {
+    position: relative;
+    width: 600px;
+    height: 500px;
+    background-color: @container-bg;
+}
+
+svg.cursor-grab {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+svg.cursor-zoom {
+    cursor: move;
+    cursor: zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: -webkit-zoom-in;
+}
+
+svg.cursor-grab:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+svg.select-disable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+svg:not(:root) { 
+    overflow: hidden;
+}
+
+.zoom-pan-control {
+    float: right;
+    margin-right: 12px;
+}
+
+.zoom-pan-control a {
+    display: inline-block;
+    color: @grey-dark;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 3px 6px;
+    margin-bottom: 12px;
+}
+
+.zoom-pan-control a img {
+}
+
+.zoom-pan-control a.active {
+    background-color: @lime;  
+    border: 1px solid @grey-dark;
+}
+
+.learn-more {
+    float: right;
+}
+
+
+
+.instrument-icon img {
+    width: 90px;
+    height: 90px;
+}
+
+.instrument-icon.active {
+}
+
+.settings-panel .instrument-icon {
+    background: #fff;
+    margin: 12px;
+    width: 500px;
+    height: 175px;
+    padding: 15px;
+}
+
+.string-selection {
+    float: left;
+    display: inline-block;   
+} 
+
+.string-selection ul { 
+    padding: 0;
+    margin: 0 4px;
+    list-style: none;
+    color: #333;
+}
+
+.string-selection ul li {
+    background: @grey-md-light;
+    margin: 4px 0;
+    padding: 12px 16px;   
+}
+
+.string-selection ul li:hover {
+    cursor: pointer;   
+}
+
+.string-selection ul li.active {
+    background: @grey-dark;
+    color: @grey-light;
+}
+
+.left-handed {
+    -ms-transform: scale(-1,1); /* IE 9 */
+    -webkit-transform: scale(-1,1); /* Chrome, Safari, Opera */
+    transform: scale(-1,1);
+}
+
+.tab-menu {
+	display: table-cell;
+	vertical-align: top;
+	position: relative;
+	text-align: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.tab-menu:after {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	right: 0;
+	border-right: 1px solid @grey-dark;
+	z-index: 100;
+	content: "";
+}
+
+.tab-menu li {
+	position: relative;
+	border: 1px solid @grey-dark;
+	border-radius: 10px 0 0 10px;
+	border-right: 0;
+	background: @grey-md-dark;
+	margin: 10px 0; 
+	width: 90px;
+	height: 90px;
+ 	z-index: 0;
+}
+
+.tab-menu li.active {
+	background: @grey-light;
+	z-index: 200;
+}
+
+.tab-menu ~ div.content {
+	display: table-cell;
+	width: 100%;
+	padding: 12px;
+	border-right: 1px solid @grey-dark;
+	border-top: 1px solid @grey-dark;
+	border-bottom: 1px solid @grey-dark;
+}
+
+.brand {
+    display: inline-block;
+    margin: 8px;
+    font-size: 1.6em;
+}
+
+.brand a {
+    text-decoration: none;
+    color: @header-text;
+}
+
+/*#scale-name, #instrument-name {
+    font-weight: @weight-sm;
+    font-size: 2.1em;
+    border-bottom: 1px solid @grey-light;
+    width: 100%
+}*/
+
+/*#scale-pitches, #tuning-notes {
+    font-size: 1.5em;
+}*/
+
+.header-menu {    
+    float: right;
+    margin-right: 60px;
+    display: inline-block;
+}
+
+.header-menu a {
+    color: @header-text;
+    padding: 8px 16px;
+    height: 32px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.header-menu a.active {
+    background-color: @header-active; 
+    color: @header-text;  
+}
+
+.header-menu a:hover {
+    background-color: #555;   
+    color: @header-text;   
+}
+
+.modal-dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.5);
+
+    opacity: 0;
+    -webkit-transition: opacity 100ms ease-in;
+    -moz-transition:    opacity 100ms ease-in;
+    transition:         opacity 100ms ease-in;
+    pointer-events: none;
+}
+
+.modal-show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-dialog > .modal-sm {
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+    margin: 10% auto;
+    background: #eee;
+    padding: 20px;        
+}
+
+.modal-dialog .modal-lg {
+    position: fixed;
+    margin: 0 auto;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+    background: #eee;
+    padding: 20px;        
+    overflow-y: auto;
+}
+
+.modal-lg h2 {
+    line-height: 0;   
+}
+
+.modal-close {
+    background: @grey-dark;
+    color: #FFFFFF;
+    padding: 0 7px;
+    text-decoration: none;
+    font-weight: bold;    
+}
+
+.modal-close:hover { 
+    background-color: @lime; 
+    color: @grey-dark;
+}
+
+.modal-sm > .modal-close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
+
+.modal-lg > .modal-close {
+    position: fixed;
+    margin-top: 20px;
+    margin-right: 30px;
+    right: 10%;
+    top: 10%;
+}
+
+.tooltip {
+    position: absolute;
+    content: attr(tooltip);
+    opacity: 0;
+    padding: 6px 12px;
+    
+    bottom: 230px;
+    max-width: 80%;
+    line-height: 1.3em;
+    
+    color: @grey-dark; 
+    border-radius: 4px;
+    background-color:   @grey-light;
+    border:             1px solid @grey-dark;
+    box-shadow:         2px 2px 4px @grey-dark;
+    -moz-box-shadow:    2px 2px 4px @grey-dark;
+    -webkit-box-shadow: 2px 2px 4px @grey-dark;
+}
+
+.tooltip h3 {
+    line-height: 0;   
+}
+
+.tooltip-show {
+    opacity: 1;   
+}
+
+/* New settings panels */
+div.settings-panel {
+    display: inline-block;
+    background-color: #111;
+    min-width: 250px;
+}   
+
+div.settings-panel div.header {    
+    background-color: #000;
+    padding: 6px 12px;
+    font-size: 1.3em;
+    border: 3px solid darken(@lime, 20%);
+} 
+
+div.settings-panel div.header span {
+    font-weight: bold;
+    padding: 2px 12px 2px 0;
+}
+
+div.settings-panel div.header span img{
+    height: 2em;
+    margin-top: 5px;
+    padding-right: 12px;
+    border-right: 3px solid darken(@lime, 20%);
+}
+
+div.settings-panel div.content {
+    border-left: 1px solid @grey-md-light;
+    border-top: 1px solid #111;
+    border-right: 1px solid @grey-md-light;
+    border-bottom: 1px solid @grey-md-light;
+}
+
+div.settings-panel div.content table {
+    border-spacing: 0 10px;
+}
+
+div.settings-panel div.content table tr {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b6b6b+0,545454+20,1c1c1c+93,383838+100 */
+background: rgb(107,107,107); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(107,107,107,1) 0%, rgba(84,84,84,1) 20%, rgba(28,28,28,1) 93%, rgba(56,56,56,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(107,107,107,1) 0%,rgba(84,84,84,1) 20%,rgba(28,28,28,1) 93%,rgba(56,56,56,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(107,107,107,1) 0%,rgba(84,84,84,1) 20%,rgba(28,28,28,1) 93%,rgba(56,56,56,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b6b6b', endColorstr='#383838',GradientType=0 ); /* IE6-9 */
+  
+}
+
+div.settings-panel div.content table tr td{
+    padding: 4px 12px;  
+}
+
+div.instrument-modal { }
+div.instrument-modal .instrument {
+    display: inline-block;   
+}
+
+div.instrument-modal .instrument img {
+    padding: 12px;
+    max-height: 400px;
+}
+
+div.instrument-modal .instrument img.selected {
+    background: @grey-md-light;
+}
+
+img.button  {
+    margin: -8.5px 0;
+    height: 1.2em;
+}
+    
+/******/

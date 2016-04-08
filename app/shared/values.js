@@ -31,7 +31,8 @@ angular.module('musicianist').value('rootNotes', [
 angular.module('musicianist').value('instruments', 
 		[{ 
             name:  'Les Paul',
-            thumb: { path:'/assets/svg/instruments/profile/les-paul.svg', viewbox: '0 0 52 168' },
+            instSelect: { path:'/assets/svg/instruments/profile/upright/les-paul.svg', viewbox: '0 0 52 168' },
+            instPanel: { path:'/assets/svg/instruments/profile/horiz/les-paul.svg', viewbox: '0 0 512 171' },
             path:  '/assets/svg/instruments/les-paul-fretboard.svg',
             type: 'Guitar',
             strings: 6,
@@ -44,7 +45,8 @@ angular.module('musicianist').value('instruments',
             attr: { viewBox: "-50 -75 1100 300" }
         }, {
             name:  'Stratocaster',
-            thumb: { path: '/assets/svg/instruments/profile/stratocaster.svg', viewbox: '0 0 512 168' },
+            instSelect: { path: '/assets/svg/instruments/profile/upright/stratocaster.svg', viewbox: '0 0 512 168' },
+            instPanel: { path: '/assets/svg/instruments/profile/horiz/stratocaster.svg', viewbox: '0 0 512 168' },
             path:  '/assets/svg/instruments/stratocaster-fretboard.svg',
             type: 'Guitar',
             strings: 6,
@@ -57,7 +59,8 @@ angular.module('musicianist').value('instruments',
             attr: { viewBox: "-50 -75 1100 300" }            
 	    }, {
             name:  'Telecaster',
-            thumb: { path: '/assets/svg/instruments/profile/telecaster.svg', viewbox: '0 0 512 168' },
+            instSelect: { path: '/assets/svg/instruments/profile/upright/telecaster.svg', viewbox: '0 0 512 168' },
+            instPanel: { path: '/assets/svg/instruments/profile/horiz/telecaster.svg', viewbox: '0 0 512 168' },
             path:  '/assets/svg/instruments/telecaster-fretboard.svg',
             type: 'Guitar',
             strings: 6,
@@ -73,7 +76,8 @@ angular.module('musicianist').value('instruments',
 
 	    {
             name:  'JBM 27',
-            thumb: { path: '/assets/svg/instruments/profile/jbm27-7.svg', viewbox: '0 0 512 168' },
+            instSelect: { path: '/assets/svg/instruments/profile/upright/jbm27-7.svg', viewbox: '0 0 512 168' },
+            instPanel: { path: '/assets/svg/instruments/profile/horiz/jbm27-7.svg', viewbox: '0 0 512 168' },
             path:  '/assets/svg/instruments/jbm27-7-fretboard.svg',
             type: 'Guitar',
             strings: 7,
@@ -88,7 +92,8 @@ angular.module('musicianist').value('instruments',
 
 	    {
             name:  'TAM 100',
-            thumb: { path: '/assets/svg/instruments/profile/tam100-8.svg', viewbox: '0 0 512 168' },
+            instSelect: { path: '/assets/svg/instruments/profile/upright/tam100-8.svg', viewbox: '0 0 512 168' },
+            instPanel: { path: '/assets/svg/instruments/profile/horiz/tam100-8.svg', viewbox: '0 0 512 168' },
             path:  '/assets/svg/instruments/tam100-8-fretboard.svg',
             type: 'Guitar',
             strings: 8,
@@ -104,7 +109,8 @@ angular.module('musicianist').value('instruments',
 
 		{
 			name:  'Precision Bass',
-            thumb: { path: '/assets/svg/instruments/profile/precision-bass.svg', viewbox: '0 0 512 168' },
+            instSelect: { path: '/assets/svg/instruments/profile/upright/precision-bass.svg', viewbox: '0 0 512 168' },
+            instPanel: { path: '/assets/svg/instruments/profile/horiz/precision-bass.svg', viewbox: '0 0 512 168' },
             path:  '/assets/svg/instruments/precision-bass-fretboard.svg',
             type: 'Bass Guitar',
             strings: 4,
@@ -117,7 +123,8 @@ angular.module('musicianist').value('instruments',
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Jazz Bass',
-            thumb: { path: '/assets/svg/instruments/profile/jazz-bass.svg', viewbox: '0 0 512 168' },
+            instSelect: { path: '/assets/svg/instruments/profile/upright/jazz-bass.svg', viewbox: '0 0 512 168' },
+            instPanel: { path: '/assets/svg/instruments/profile/horiz/jazz-bass.svg', viewbox: '0 0 512 168' },
             path:  '/assets/svg/instruments/jazz-bass-fretboard.svg',
             type: 'Bass Guitar',
             strings: 4,
@@ -130,7 +137,8 @@ angular.module('musicianist').value('instruments',
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Jazz Bass',
-            thumb: { path: '/assets/svg/instruments/profile/jazz-bass2.svg', viewbox: '0 0 512 168' },
+            instSelect: { path: '/assets/svg/instruments/profile/upright/jazz-bass2.svg', viewbox: '0 0 512 168' },
+            instPanel: { path: '/assets/svg/instruments/profile/horiz/jazz-bass2.svg', viewbox: '0 0 512 168' },
             path:  '/assets/svg/instruments/jazz-bass2-fretboard.svg',
             type: 'Bass Guitar',
             strings: 4,
@@ -143,7 +151,8 @@ angular.module('musicianist').value('instruments',
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Precision Bass 5',
-            thumb: { path: '/assets/svg/instruments/profile/precision-bass-5.svg', viewbox: '0 0 512 168' },
+            instSelect: { path: '/assets/svg/instruments/profile/upright/precision-bass-5.svg', viewbox: '0 0 512 168' },
+            instPanel: { path: '/assets/svg/instruments/profile/horiz/precision-bass-5.svg', viewbox: '0 0 512 168' },
             path:  '/assets/svg/instruments/precision-bass-5-fretboard.svg',
             type: 'Bass Guitar',
             strings: 5,
@@ -156,7 +165,8 @@ angular.module('musicianist').value('instruments',
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Stiletto 6',
-            thumb: { path: '/assets/svg/instruments/profile/stiletto-6.svg', viewbox: '0 0 512 168' },
+            instSelect: { path: '/assets/svg/instruments/profile/upright/stiletto-6.svg', viewbox: '0 0 512 168' },
+            instPanel: { path: '/assets/svg/instruments/profile/horiz/stiletto-6.svg', viewbox: '0 0 512 168' },
             path:  '/assets/svg/instruments/stiletto-6-fretboard.svg',
             type: 'Bass Guitar',
             strings: 6,
@@ -173,7 +183,7 @@ angular.module('musicianist').value('instruments',
 
 		 {
 			name: 'Piano',
-			thumb: '/assets/svg/instruments/piano_keys.svg',
+			instSelect: '/assets/svg/instruments/piano_keys.svg',
 			path: '',
 			type: 'Piano',
 			strings: 0,

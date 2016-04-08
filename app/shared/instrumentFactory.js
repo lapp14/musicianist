@@ -1,11 +1,15 @@
 (function(){
 	'use strict';
 
-	angular.module('musicianist').factory('instrument', ['instruments', instrumentFactory]);
+	angular
+		.module('musicianist')
+		.factory('instrument', instrumentFactory);
+
+	instrumentFactory.$inject = ['instruments', 'state'];
 
 	function instrumentFactory(instruments) {
 
-		var instrumentType = 'Guitar';
+		var type = 'Guitar';
 		var index = 0;
 		var handedness = 'Right';
 		var selectedStrings = {
@@ -30,7 +34,7 @@
 
 		var service = {
 			arr: instruments,
-			instrumentType,
+			type,
 			selectedStrings,
 			selectedTuning,
 			index,
@@ -38,6 +42,7 @@
 
 			getCurrentInstrument,
 			getCurrentTuning,
+			setStrings,
 			setSelection
 		}
 
@@ -49,9 +54,13 @@
 		};
 
 		function getCurrentTuning() {
-			var i = this.instrumentType;
+			var i = this.type;
 
 			return this.selectedTuning[i][this.selectedStrings[i]];
+		};
+
+		function setStrings(strings) {
+			this.selectedStrings[this.type] = strings;
 		};
 
 		function setSelection(index) {
@@ -59,7 +68,7 @@
 			this.index = index;
 			console.log(index)
 			console.log(instruments[index])
-			this.instrumentType = instruments[index].type;
+			this.type = instruments[index].type;
 		};	
 	}
 })();

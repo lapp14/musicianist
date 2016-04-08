@@ -192,7 +192,7 @@ svg:not(:root) {
   float: right;
   margin-right: 12px;
 }
-.zoom-pan-control i {
+.zoom-pan-control a {
   display: inline-block;
   color: #333;
   text-decoration: none;
@@ -200,7 +200,7 @@ svg:not(:root) {
   padding: 3px 6px;
   margin-bottom: 12px;
 }
-.zoom-pan-control i.active {
+.zoom-pan-control a.active {
   background-color: #bf5;
   border: 1px solid #333;
 }
@@ -210,6 +210,42 @@ svg:not(:root) {
 .instrument-icon img {
   width: 90px;
   height: 90px;
+}
+.settings-panel .instrument-icon {
+  background: #fff;
+  margin: 12px;
+  width: 500px;
+  height: 175px;
+  padding: 15px;
+}
+.string-selection {
+  float: left;
+  display: inline-block;
+}
+.string-selection ul {
+  padding: 0;
+  margin: 0 4px;
+  list-style: none;
+  color: #333;
+}
+.string-selection ul li {
+  background: #ccc;
+  margin: 4px 0;
+  padding: 12px 16px;
+}
+.string-selection ul li:hover {
+  cursor: pointer;
+}
+.string-selection ul li.active {
+  background: #333;
+  color: #eee;
+}
+.left-handed {
+  -ms-transform: scale(-1, 1);
+  /* IE 9 */
+  -webkit-transform: scale(-1, 1);
+  /* Chrome, Safari, Opera */
+  transform: scale(-1, 1);
 }
 .tab-menu {
   display: table-cell;

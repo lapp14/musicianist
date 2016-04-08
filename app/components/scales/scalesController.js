@@ -5,9 +5,9 @@
 		.module('musicianist')
 		.controller('scalesCtrl', scalesController);
 
-	scalesController.$inject = ['$location', 'async', 'svgSurface', 'scales', 'instrument'];
+	scalesController.$inject = ['$location', 'async', 'state', 'svgSurface', 'scales', 'instrument'];
 
-	function scalesController($location, async, svgSurface, scales, instrument){
+	function scalesController($location, async, state, svgSurface, scales, instrument){
 		var vm = this;
 
 		vm.JSONData = {};
@@ -17,7 +17,7 @@
 		vm.instrument = instrument;
 
 		vm.modal = null;
-		vm.tooltip = null;
+		vm.tooltip = null;		
 			
 		vm.setInstrument = setInstrument;
 		vm.drawing.drawScale = drawScale;
@@ -39,11 +39,12 @@
 			console.log('async.get error scales.json');
 		});		
 
+
 		function drawScale() {
 			var scale      	= vm.JSONData.scales[scales.selection.scale];
 			var tonic      	= parseInt(scales.selection.tonic);
 			var tuningIndex = vm.instrument.getCurrentTuning();
-			var tuning     	= vm.instrument.instrumentType == 'Piano' ? null : vm.JSONData.tunings[tuningIndex];
+			var tuning     	= vm.instrument.type == 'Piano' ? null : vm.JSONData.tunings[tuningIndex];
 
 			scales.drawScale(scale, tonic,  tuning);
 			vm.scaleNotes = scales.getNotesString(scale, tonic);
