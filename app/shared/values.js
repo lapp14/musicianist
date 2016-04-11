@@ -42,7 +42,7 @@ angular.module('musicianist').value('instruments',
             stringOffset: [0.55, 0.32, 0.1, -0.1, -0.32, -0.47],
             fretNumbers: 130,
             fretNumberOffset: 0.6,
-            attr: { viewBox: "-50 -75 1100 300" }
+            attr: { viewBox: "-32 -75 1100 300" }
         }, {
             name:  'Stratocaster',
             instSelect: { path: '/assets/svg/instruments/profile/upright/stratocaster.svg', viewbox: '0 0 512 168' },

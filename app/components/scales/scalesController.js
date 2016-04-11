@@ -15,6 +15,7 @@
 
 		vm.selection = scales.selection;
 		vm.instrument = instrument;
+		vm.svgSurface = svgSurface;
 
 		vm.modal = null;
 		vm.tooltip = null;		

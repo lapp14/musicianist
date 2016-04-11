@@ -55,6 +55,8 @@
 		}
 
 		function setActiveControl(controlType) {
+			console.log('setActiveControl '  + controlType);
+
 			if(this.activeControl !== controlType) {
 				this.activeControl = controlType;
 			} else {

@@ -5,13 +5,18 @@
     </div>
 
     <div class="surface-container">
-        <div><svg zoom-pan class="scales select-disable" style="border: 1px solid blue" id="svg-surface" preserveAspectRatio="xMidYMin meet"></svg></div>
+        <div><svg zoom-pan class="scales select-disable" 
+
+
+                style="border: 1px solid blue" id="svg-surface" 
+
+                preserveAspectRatio="xMidYMin meet"></svg></div>
     </div>
 
     <div class="zoom-pan-control">
         <i class="fa fa-arrows-alt" ng-click="Scales.svgSurface.resetZoomPan()"></i>
-        <i class="fa fa-search" ng-click="Scales.svgSurface.setActiveControl('zoom')" ng-class="{'active': svgSurface.activeControl == 'zoom'}"></i>
-        <i class="fa fa-hand-paper-o" ng-click="Scales.svgSurface.setActiveControl('pan')" ng-class="{'active': svgSurface.activeControl == 'pan'}"></i>
+        <i class="fa fa-search" ng-click="Scales.svgSurface.setActiveControl('zoom')" ng-class="{'active': Scales.svgSurface.activeControl == 'zoom'}"></i>
+        <i class="fa fa-hand-paper-o" ng-click="Scales.svgSurface.setActiveControl('pan')" ng-class="{'active': Scales.svgSurface.activeControl == 'pan'}"></i>
     </div>
 </div>
 
