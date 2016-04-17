@@ -34,16 +34,16 @@
 
 		var service = {
 			arr: instruments,
-			type,
-			selectedStrings,
-			selectedTuning,
-			index,
-			handedness,
+			type: type,
+			selectedStrings: selectedStrings,
+			selectedTuning: selectedTuning,
+			index: index,
+			handedness: handedness,
 
-			getCurrentInstrument,
-			getCurrentTuning,
-			setStrings,
-			setSelection
+			getCurrentInstrument: getCurrentInstrument,
+			getCurrentTuning: getCurrentTuning,
+			setStrings: setStrings,
+			setSelection: setSelection
 		}
 
 		return service;

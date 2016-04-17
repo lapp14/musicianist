@@ -17,7 +17,7 @@
 		vm.instrument = instrument;
 		vm.svgSurface = svgSurface;
 
-		vm.modal = null;
+		vm.modal = 'instrument';
 		vm.tooltip = null;		
 			
 		vm.setInstrument = setInstrument;

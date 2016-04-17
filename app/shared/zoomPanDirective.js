@@ -8,21 +8,24 @@
 	zoomPanDirective.$inject = ['$document', 'svgSurface'];
 	
 	function zoomPanDirective($document, svgSurface) {
+
+		var startX = 0, startY = 0, x = 0, y = 0;
+		var startZoom = 1, zoom = 1;
+		var mouse = {
+			x: -1,
+			y: -1
+		}
+		var offset = 1;
+
 		return {
 			link: zoomPan
 		}
 
 		function zoomPan(scope, element, attr) {
-			var startX = 0, startY = 0, x = 0, y = 0;
-			var startZoom = 1, zoom = 1;
-			var mouse = {
-				x: -1,
-				y: -1
-			}
-			var offset = 1;
 
 			element.on('mousedown', mousedown);
 
+			
 			function mousedown(event) {
 				if(svgSurface.activeControl === 'none') {
 					return;
@@ -65,7 +68,7 @@
 				}
 
 				var s = svgSurface.getGroup('transformGroup');
-				s.transform('s' + (zoom ) + ',' + (zoom ) + 't' + (x / offset) + ',' + (y / offset));
+				s.transform('s' + zoom + ',' + zoom + 't' + (x / offset / zoom) + ',' + (y / offset / zoom));
 			}
 
 			function mouseup() {

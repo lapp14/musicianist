@@ -11,7 +11,7 @@
 		var groups = {};
 
 		var service = {
-			activeControl,
+			activeControl: activeControl,
 
 			//refactor these
 			startZoom: 1,
@@ -23,14 +23,14 @@
 				y: 0
 			},
 
-			setActiveControl,
-			resetZoomPan,
-			getSurface,
+			setActiveControl: setActiveControl,
+			resetZoomPan: resetZoomPan,
+			getSurface: getSurface,
 
-			setGroup,
-			getGroup,
+			setGroup: setGroup,
+			getGroup: getGroup,
 
-			loadBackground
+			loadBackground: loadBackground
 		};
 
 		return service;

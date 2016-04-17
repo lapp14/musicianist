@@ -27,6 +27,13 @@
 
 @footer-bg:     @navy-dark;//@grey-md-light;
 
+.box-shadow() {
+    -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);   
+}
+
+
 html, body {
     width: 100%;
     height: 100%;
@@ -66,7 +73,6 @@ div .div-inline {
 
 select, input, button, a.button, img.button {
     font-size: 1em;
-    height: 1.8em;
     padding: 4px;
     margin: 5px 2px;
     -webkit-border-radius: 4px;
@@ -339,12 +345,54 @@ svg:not(:root) {
 
 .tab-menu ~ div.content {
 	display: table-cell;
+	background: @grey-light;
+	color: @grey-dark;
 	width: 100%;
 	padding: 12px;
 	border-right: 1px solid @grey-dark;
 	border-top: 1px solid @grey-dark;
 	border-bottom: 1px solid @grey-dark;
+	-webkit-border-radius: 14px;
+    -webkit-border-top-left-radius: 0;
+    -moz-border-radius: 14px;
+    -moz-border-radius-topleft: 0;
+    border-radius: 14px;
+    border-top-left-radius: 0;
 }
+
+
+div.string-selection {
+    float: left;   
+}
+
+div.instrument-modal .instrument {
+    display: inline-block;
+    width: 175px; /* IE needs width to be set */
+    margin: 0 12px;
+}
+
+div.instrument-modal .instrument img {
+    display: block;
+    margin: 0 auto;
+    padding: 12px;
+    height: 400px;
+}
+
+div.instrument-modal .instrument.selected {
+    background: @grey-md-light;
+}
+
+div.instrument-modal .string-selection {
+    margin-right: 24px;   
+}
+
+div.instrument-modal .guitar-settings {
+    margin-top: 12px;
+    margin-left: 100px;   
+}
+
+
+
 
 .brand {
     display: inline-block;
@@ -414,37 +462,60 @@ svg:not(:root) {
 }
 
 .modal-dialog > .modal-sm {
+    position: relative;
     width: 400px;
     max-width: 90%;
-    position: relative;
     margin: 10% auto;
     background: #eee;
     padding: 20px;        
 }
 
 .modal-dialog .modal-lg {
-    position: fixed;
-    margin: 0 auto;
-    top: 10%;
-    bottom: 10%;
-    left: 10%;
-    right: 10%;
+    position: relative;
+    margin: 2% auto;
+    width: 1000px;
     background: #eee;
     padding: 20px;        
     overflow-y: auto;
+    
+    background: @grey-dark;
+    
+    .box-shadow();
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px; 
 }
 
 .modal-lg h2 {
-    line-height: 0;   
+    margin: 0;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    line-height: 0;
+    font-weight:normal;
 }
 
 .modal-close {
-    background: @grey-dark;
-    color: #FFFFFF;
-    padding: 0 7px;
+    position: absolute; 
+    top:12px;
+    right: 12px;
+    
+    text-align: center;
+    line-height: 24px;
+    height: 28px;
+    width: 28px;    
+    font-size: 24px;
     text-decoration: none;
-    font-weight: bold;    
+    
+    background: #fff;
+    color:  @grey-dark;
+    font-weight: bold;
+    
+    .box-shadow();
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;    
 }
+
 
 .modal-close:hover { 
     background-color: @lime; 
@@ -455,14 +526,6 @@ svg:not(:root) {
     position: absolute;
     right: 16px;
     top: 16px;
-}
-
-.modal-lg > .modal-close {
-    position: fixed;
-    margin-top: 20px;
-    margin-right: 30px;
-    right: 10%;
-    top: 10%;
 }
 
 .tooltip {
@@ -502,7 +565,7 @@ div.settings-panel {
 div.settings-panel div.header {    
     background-color: #000;
     padding: 6px 12px;
-    font-size: 1.3em;
+    font-size: 1.6em;
     border: 3px solid darken(@lime, 20%);
 } 
 
@@ -512,10 +575,18 @@ div.settings-panel div.header span {
 }
 
 div.settings-panel div.header span img{
-    height: 2em;
+    height: 1.5em;
     margin-top: 5px;
     padding-right: 12px;
     border-right: 3px solid darken(@lime, 20%);
+}
+
+div.settings-panel div.header i.edit {
+    margin-left: 16px;
+}
+
+div.settings-panel div.header i.edit:hover {
+    cursor: pointer;
 }
 
 div.settings-panel div.content {
@@ -543,19 +614,6 @@ div.settings-panel div.content table tr td{
     padding: 4px 12px;  
 }
 
-div.instrument-modal { }
-div.instrument-modal .instrument {
-    display: inline-block;   
-}
-
-div.instrument-modal .instrument img {
-    padding: 12px;
-    max-height: 400px;
-}
-
-div.instrument-modal .instrument img.selected {
-    background: @grey-md-light;
-}
 
 img.button  {
     margin: -8.5px 0;

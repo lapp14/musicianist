@@ -13,12 +13,12 @@
         }
 
         var service =  {
-            selection,
-            getNote,
-            getNotesString,
-            isNoteInKey,
-            isRootNote,            
-            drawScale
+            selection: selection,
+            getNote: getNote,
+            getNotesString: getNotesString,
+            isNoteInKey: isNoteInKey,
+            isRootNote: isRootNote,            
+            drawScale: drawScale
         };
 
         return service;

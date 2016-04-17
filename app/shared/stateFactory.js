@@ -45,8 +45,8 @@
 		};
 
 		var service = {
-			selection,
-			model
+			selection: selection,
+			model: model
 		};
 
 		return service;

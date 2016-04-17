@@ -8,7 +8,7 @@
 	function asyncFactory($http) {
 
 		var service = {
-			getJSON
+			getJSON: getJSON
 		};
 
 		return service;
