@@ -1,1 +1,4 @@
-angular.module('musicianist', ['ngRoute', 'ngCookies']);
+(function() {
+	'use strict';
+	angular.module('musicianist', ['ngRoute', 'ngCookies']); 
+})();

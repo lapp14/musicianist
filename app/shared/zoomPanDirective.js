@@ -23,18 +23,37 @@
 
 		function zoomPan(scope, element, attr) {
 
-			element.on('mousedown', mousedown);
+			scope.$watch(function() {return svgSurface.activeControl}, function(newValue) {
+				if(newValue) {
 
+					if(newValue === 'zoom') {
+						element.removeClass('cursor-grab');
+						element.addClass('cursor-zoom');
+					} else if(newValue === 'pan') {
+						element.removeClass('cursor-zoom');
+						element.addClass('cursor-grab');
+					} else {
+						element.removeClass('cursor-zoom');
+						element.removeClass('cursor-grab');
+					}
+				}
+			}, true);
+
+			element.on('mousedown', mousedown);
 			
 			function mousedown(event) {
+
 				if(svgSurface.activeControl === 'none') {
 					return;
+				} else if(svgSurface.activeControl === 'pan') {
+					element.removeClass('cursor-grab');
+					element.addClass('cursor-grabbing');
 				}
 
-				console.log('offsetX: ' + event.offsetX + ', offsetY: ' + event.offsetY);
 				event.preventDefault();
 
-				offset = element[0].clientWidth / element[0].viewBox.animVal.width;
+				offset = (element[0].clientWidth || element[0].parentNode.clientWidth) / element[0].viewBox.animVal.width;
+
 				mouse.x = event.pageX;
 				mouse.y = event.pageY;
 
@@ -63,15 +82,21 @@
 
 					//y = startY - offsetY;
 					//x = startX - offsetX;
-					console.log('mouse.y ' + mouse.y)
-					console.log('pagey ' + event.pageY + ', startZoom ' + startZoom + ', zoom ' + zoom);
+					//console.log('mouse.y ' + mouse.y)
+					//console.log('pagey ' + event.pageY + ', startZoom ' + startZoom + ', zoom ' + zoom);
 				}
 
 				var s = svgSurface.getGroup('transformGroup');
-				s.transform('s' + zoom + ',' + zoom + 't' + (x / offset / zoom) + ',' + (y / offset / zoom));
+				var trans = 's' + zoom + ',' + zoom + 't' + (x / offset / zoom) + ',' + (y / offset / zoom);
+				s.transform(trans);
 			}
 
 			function mouseup() {
+				if(svgSurface.activeControl === 'pan') {
+					element.removeClass('cursor-grabbing');
+					element.addClass('cursor-grab');
+				}
+
 				$document.off('mousemove', mousemove);
 				$document.off('mouseup', mouseup);
 			}

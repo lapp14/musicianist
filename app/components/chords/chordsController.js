@@ -19,7 +19,7 @@ angular.module('musicianist').controller('chordsCtrl', ['$scope', 'async', 'util
 		$scope.JSONData.chords = data.chords;
 		start();
 	}, function (error) {
-		console.log('async.get error tunings.json');
+		//console.log('async.get error tunings.json');
 	});		
 
 	$scope.change = function() {

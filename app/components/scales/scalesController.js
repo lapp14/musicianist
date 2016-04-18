@@ -17,10 +17,11 @@
 		vm.instrument = instrument;
 		vm.svgSurface = svgSurface;
 
-		vm.modal = 'instrument';
+		vm.modal = null;
 		vm.tooltip = null;		
 			
 		vm.setInstrument = setInstrument;
+		vm.getCurrentTuningNotes = getCurrentTuningNotes;
 		vm.drawing.drawScale = drawScale;
 		vm.drawing.reload = reload;
 		vm.action = action; //testing only
@@ -29,7 +30,7 @@
 			vm.JSONData.tunings = data.tunings;
 			start();
 		}, function (error) {
-			console.log('async.get error tunings.json');
+			//console.log('async.get error tunings.json');
 		});		
 
 		async.getJSON('/assets/json/scales.json').then(function (data) {
@@ -37,7 +38,7 @@
 			vm.JSONData.tonics = data.tonics;	
 			start();
 		}, function (error) {
-			console.log('async.get error scales.json');
+			//console.log('async.get error scales.json');
 		});		
 
 
@@ -59,7 +60,6 @@
 
 		function reload() {
 			var i = vm.instrument;
-			console.log('reload()');
 			svgSurface.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);	
 		}
 
@@ -67,6 +67,22 @@
 			if(vm.JSONData.tunings && vm.JSONData.scales && vm.JSONData.tonics) {
 				vm.drawing.reload();
 			}
+		}
+
+		function getCurrentTuningNotes() {
+			if(vm.JSONData.tunings == null) {
+				return '';
+			}
+
+			var index = vm.instrument.getCurrentTuning();
+			var notes = vm.JSONData.tunings[index].notes;
+			var string = '';
+
+			for(var i = 0; i < notes.length; i++) {
+				string += scales.getNote(notes[i]);
+			}
+
+			return string;
 		}
 
 		function action() {

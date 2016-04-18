@@ -24,13 +24,13 @@
         return service;
 
 
-        function getNote(scale, root, note) {
+        function getNote(note, root, scale) {
             note %= 12;
 
             var text;
             if(notes[note] == '-') {
                 //check to see if scale[root] defaults to sharp or flat (ex Ab vs G#)
-                if(scale.defaults[root] == '#') {
+                if(scale == null || root == null || scale.defaults[root] == '#') {
                     text = notes[note - 1] + '#';
                 } else {
                     text = notes[note + 1] + 'b';
@@ -111,7 +111,7 @@
 
                     for(var octave = 0; octave < 3; octave++) {                    
                         m = surface.circle(x + (161 * octave) , y - 0.5, 8).attr({ fill: markerColour, stroke: '#333', strokeWidth: 0.75, opacity: 0.8 });
-                        var label = surface.text(x + (161 * octave) , y + 2, Scales.key.getNote(scale, root, note)).attr({ fontSize: '8px', opacity: 1, "text-anchor": "middle" });
+                        var label = surface.text(x + (161 * octave) , y + 2, Scales.key.getNote(note, root, scale)).attr({ fontSize: '8px', opacity: 1, "text-anchor": "middle" });
                         markers.add(m, label);
                     }
                 }
@@ -149,7 +149,7 @@
                                 m = surface.circle(x, y - 0.5, 8).attr({ fill: '#0cf', stroke: '#333', strokeWidth: 0.75, opacity: 1 });
                             }
 
-                            var label = surface.text(x, y + 2, this.getNote(scale, root, note)).attr({ fontSize: '8px', opacity: 1, "text-anchor": "middle" });
+                            var label = surface.text(x, y + 2, this.getNote(note, root, scale)).attr({ fontSize: '8px', opacity: 1, "text-anchor": "middle" });
                             markers.add(m, label);
                         }
                     }

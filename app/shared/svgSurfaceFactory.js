@@ -55,7 +55,6 @@
 		}
 
 		function setActiveControl(controlType) {
-			console.log('setActiveControl '  + controlType);
 
 			if(this.activeControl !== controlType) {
 				this.activeControl = controlType;
@@ -84,8 +83,6 @@
 		        surface = Snap('#svg-surface');
 		        surface.attr(instrument.attr);
 
-		        console.log('surface' + surface)
-		        console.log('surface g' + surface.g())
 
 		        Snap.load(instrument.path, function(f) {
 		            		            
@@ -110,7 +107,6 @@
 				        var markerY = instrument.markerY;
 				        var markerX = instrument.markerX.slice();  //create a COPY of the coords
 			            var fretMarkers = surface.g();
-			            console.log('hand ' + handedness);
 							
 							//reverse fret labels and flip fretboard for leftys
 			        	if(handedness == 'Left') {
@@ -133,7 +129,6 @@
 			        }
 
 			        groups.background = background;
-			        console.log('loadBackground done')
 		            resolve(true);
 		        });
 		    });

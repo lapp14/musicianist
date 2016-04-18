@@ -16,15 +16,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-cookies.js"></script>
 
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" type="text/css" href="ie7-and-down.css" />
+    <![endif]-->
+
+    <!--[if gt IE 8]><!--> <!--<![endif]--> 
+
 </head>
-<body ng-controller="mainController">
+<body ng-controller="mainController as app">
 
     <div class="header">
         <div class="brand"><a href="/">Musicianist</a></div>
         <div class="header-menu">
-            <a href="/scales/">Scales</a>
-            <a href="/chords/">Chords</a>
-            <a href="/circle-of-fifths/">Circle of Fifths</a>
+            <a ng-class="app.menuClass('scales')" href="/scales/">Scales</a>
+            <a ng-class="app.menuClass('chords')" href="/chords/">Chords</a>
+            <a ng-class="app.menuClass('circle-of-fifths')" href="/circle-of-fifths/">Circle of Fifths</a>
         </div>
     </div>
 
@@ -58,6 +64,7 @@
     <script src="/app/shared/values.js"></script>
     <script src="/app/components/scales/scalesController.js"></script>
     <script src="/app/components/scales/scalesFactory.js"></script>
+    <script src="/app/components/scales/instrumentModalDirective.js"></script>
 </body>
 </html>
 

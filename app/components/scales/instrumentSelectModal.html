@@ -1,0 +1,69 @@
+<div class="modal-dialog instrument-modal" ng-class="{'modal-show': Scales.modal == 'instrument'}">
+    <div class="modal-lg">        
+        <a href="" title="Close" class="modal-close" ng-click="Scales.modal = null">&#215;</a>
+        <h2>Instrument</h2>
+        
+        <ul class="tab-menu">
+            <li class="instrument-icon" ng-click="Scales.instrument.type = 'Guitar'" ng-class="{'active': Scales.instrument.type == 'Guitar'}">
+                <img src="/assets/svg/menu/main_guitar_o.svg" viewBox="0 0 100 100" alt="Guitar Scales"/> 
+            </li>
+            <li class="instrument-icon" ng-click="Scales.instrument.type = 'Bass Guitar'" ng-class="{'active': Scales.instrument.type == 'Bass Guitar'}">
+                <img src="/assets/svg/menu/main_bass_o.svg" viewBox="0 0 100 100" alt="Bass Guitar Scales"/>
+            </li>
+            <li class="instrument-icon" ng-click="Scales.instrument.type = 'Piano'" ng-class="{'active': Scales.instrument.type == 'Piano'}">
+                <img src="/assets/svg/menu/main_piano_o.svg" viewBox="0 0 100 100" alt="Piano Scales"/>
+            </li>
+        </ul>
+        <div class="content">
+            <!--<ul>
+                <li ng-hide="instrument.type == 'Piano'" ng-repeat="str in instrument.getInstrumentStrings()">{{str}}</li>
+            </ul>-->
+            
+            <div class="string-selection">
+                <ul>
+                    <li 
+                        ng-repeat="(key, val) in Scales.instrument.selectedTuning[Scales.instrument.type]"
+                        ng-click="Scales.instrument.setStrings(key)"
+                        ng-class="{'active': Scales.instrument.selectedStrings[Scales.instrument.type] == key}">
+                            {{key}}
+                    </li>
+                </ul>
+            </div>
+            <div class="instrument-selection">
+                <div class="instrument"
+                     ng-repeat="i in Scales.instrument.arr track by $index" 
+                     ng-show  ="i.type == Scales.instrument.type && (i.strings == Scales.instrument.selectedStrings[Scales.instrument.type] || i.strings == 0)" 
+                     ng-click ="Scales.setInstrument($index)"
+                     ng-class ="{'selected': $index == Scales.instrument.index }">
+                    
+                    <div class="shadow">
+                        <img src="{{i.instSelect.path}}" viewBox="i.instSelect.viewbox" ng-class="{ 'left-handed': Scales.instrument.handedness == 'Left' }"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="guitar-settings" ng-hide="Scales.instrument.type == 'Piano'">
+            <label for="tuning">Tuning</label>
+            <select 
+                name="tuning" 
+                class="select-lg" 
+                ng-model="Scales.instrument.selectedTuning[Scales.instrument.type][Scales.instrument.selectedStrings[Scales.instrument.type]]" 
+                ng-change="Scales.drawing.drawScale()">
+                    <option 
+                        value="{{key}}" 
+                        ng-show="val.type == Scales.instrument.type && val.strings == Scales.instrument.selectedStrings[Scales.instrument.type]"
+                        ng-repeat="(key, val) in Scales.JSONData.tunings">
+                        {{val.name}}
+                    </option>
+            </select>
+
+            <select name="handedness" ng-model="Scales.instrument.handedness" ng-change="Scales.drawing.reload()">
+                <option value="Right">Right-Handed</option>
+                <option value="Left">Left-Handed</option>
+            </select>
+        </div>
+
+    </div>
+</div>

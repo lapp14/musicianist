@@ -58,7 +58,6 @@ body {
 h1 {
     margin: 0 0 6px 0;
     font-weight: @weight-sm;
-    border-bottom: 1px solid @grey-light;
 }
 
 span.subtitle {
@@ -186,11 +185,12 @@ table tr td { padding-right: 6px; }
     color: @grey-light;    
 }
 
-div.surface-container { display: inline-block; position: relative; width: 100%; background-color: #fff; margin-bottom: 12px; }
+div.surface-container { display: inline-block; position: relative; width: 100%; background-color: #ffx; }
 div.surface-container:after { display: block; content: ''; }
-div.surface-container > div { padding: 12px; background: @container-bg; }
+div.surface-container > div { padding: 0 12px; background: @container-bg; }
 
 svg.scales {
+    width: 100%;
     min-height: 300px; 
     max-height: 600px;    
 }
@@ -216,7 +216,7 @@ svg.cursor-zoom {
     cursor: -webkit-zoom-in;
 }
 
-svg.cursor-grab:active {
+svg.cursor-grabbing {
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
@@ -264,13 +264,6 @@ svg:not(:root) {
 .instrument-icon.active {
 }
 
-.settings-panel .instrument-icon {
-    background: #fff;
-    margin: 12px;
-    width: 500px;
-    height: 175px;
-    padding: 15px;
-}
 
 .string-selection {
     float: left;
@@ -441,7 +434,8 @@ div.instrument-modal .guitar-settings {
 }
 
 .modal-dialog {
-    position: fixed;
+    display: none;
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
@@ -449,15 +443,16 @@ div.instrument-modal .guitar-settings {
     z-index: 9999;
     background: rgba(0,0,0,0.5);
 
-    opacity: 0;
+    /*opacity: 0;
     -webkit-transition: opacity 100ms ease-in;
     -moz-transition:    opacity 100ms ease-in;
-    transition:         opacity 100ms ease-in;
+    transition:         opacity 100ms ease-in;*/
     pointer-events: none;
 }
 
 .modal-show {
-    opacity: 1;
+    display: block;
+    /*opacity: 1;*/
     pointer-events: auto;
 }
 
@@ -590,28 +585,36 @@ div.settings-panel div.header i.edit:hover {
 }
 
 div.settings-panel div.content {
+    
     border-left: 1px solid @grey-md-light;
     border-top: 1px solid #111;
     border-right: 1px solid @grey-md-light;
     border-bottom: 1px solid @grey-md-light;
 }
 
-div.settings-panel div.content table {
-    border-spacing: 0 10px;
+div.settings-panel div.content .row {
+    background: #444;
+    margin: 6px 0;
+    padding: 6px 12px;
+    
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6d6d6d+1,313131+8,3a3a3a+46,313131+46,313131+93,777777+100 */
+background: rgb(109,109,109); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(109,109,109,1) 1%, rgba(49,49,49,1) 8%, rgba(58,58,58,1) 46%, rgba(49,49,49,1) 46%, rgba(49,49,49,1) 93%, rgba(119,119,119,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(109,109,109,1) 1%,rgba(49,49,49,1) 8%,rgba(58,58,58,1) 46%,rgba(49,49,49,1) 46%,rgba(49,49,49,1) 93%,rgba(119,119,119,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(109,109,109,1) 1%,rgba(49,49,49,1) 8%,rgba(58,58,58,1) 46%,rgba(49,49,49,1) 46%,rgba(49,49,49,1) 93%,rgba(119,119,119,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d6d6d', endColorstr='#777777',GradientType=0 ); /* IE6-9 */
+
 }
 
-div.settings-panel div.content table tr {
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b6b6b+0,545454+20,1c1c1c+93,383838+100 */
-background: rgb(107,107,107); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(107,107,107,1) 0%, rgba(84,84,84,1) 20%, rgba(28,28,28,1) 93%, rgba(56,56,56,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(107,107,107,1) 0%,rgba(84,84,84,1) 20%,rgba(28,28,28,1) 93%,rgba(56,56,56,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(107,107,107,1) 0%,rgba(84,84,84,1) 20%,rgba(28,28,28,1) 93%,rgba(56,56,56,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b6b6b', endColorstr='#383838',GradientType=0 ); /* IE6-9 */
-  
+.settings-panel .instrument-picture {
+    background: #eee;
+    margin: 6px 0;
+    padding: 12px;
 }
 
-div.settings-panel div.content table tr td{
-    padding: 4px 12px;  
+.settings-panel .instrument-picture img {
+    
+    width: 100%;    
 }
 
 

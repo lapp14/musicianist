@@ -10,7 +10,9 @@
 	function instrumentFactory(instruments) {
 
 		var type = 'Guitar';
-		var index = 0;
+		
+		var index = 1; //0 for default
+
 		var handedness = 'Right';
 		var selectedStrings = {
 			'Guitar': '6',
@@ -66,8 +68,6 @@
 		function setSelection(index) {
 			index = parseInt(index);
 			this.index = index;
-			console.log(index)
-			console.log(instruments[index])
 			this.type = instruments[index].type;
 		};	
 	}

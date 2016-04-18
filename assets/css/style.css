@@ -25,7 +25,6 @@ body {
 h1 {
   margin: 0 0 6px 0;
   font-weight: 300;
-  border-bottom: 1px solid #eee;
 }
 span.subtitle {
   font-size: 1.5em;
@@ -140,18 +139,18 @@ div.surface-container {
   display: inline-block;
   position: relative;
   width: 100%;
-  background-color: #fff;
-  margin-bottom: 12px;
+  background-color: #ffx;
 }
 div.surface-container:after {
   display: block;
   content: '';
 }
 div.surface-container > div {
-  padding: 12px;
+  padding: 0 12px;
   background: #eee;
 }
 svg.scales {
+  width: 100%;
   min-height: 300px;
   max-height: 600px;
 }
@@ -173,7 +172,7 @@ svg.cursor-zoom {
   cursor: -moz-zoom-in;
   cursor: -webkit-zoom-in;
 }
-svg.cursor-grab:active {
+svg.cursor-grabbing {
   cursor: grabbing;
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
@@ -209,13 +208,6 @@ svg:not(:root) {
 .instrument-icon img {
   width: 90px;
   height: 90px;
-}
-.settings-panel .instrument-icon {
-  background: #fff;
-  margin: 12px;
-  width: 500px;
-  height: 175px;
-  padding: 15px;
 }
 .string-selection {
   float: left;
@@ -360,21 +352,23 @@ div.instrument-modal .guitar-settings {
   color: #eee;
 }
 .modal-dialog {
-  position: fixed;
+  display: none;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 9999;
   background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  -webkit-transition: opacity 100ms ease-in;
-  -moz-transition: opacity 100ms ease-in;
-  transition: opacity 100ms ease-in;
+  /*opacity: 0;
+    -webkit-transition: opacity 100ms ease-in;
+    -moz-transition:    opacity 100ms ease-in;
+    transition:         opacity 100ms ease-in;*/
   pointer-events: none;
 }
 .modal-show {
-  opacity: 1;
+  display: block;
+  /*opacity: 1;*/
   pointer-events: auto;
 }
 .modal-dialog > .modal-sm {
@@ -492,24 +486,29 @@ div.settings-panel div.content {
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
-div.settings-panel div.content table {
-  border-spacing: 0 10px;
-}
-div.settings-panel div.content table tr {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6b6b6b+0,545454+20,1c1c1c+93,383838+100 */
-  background: #6b6b6b;
+div.settings-panel div.content .row {
+  background: #444;
+  margin: 6px 0;
+  padding: 6px 12px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6d6d6d+1,313131+8,3a3a3a+46,313131+46,313131+93,777777+100 */
+  background: #6d6d6d;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #6b6b6b 0%, #545454 20%, #1c1c1c 93%, #383838 100%);
+  background: -moz-linear-gradient(top, #6d6d6d 1%, #313131 8%, #3a3a3a 46%, #313131 46%, #313131 93%, #777777 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #6b6b6b 0%, #545454 20%, #1c1c1c 93%, #383838 100%);
+  background: -webkit-linear-gradient(top, #6d6d6d 1%, #313131 8%, #3a3a3a 46%, #313131 46%, #313131 93%, #777777 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #6b6b6b 0%, #545454 20%, #1c1c1c 93%, #383838 100%);
+  background: linear-gradient(to bottom, #6d6d6d 1%, #313131 8%, #3a3a3a 46%, #313131 46%, #313131 93%, #777777 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b6b6b', endColorstr='#383838', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6d6d6d', endColorstr='#777777', GradientType=0);
   /* IE6-9 */
 }
-div.settings-panel div.content table tr td {
-  padding: 4px 12px;
+.settings-panel .instrument-picture {
+  background: #eee;
+  margin: 6px 0;
+  padding: 12px;
+}
+.settings-panel .instrument-picture img {
+  width: 100%;
 }
 img.button {
   margin: -8.5px 0;
