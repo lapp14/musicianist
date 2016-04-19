@@ -11,7 +11,7 @@
 
 		var type = 'Guitar';
 		
-		var index = 1; //0 for default
+		var index = 3; //0 for default
 
 		var handedness = 'Right';
 		var selectedStrings = {

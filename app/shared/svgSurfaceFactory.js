@@ -116,13 +116,22 @@
 			        		}
 			        	}
 
-			            fretMarkers.append(surface.text(markerX[0], instrument.fretNumbers, 'Open').attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+			        	var textAttr = { fontSize: '12px', 
+										opacity: 1, 
+										"text-anchor": "middle", 
+										strokeWidth: 0.4,
+										'font-weight': 'bold',
+											strokeOpacity: .4,
+										stroke: '#fff', 
+										fill: '#000' };
+
+			            fretMarkers.append(surface.text(markerX[0], instrument.fretNumbers, 'Open').attr(textAttr));
 
 			            for(var i = 1, lim = markerX.length; i < lim; i++) {
 			            	var x = markerX[i];
 			            	var y = instrument.fretNumbers + instrument.fretNumberOffset * i;
 
-			                fretMarkers.append(surface.text(x, y, i).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+			                fretMarkers.append(surface.text(x, y, i).attr(textAttr));
 			            }
 
 			        	groups.fretMarkers = fretMarkers;

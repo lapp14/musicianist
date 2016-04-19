@@ -87,6 +87,8 @@
         function drawScale(scale, root, tuning) {
 
             var inst       = instrument.getCurrentInstrument();
+            console.log('inst ' + inst.markerY)
+            console.log(tuning)
             var handedness = instrument.handedness;
             var surface = svgSurface.getSurface();
             var background = svgSurface.getGroup().background;
