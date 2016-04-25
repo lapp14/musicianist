@@ -8,12 +8,13 @@
 	scalesController.$inject = ['$location', 'async', 'state', 'svgSurface', 'scales', 'instrument'];
 
 	function scalesController($location, async, state, svgSurface, scales, instrument){
+		var appLoaded = false;
 		var vm = this;
 
 		vm.JSONData = {};
 		vm.drawing = {};
 
-		vm.selection = scales.selection;
+		vm.state = state;
 		vm.instrument = instrument;
 		vm.svgSurface = svgSurface;
 
@@ -22,6 +23,12 @@
 			
 		vm.setInstrument = setInstrument;
 		vm.getCurrentTuningNotes = getCurrentTuningNotes;
+		
+		vm.scale = {
+			getTitle: 	 getScaleTitle,
+			getSubtitle: getScaleSubtitle
+		};
+
 		vm.drawing.drawScale = drawScale;
 		vm.drawing.reload = reload;
 		vm.action = action; //testing only
@@ -43,24 +50,28 @@
 
 
 		function drawScale() {
-			var scale      	= vm.JSONData.scales[scales.selection.scale];
-			var tonic      	= parseInt(scales.selection.tonic);
+			var scale      	= vm.JSONData.scales[state.scale];
+			var tonic      	= parseInt(state.tonic);
 			var tuningIndex = vm.instrument.getCurrentTuning();
 			var tuning     	= vm.instrument.type == 'Piano' ? null : vm.JSONData.tunings[tuningIndex];
 
 			scales.drawScale(scale, tonic,  tuning);
 			vm.scaleNotes = scales.getNotesString(scale, tonic);
+
+			if(appLoaded) {
+				state.writeCookie();
+			}
+
+			appLoaded = true;
 		};
 
 		function setInstrument(index) {
-			var i = vm.instrument;		
-			vm.instrument.setSelection(index || 0);
-			svgSurface.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);
+			instrument.setSelection(index || 0);
+			svgSurface.loadBackground(instrument.getCurrentInstrument(), state.handedness).then(drawScale);
 		}
 
-		function reload() {
-			var i = vm.instrument;
-			svgSurface.loadBackground(i.getCurrentInstrument(), i.handedness).then(drawScale);	
+		function reload() {			
+			svgSurface.loadBackground(instrument.getCurrentInstrument(), state.handedness).then(drawScale);	
 		}
 
 		function start() {
@@ -83,6 +94,20 @@
 			}
 
 			return string;
+		}
+
+		function getScaleTitle() {
+			if(vm.JSONData.scales) {
+				var s = vm.JSONData.scales[state.scale];
+				return s.h1 || s.name;
+			}
+		}
+
+		function getScaleSubtitle() {
+			if(vm.JSONData.scales) {
+				var s = vm.JSONData.scales[state.scale];
+				return s.h2 || '';
+			}
 		}
 
 		function action() {

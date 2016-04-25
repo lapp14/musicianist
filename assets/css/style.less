@@ -60,6 +60,8 @@ h1 {
     font-weight: @weight-sm;
 }
 
+h1.inline-block { display: inline-block }
+
 span.subtitle {
     font-size: 1.5em;
     font-weight: @weight-sm;
@@ -107,6 +109,10 @@ img.button:hover {
     cursor: pointer;
 }
 
+.hover-pointer {
+    cursor: pointer;   
+}
+
 table tr td { padding-right: 6px; }
 
 .container {
@@ -114,7 +120,6 @@ table tr td { padding-right: 6px; }
     width: 96%;
     margin: 0 auto;
     top: 0px;
-
     border-top: 0;
 }
 
@@ -123,6 +128,32 @@ table tr td { padding-right: 6px; }
     box-shadow: 4px 4px 20px darken(@grey-dark, 20%);
     -moz-box-shadow: 4px 4px 20px darken(@grey-dark, 20%);
     -webkit-box-shadow: 4px 4px 20px darken(@grey-dark, 20%);
+}
+
+div.cookies {
+    position: relative;
+    z-index: 8888;
+}
+
+div.cookies div {
+    background: @grey-md-light;
+    position: fixed;
+    bottom: 0; 
+    right: 0;
+    margin: 0 auto;
+    padding: 3px 20px;
+    font-size: 0.8em;
+}
+
+div.cookies a {
+    margin-left: 18px;  
+}
+
+div.cookies a.hide {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: @grey-dark;
+    text-decoration: none;
 }
 
 .pull-right {
@@ -240,11 +271,16 @@ svg:not(:root) {
 
 .zoom-pan-control i {
     display: inline-block;
-    color: @grey-dark;
-    text-decoration: none;
-    font-size: 1.2em;
     padding: 3px 6px;
     margin-bottom: 12px;
+    text-decoration: none;
+    font-size: 1.4em;  
+    color: @grey-dark;
+    border: 1px solid @grey-light;
+}
+
+.zoom-pan-control i:active {
+    color: @grey-md;
 }
 
 .zoom-pan-control i.active {
@@ -356,6 +392,10 @@ svg:not(:root) {
 
 div.string-selection {
     float: left;   
+}
+
+div.instrument-modal {
+ color: @grey-light;   
 }
 
 div.instrument-modal .instrument {

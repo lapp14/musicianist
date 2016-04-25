@@ -9,13 +9,12 @@
 	
 	function zoomPanDirective($document, svgSurface) {
 
-		var startX = 0, startY = 0, x = 0, y = 0;
-		var startZoom = 1, zoom = 1;
+		var svg = svgSurface.zoomPan;
+		var offset = 1;
 		var mouse = {
 			x: -1,
 			y: -1
 		}
-		var offset = 1;
 
 		return {
 			link: zoomPan
@@ -58,11 +57,11 @@
 				mouse.y = event.pageY;
 
 				//init pan whether its zoom or pan
-				startX = event.pageX - x;
-				startY = event.pageY - y;
+				svg.startX = event.pageX - svg.x;
+				svg.startY = event.pageY - svg.y;
 
 				if(svgSurface.activeControl === 'zoom') {		
-					startZoom = zoom;
+					svg.startZoom = svg.zoom;
 				} 
 
 				$document.on('mousemove', mousemove);
@@ -72,13 +71,22 @@
 
 			function mousemove(event) {
 				if(svgSurface.activeControl === 'pan') {
-					y = event.pageY - startY;
-					x = event.pageX - startX;
+					svg.y = event.pageY - svg.startY;
+					svg.x = event.pageX - svg.startX;
 				} else if (svgSurface.activeControl === 'zoom') {
-					zoom = ((event.pageY - mouse.y) / 100) + startZoom;
 
-					var offsetX = -(mouse.x * zoom);
-					var offsetY = -(mouse.y * zoom);
+					svg.zoom = -((event.pageY - mouse.y) / 100) + svg.startZoom;
+					
+					// min 0.35, max 4.0
+					if(svg.zoom < 0.35) {
+						svg.zoom = 0.35;
+					} else if(svg.zoom > 4.0) {
+						svg.zoom = 4;
+					}
+
+
+					var offsetX = -(mouse.x * svg.zoom);
+					var offsetY = -(mouse.y * svg.zoom);
 
 					//y = startY - offsetY;
 					//x = startX - offsetX;
@@ -86,9 +94,7 @@
 					//console.log('pagey ' + event.pageY + ', startZoom ' + startZoom + ', zoom ' + zoom);
 				}
 
-				var s = svgSurface.getGroup('transformGroup');
-				var trans = 's' + zoom + ',' + zoom + 't' + (x / offset / zoom) + ',' + (y / offset / zoom);
-				s.transform(trans);
+				transform();
 			}
 
 			function mouseup() {
@@ -99,6 +105,12 @@
 
 				$document.off('mousemove', mousemove);
 				$document.off('mouseup', mouseup);
+			}
+
+			function transform() {
+				var s = svgSurface.getGroup('transformGroup');
+				var trans = 's' + svg.zoom + ',' + svg.zoom + 't' + (svg.x / offset / svg.zoom) + ',' + (svg.y / offset / svg.zoom);
+				s.transform(trans);
 			}
 		}
 	};

@@ -26,6 +26,9 @@ h1 {
   margin: 0 0 6px 0;
   font-weight: 300;
 }
+h1.inline-block {
+  display: inline-block;
+}
 span.subtitle {
   font-size: 1.5em;
   font-weight: 300;
@@ -73,6 +76,9 @@ a.button:hover {
 img.button:hover {
   cursor: pointer;
 }
+.hover-pointer {
+  cursor: pointer;
+}
 table tr td {
   padding-right: 6px;
 }
@@ -88,6 +94,28 @@ table tr td {
   box-shadow: 4px 4px 20px #000000;
   -moz-box-shadow: 4px 4px 20px #000000;
   -webkit-box-shadow: 4px 4px 20px #000000;
+}
+div.cookies {
+  position: relative;
+  z-index: 8888;
+}
+div.cookies div {
+  background: #ccc;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 3px 20px;
+  font-size: 0.8em;
+}
+div.cookies a {
+  margin-left: 18px;
+}
+div.cookies a.hide {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
 }
 .pull-right {
   float: right;
@@ -192,11 +220,15 @@ svg:not(:root) {
 }
 .zoom-pan-control i {
   display: inline-block;
-  color: #333;
-  text-decoration: none;
-  font-size: 1.2em;
   padding: 3px 6px;
   margin-bottom: 12px;
+  text-decoration: none;
+  font-size: 1.4em;
+  color: #333;
+  border: 1px solid #eee;
+}
+.zoom-pan-control i:active {
+  color: #777;
 }
 .zoom-pan-control i.active {
   background-color: #bf5;
@@ -290,6 +322,9 @@ svg:not(:root) {
 }
 div.string-selection {
   float: left;
+}
+div.instrument-modal {
+  color: #eee;
 }
 div.instrument-modal .instrument {
   display: inline-block;

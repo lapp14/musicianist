@@ -3,17 +3,11 @@
 
     angular
         .module('musicianist')
-        .factory('scales', ['notes', 'instrument', 'svgSurface', scalesFactory]);
+        .factory('scales', ['notes', 'instrument', 'state', 'svgSurface', scalesFactory]);
 
-    function scalesFactory(notes, instrument, svgSurface) {
-
-        var selection = {
-            scale: '0',
-            tonic: '0'
-        }
+    function scalesFactory(notes, instrument, state, svgSurface) {
 
         var service =  {
-            selection: selection,
             getNote: getNote,
             getNotesString: getNotesString,
             isNoteInKey: isNoteInKey,

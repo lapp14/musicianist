@@ -43,6 +43,8 @@
 
     {
         "name": "Melodic Minor (Ascending)",
+        "h1": "Melodic Minor",
+        "h2": "(Ascending)",
         "steps": ["1", "2", "3b", "4", "5", "6", "7"],
         "halfSteps": [0, 2, 3, 5, 7, 9, 11], 
         "defaults": ["#", "#", "#", "b", "#", "b", "b", "b", "b", "#", "b", "#"],
@@ -51,6 +53,8 @@
 
     {
         "name": "Melodic Minor (Descending)",
+        "h1": "Melodic Minor",
+        "h2": "(Descending)",
         "steps": ["1", "2", "3b", "4", "5", "6b", "7b"],
         "halfSteps": [0, 2, 3, 5, 7, 8, 10], 
         "defaults": ["#", "#", "#", "b", "#", "b", "b", "b", "b", "#", "b", "b"],
@@ -102,6 +106,14 @@
         "name": "Lydian",
         "steps": ["1", "2", "3", "#4", "5", "6", "7"],
         "halfSteps": [0, 2, 4, 6, 7, 9, 11], 
+        "defaults": ["#", "#", "#", "b", "#", "b", "b", "#", "b", "#", "b", "#"],
+        "infoUrl": ""
+    },
+
+    {
+        "name": "Lydian Dominant",
+        "steps": ["1", "2", "3", "#4", "5", "6", "b7"],
+        "halfSteps": [0,2,4,6,7,9,10], 
         "defaults": ["#", "#", "#", "b", "#", "b", "b", "#", "b", "#", "b", "#"],
         "infoUrl": ""
     },

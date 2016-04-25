@@ -10,17 +10,19 @@
 		var surface = null;
 		var groups = {};
 
+		var startX = 0, startY = 0, x = 0, y = 0;
+		var startZoom = 1, zoom = 1;
+		
 		var service = {
 			activeControl: activeControl,
 
-			//refactor these
-			startZoom: 1,
-			zoom: 1,
-			pan: {
-				startX: 0,
-				startY: 0,
-				x: 0,
-				y: 0
+			zoomPan: {
+				startX: 	startX,
+				startY: 	startY,
+				x: 			x,
+				y: 			y,
+				startZoom: 	startZoom,
+				zoom: 		zoom
 			},
 
 			setActiveControl: setActiveControl,
@@ -64,10 +66,13 @@
 		};
 		
 		function resetZoomPan() {
-			this.zoom = 1;
-			this.startZoom = 1;
-			this.pan.x = this.pan.y = 0;
-			core.svg.group.transform("s" + this.zoom + "," + this.zoom + "t" + this.pan.x + "," + this.pan.y);
+			service.zoomPan.startX = 0;
+			service.zoomPan.startY = 0;
+			service.zoomPan.x = 0;
+			service.zoomPan.y = 0;
+			service.zoomPan.startZoom = 1;
+			service.zoomPan.zoom = 1;			
+			getGroup('transformGroup').transform('s1,1t0,0');
 		};
 
 		//Takes an 'Instrument' object from instrument value
@@ -118,10 +123,10 @@
 
 			        	var textAttr = { fontSize: '12px', 
 										opacity: 1, 
-										"text-anchor": "middle", 
+										'text-anchor': 'middle', 
 										strokeWidth: 0.4,
 										'font-weight': 'bold',
-											strokeOpacity: .4,
+										strokeOpacity: .4,
 										stroke: '#fff', 
 										fill: '#000' };
 

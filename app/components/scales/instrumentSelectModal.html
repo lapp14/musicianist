@@ -4,13 +4,13 @@
         <h2>Instrument</h2>
         
         <ul class="tab-menu">
-            <li class="instrument-icon" ng-click="Scales.instrument.type = 'Guitar'" ng-class="{'active': Scales.instrument.type == 'Guitar'}">
+            <li class="instrument-icon hover-pointer" ng-click="Scales.state.type = 'Guitar'" ng-class="{'active': Scales.state.type == 'Guitar'}">
                 <img src="/assets/svg/menu/main_guitar_o.svg" viewBox="0 0 100 100" alt="Guitar Scales"/> 
             </li>
-            <li class="instrument-icon" ng-click="Scales.instrument.type = 'Bass Guitar'" ng-class="{'active': Scales.instrument.type == 'Bass Guitar'}">
+            <li class="instrument-icon hover-pointer" ng-click="Scales.state.type = 'Bass Guitar'" ng-class="{'active': Scales.state.type == 'Bass Guitar'}">
                 <img src="/assets/svg/menu/main_bass_o.svg" viewBox="0 0 100 100" alt="Bass Guitar Scales"/>
             </li>
-            <li class="instrument-icon" ng-click="Scales.instrument.type = 'Piano'" ng-class="{'active': Scales.instrument.type == 'Piano'}">
+            <li class="instrument-icon hover-pointer" ng-click="Scales.state.type = 'Piano'" ng-class="{'active': Scales.state.type == 'Piano'}">
                 <img src="/assets/svg/menu/main_piano_o.svg" viewBox="0 0 100 100" alt="Piano Scales"/>
             </li>
         </ul>
@@ -22,9 +22,9 @@
             <div class="string-selection">
                 <ul>
                     <li 
-                        ng-repeat="(key, val) in Scales.instrument.selectedTuning[Scales.instrument.type]"
+                        ng-repeat="(key, val) in Scales.state.selectedTuning[Scales.state.type]"
                         ng-click="Scales.instrument.setStrings(key)"
-                        ng-class="{'active': Scales.instrument.selectedStrings[Scales.instrument.type] == key}">
+                        ng-class="{'active': Scales.state.selectedStrings[Scales.state.type] == key}">
                             {{key}}
                     </li>
                 </ul>
@@ -32,12 +32,12 @@
             <div class="instrument-selection">
                 <div class="instrument"
                      ng-repeat="i in Scales.instrument.arr track by $index" 
-                     ng-show  ="i.type == Scales.instrument.type && (i.strings == Scales.instrument.selectedStrings[Scales.instrument.type] || i.strings == 0)" 
+                     ng-show  ="i.type == Scales.state.type && (i.strings == Scales.state.selectedStrings[Scales.state.type] || i.strings == 0)" 
                      ng-click ="Scales.setInstrument($index)"
-                     ng-class ="{'selected': $index == Scales.instrument.index }">
+                     ng-class ="{'selected': $index == Scales.instrument.getInstrumentIndex() }">
                     
                     <div class="shadow">
-                        <img src="{{i.instSelect.path}}" viewBox="i.instSelect.viewbox" ng-class="{ 'left-handed': Scales.instrument.handedness == 'Left' }"/>
+                        <img class="hover-pointer" src="{{i.instSelect.path}}" viewBox="i.instSelect.viewbox" ng-class="{ 'left-handed': Scales.state.handedness == 'Left' }"/>
                     </div>
                 </div>
             </div>
@@ -49,17 +49,17 @@
             <select 
                 name="tuning" 
                 class="select-lg" 
-                ng-model="Scales.instrument.selectedTuning[Scales.instrument.type][Scales.instrument.selectedStrings[Scales.instrument.type]]" 
+                ng-model="Scales.state.selectedTuning[Scales.state.type][Scales.state.selectedStrings[Scales.state.type]]" 
                 ng-change="Scales.drawing.drawScale()">
                     <option 
                         value="{{key}}" 
-                        ng-show="val.type == Scales.instrument.type && val.strings == Scales.instrument.selectedStrings[Scales.instrument.type]"
+                        ng-show="val.type == Scales.state.type && val.strings == Scales.state.selectedStrings[Scales.state.type]"
                         ng-repeat="(key, val) in Scales.JSONData.tunings">
                         {{val.name}}
                     </option>
             </select>
 
-            <select name="handedness" ng-model="Scales.instrument.handedness" ng-change="Scales.drawing.reload()">
+            <select name="handedness" ng-model="Scales.state.handedness" ng-change="Scales.drawing.reload()">
                 <option value="Right">Right-Handed</option>
                 <option value="Left">Left-Handed</option>
             </select>

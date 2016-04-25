@@ -5,50 +5,64 @@
 		.module('musicianist')
 		.factory('state', stateFactory);
 
-	function stateFactory() {
-		var selection = {
-			instrument: 'Guitar',			
-			strings: {
-				'Guitar': '6',
-				'Bass Guitar': '4',
-				'Piano': '0'
-			},
-			tuning: {
-				'Guitar': {
-					'6': '0',
-					'7': '5',
-					'8': '7'
-				},
-				'Bass Guitar': {
-					'4': '8',
-					'5': '9',
-					'6': '10'
-				},
-				'Piano': null
-			}
+	stateFactory.$inject = ['$cookies'];
+
+	function stateFactory($cookies) {
+
+		var consent = $cookies.get('consent');
+		var s = $cookies.getObject('state') || {};
+
+		console.log('crap ' +s.index)
+		
+		var type =  s.type || 'Guitar';		
+		var index = s.index || 0; //0 for default
+		var handedness 	= s.handedness || 'Right';
+
+		var selectedStrings = s.selectedStrings  || {
+			'Guitar': '6',
+			'Bass Guitar': '4',
+			'Piano': '0'
 		};
 
-		var model = {
-			instrument: {
-				index: 		0,
-				type: 		'Guitar',
-				strings: 	'6',
-				tuning: 	'0'
+		var selectedTuning = s.selectedTuning || {
+			'Guitar': {
+				'6': '0',
+				'7': '5',
+				'8': '7'
+			},
+			'Bass Guitar': {
+				'4': '8',
+				'5': '9',
+				'6': '10'
 			},
 
-			scale: {	
-				index: 	'0',
-				tonic: 	'0'
-			},
-
-			hand: 		'Right'
+			'Piano': null
 		};
 
+
+		var scale = s.scale || '0';
+        var tonic = s.tonic || '0';
+		
 		var service = {
-			selection: selection,
-			model: model
-		};
+			type: type,
+			index: index,
+			handedness: handedness,
+			selectedStrings: selectedStrings,
+			selectedTuning: selectedTuning,
+			scale: scale,
+			tonic: tonic,
+			writeCookie: writeCookie
+		}
 
+		function writeCookie() {
+			if($cookies.get('consent')) {
+				$cookies.putObject('state', service);
+				console.log('s.index ' + s.index);
+				console.log('service.index ' + service.index);
+				console.log('writing cookie');
+			}
+		}
+		
 		return service;
 	};
 
