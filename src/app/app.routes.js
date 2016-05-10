@@ -25,7 +25,8 @@
 
 		.when('/circle-of-fifths', {
 			templateUrl : 'app/components/circle-of-fifths/circle-of-fifths.html',
-			controller  : null
+			controller  : 'circleCtrl',
+			controllerAs: 'Circle'
 		});
 
 		$locationProvider.html5Mode(true);

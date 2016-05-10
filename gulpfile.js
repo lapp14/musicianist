@@ -10,15 +10,9 @@ var cssnano 	= require('gulp-cssnano');
 //var browserSync = require('browser-sync').create();
 
 gulp.task('watch', function() {
-	gulp.watch('assets/less/**/*.less', ['less']);
+	gulp.watch('src/assets/less/**/*.less', ['less']);
 });
 
-gulp.task('connect', function() {
-	connect.server({
-		root: 'public',
-		port: 80
-	});
-});
 
 gulp.task('hello', function() {
 	console.log('Hello!');
