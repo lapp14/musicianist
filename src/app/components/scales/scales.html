@@ -1,77 +1,74 @@
+
 <div class="container">
-<div class="title-header">
-    <div class="main-text">
-        <span class="scale">{{Scales.JSONData.tonics[Scales.state.tonic]}} {{Scales.scale.getTitle()}}</span> {{Scales.scale.getSubtitle()}}<br/>
-        <span class="notes">{{Scales.scaleNotes}}</span>
-    </div>
+    <div class="row">
+        <div class="col col-12">
+            <div class="panel">
 
-    <div class="surface-container">
-        <div>
-            <svg zoom-pan
-                class="scales select-disable" 
-                id="svg-surface" 
-                preserveAspectRatio="xMidYMid meet">
-            </svg>
+                <div class="scale-info">
+                    <span class="scale">{{Scales.JSONData.tonics[Scales.state.tonic]}} {{Scales.scale.getTitle()}}</span> {{Scales.scale.getSubtitle()}}<br/>
+                    <span class="notes">{{Scales.scaleNotes}}</span>
+                </div>
+
+                <svg zoom-pan
+                    class="scales select-disable" 
+                    id="svg-surface" 
+                    preserveAspectRatio="xMidYMid meet">
+                </svg>
+
+                <div class="zoom-pan-control">
+                    <i class="fa fa-arrows-alt hover-pointer" ng-click="Scales.svgSurface.resetZoomPan()"></i>
+                    <i class="fa fa-search hover-pointer" ng-click="Scales.svgSurface.setActiveControl('zoom')" ng-class="{'active': Scales.svgSurface.activeControl == 'zoom'}"></i>
+                    <i class="fa fa-hand-paper-o hover-pointer" ng-click="Scales.svgSurface.setActiveControl('pan')" ng-class="{'active': Scales.svgSurface.activeControl == 'pan'}"></i>
+                </div>
+
+            </div>
         </div>
-    </div>
-
-    <div class="zoom-pan-control">
-        <i class="fa fa-arrows-alt hover-pointer" ng-click="Scales.svgSurface.resetZoomPan()"></i>
-        <i class="fa fa-search hover-pointer" ng-click="Scales.svgSurface.setActiveControl('zoom')" ng-class="{'active': Scales.svgSurface.activeControl == 'zoom'}"></i>
-        <i class="fa fa-hand-paper-o hover-pointer" ng-click="Scales.svgSurface.setActiveControl('pan')" ng-class="{'active': Scales.svgSurface.activeControl == 'pan'}"></i>
     </div>
 </div>
 
-<div class="container-options">    
-    <div class="settings-panel settings-panel-instrument div-inline">
-        <div class="header">
-            <span>
-                <img src="/assets/img/guitar-128-2.png" alt="Scale"/>
-            </span>
-            Instrument
-            <i class="edit fa fa-gear" ng-click="Scales.modal = 'instrument'"></i>
-        </div>
-        <div class="content">
-            <div class="row">
+<div class="container container-fixed">
+    <div class="row">
+        <div class="col col-6">
+            <div class="panel">
+
+                <div class="header">Instrument <i class="edit fa fa-gear" ng-click="Scales.modal = 'instrument'"></i></div>
                 {{Scales.instrument.arr[Scales.state.index].strings}} String
                 <span class="pull-right">
                     {{Scales.JSONData.tunings[Scales.instrument.getCurrentTuning()].name.replace('Tuning', '')}} Tuning ({{Scales.getCurrentTuningNotes()}})
                 </span>
-            </div>
-            <div class="instrument-picture hover-pointer" ng-click="Scales.modal = 'instrument'">
-                <img ng-class="{'left-handed': Scales.state.handedness == 'Left'}" 
-                    src="{{Scales.instrument.getCurrentInstrument().instPanel.path}}" 
-                    viewBox="{{Scales.instrument.getCurrentInstrument().instPanel.viewBox}}"
-                />
-            </div>                    
-        </div>
-    </div>
 
-    <div class="settings-panel div-inline">
-        <div class="header">
-            <span><img src="/assets/img/musicfile-128.png" alt="Scale"/></span>
-            Scale
+                <div class="instrument-picture hover-pointer" ng-click="Scales.modal = 'instrument'">
+                    <img ng-class="{'left-handed': Scales.state.handedness == 'Left'}" 
+                        src="{{Scales.instrument.getCurrentInstrument().instPanel.path}}" 
+                        viewBox="{{Scales.instrument.getCurrentInstrument().instPanel.viewBox}}"
+                    />
+                </div>      
+
+
+            </div>
         </div>
-        <div class="content">
-            <div class="row">
+        <div class="col col-6">
+            <div class="panel">
+                <div class="header">Scale</div>
+
                 <select name="tonic" class="select-sm" ng-model="Scales.state.tonic" ng-change="Scales.drawing.drawScale()">
                     <option value="{{key}}" ng-repeat="(key, val) in Scales.JSONData.tonics">{{val}}</option>  
                 </select>
                 <select name="scale" class="select-lg" ng-model="Scales.state.scale" ng-change="Scales.drawing.drawScale()">     
                     <option value="{{key}}" ng-repeat="(key, val) in Scales.JSONData.scales">{{val.name}}</option>                           
                 </select>
-            </div>
-            <div class="row">
+
                 <div ng-mouseover="Scales.tooltip = 'scale'" ng-mouseout="Scales.tooltip = null">
                     <h1 class="inline-block">{{Scales.scale.getTitle()}} Scale</h1> {{Scales.scale.getSubtitle()}}<br/>
                     <span class="subtitle" ng-repeat="pitch in Scales.JSONData.scales[Scales.state.scale].steps">{{pitch + ' '}}</span>
                 </div>
+
             </div>
-    
         </div>
     </div>
+</div>
 
-</div>
-</div>
+
+
 
 <div instrument-modal></div>

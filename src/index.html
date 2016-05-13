@@ -7,9 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <base href="/">
 
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+    <!--
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    -->
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/page-layout.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/scales.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/modal.css">
+
 
     <!-- AngularJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
@@ -25,56 +38,127 @@
 </head>
 <body ng-controller="mainController as app">
 
-    <div class="header">
-        <div class="brand"><a href="/">Musicianist</a></div>
-        <div class="header-menu">
-            <a ng-class="app.menuClass('scales')" href="/scales/">Scales</a>
-            <a ng-class="app.menuClass('chords')" href="/chords/">Chords</a>
-            <a ng-class="app.menuClass('circle-of-fifths')" href="/circle-of-fifths/">Circle of Fifths</a>
-        </div>
+    <div class="nav">
+        <a class="brand" href="/">Musicianist</a>
+        <ul class="navbar navbar-right">
+            <li><a ng-class="app.menuClass('scales')" href="/scales/">Scales</a></li>
+            <li><a ng-class="app.menuClass('chords')" href="/chords/">Chords</a></li>
+            <li><a ng-class="app.menuClass('circle-of-fifths')" href="/circle-of-fifths/">Circle of Fifths</a></li>
+        </ul>
     </div>
- 
-    <div cookies></div>
-    <div ng-view></div>
+
+
+    <div class="content">
+        <div ng-view></div>
+    </div>
+
+
+    <!--
+        <div class="container">
+            <div class="row">
+                <div class="col col-12">
+                    <div class="panel">
+                        <div class="main-panel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container container-fixed"> 
+            
+            <div class="row">
+                <div class="col col-6">
+                    <div class="panel">
+                        <div class="header">Title</div>
+
+                        <button onclick="m.play()">Test</button>
+                        asdasd<br/>
+                        asd<br/>
+                    </div>
+                    <div class="panel">
+                        PanelPanel<br/>
+                        asd<br/>
+                    </div>
+                </div>
+
+
+                <div class="col col-6">
+                    <div class="panel">
+                        <div class="header">Title</div>
+                        asd<br/>
+                        asd<br/>
+                        asd<br/>
+                        asd<br/>
+                        asd<br/>
+                        asd<br/>
+                        asd<br/>
+                        asd
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        -->
+
+
+
 
 
     <div class="footer">
-        <div class="footer-content">
-            <a href="javascript:(function(){document.body.innerHTML+=%22<style>*{background:%20#000%20!important;color:%20#0f0%20!important;outline:%20solid%20#f00%201px%20!important;}</style>%22;})();">ghost</a>
-            <br/>
+        <a href="javascript:(function(){document.body.innerHTML+=%22<style>*{background:%20#000%20!important;color:%20#0f0%20!important;outline:%20solid%20#f00%201px%20!important;}</style>%22;})();">ghost</a>
+        <br/>
 
-            <script>
-                var convertScale = function() {
-                    var arr = document.getElementById('convert').value.split(' ');
+        <script>
+            var convertScale = function() {
+                var arr = document.getElementById('convert').value.split(' ');
 
-                    var res = [0, 2, 4, 5, 7, 9, 11];
+                var res = [0, 2, 4, 5, 7, 9, 11];
 
-                    for(var i = 0; i < res.length; i++) {
-                        var t = arr[i];
-                        if(t.indexOf('b') >= 0) {
-                            res[i] -= 1;
-                        }
-
-                        if(t.indexOf('#') >= 0) {
-                            res[i] += 1;
-                        }
+                for(var i = 0; i < res.length; i++) {
+                    var t = arr[i];
+                    if(t.indexOf('b') >= 0) {
+                        res[i] -= 1;
                     }
- 
-                    document.getElementById('result').value = res;
+
+                    if(t.indexOf('#') >= 0) {
+                        res[i] += 1;
+                    }
                 }
-            </script>
 
-            <div>
-                <label for="convert">Convert</label>
-                <input id="convert" name="convert" type="textfield" value="1 2 3 4 5 6 7"/> <button onclick="convertScale()">asd</button>
-                <br/>
-                <label for="result">Result</label>
-                <input id="result" name="result" type="textfield"/>
-            </div>
+                document.getElementById('result').value = res;
+            }
+        </script>
 
-
+        <div>
+            <label for="convert">Convert</label>
+            <input id="convert" name="convert" type="textfield" value="1 2 3 4 5 6 7"/> <button onclick="convertScale()">asd</button>
+            <br/>
+            <label for="result">Result</label>
+            <input id="result" name="result" type="textfield"/>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- -->
+
+    
+ 
+    <div cookies></div>
 
     <!--build:js js/lib.js -->
     <script src="/assets/lib/snap/snap.svg.js"></script>

@@ -1,0 +1,220 @@
+html, body { 
+	height: 100%; 
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	background: #333; 
+}
+
+h1 {
+	font-weight: 100;
+	border-bottom: 1px solid #333;
+	color: #333;
+	line-height: 1em;
+}
+
+div.nav {    	
+	position: relative;
+	overflow: hidden; /* Clearfix */
+	/*background: #333;*/
+	border-bottom: 1px solid #ccc;
+	color: #eee; 
+
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#555555+0,333333+64 */
+	background: rgb(85,85,85); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzU1NTU1NSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY0JSIgc3RvcC1jb2xvcj0iIzMzMzMzMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(top,  rgba(85,85,85,1) 0%, rgba(51,51,51,1) 64%); /* FF3.6-15 */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(85,85,85,1)), color-stop(64%,rgba(51,51,51,1))); /* Chrome4-9,Safari4-5 */
+	background: -webkit-linear-gradient(top,  rgba(85,85,85,1) 0%,rgba(51,51,51,1) 64%); /* Chrome10-25,Safari5.1-6 */
+	background: -o-linear-gradient(top,  rgba(85,85,85,1) 0%,rgba(51,51,51,1) 64%); /* Opera 11.10-11.50 */
+	background: -ms-linear-gradient(top,  rgba(85,85,85,1) 0%,rgba(51,51,51,1) 64%); /* IE10 preview */
+	background: linear-gradient(to bottom,  rgba(85,85,85,1) 0%,rgba(51,51,51,1) 64%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#555555', endColorstr='#333333',GradientType=0 ); /* IE6-8 */
+}
+
+div.nav a.brand {
+	float: left;
+	font-size: 24px;
+	font-weight: 300;
+	padding: 10px 25px;
+	color: #eee;
+	text-decoration: none;
+}
+
+ul.navbar { 
+	text-align: justify;
+	float: left;
+}
+
+ul.navbar:after {
+	content: '';
+}
+
+ul.navbar li {
+	display: inline;	
+	margin: 0;
+	list-style: none;	
+} 
+
+ul.navbar li a {
+	color: #eee;
+	padding: 16px;
+	text-decoration: none;
+}
+
+ul.navbar li a:hover {
+	background: #555;
+}
+
+ul.navbar-right {
+	float: right !important;
+	margin-right: 25px;
+}
+
+div.footer {
+	background: #333;
+	border-top: 6px solid #eee;
+	min-height: 200px;
+}
+
+
+/** Content **/
+div.content {
+	background:  #2777AD; 
+	min-height: 65%;
+	overflow-x: auto;	
+}
+
+div.container {
+	box-sizing: border-box;
+	padding: 8px 12px;
+	margin: 0 auto;
+}
+
+div.container-fixed {
+	width: auto;
+}
+
+/** Tablets **/
+@media(min-width: 768px) {
+	/*div.container-fixed {
+		width: 750px;
+	}*/
+}
+
+/** Small Desktop screens **/
+@media(min-width: 992px) {
+	div.container-fixed {
+		width: 970px;
+	}
+}
+
+/** Large Desktop screens **/
+@media(min-width: 1200px) {
+	div.container-fixed {
+		width: 1170px;
+	}
+}
+
+
+div.panel {
+	border-radius: 4px;
+	padding: 12px;
+	margin-bottom: 12px;
+	border: 1px solid #444;
+	background: #eee;
+}
+
+div.panel div.header {
+	font-size: 1.2em;
+	border-bottom: 1px solid #444;
+	margin-bottom: 12px;
+}
+
+.panel:before, .panel:after { content: ""; display: table; clear: both; } 
+
+div.main-panel {
+	min-height: 500px;
+}
+
+/** Scaffolding **/
+.row, .col { box-sizing: border-box; }
+
+.row { margin: 0 -12px; }
+.row:before, .row:after { content: ""; display: table; clear: both; }
+
+.col { float: left; padding: 0 12px; }
+
+.col-1  { width:  8.333333333%; } 
+.col-2  { width: 16.666666667%; }
+.col-3  { width: 25%; }
+.col-4  { width: 33.333333333%; }
+.col-5  { width: 41.666666667%; }
+.col-6  { width: 50%; }
+.col-7  { width: 58.333333333%; }
+.col-8  { width: 66.666666667%; }
+.col-9  { width: 75%; }
+.col-10 { width: 83.333333333%; }
+.col-11 { width: 91.666666667%; }
+.col-12 { width: 100%; }
+/***************/
+
+
+
+/***** OLDER *****/
+/*
+div.content {
+	background: #8FC33D; 
+	min-height: 65%;
+	padding-bottom: 30px;
+	overflow-x: auto;	
+}
+
+div.container {
+	box-sizing: border-box;
+	padding: 16px;
+	margin: 0 auto;
+	margin-bottom: 12px;
+}
+
+div.container-lg {
+	background: #eee;
+	width: 96%;
+			min-height: 400px;
+}
+
+div.container-sm {
+	background: #fff;
+	width: 85%;
+			min-height: 400px;
+}
+
+.panel {
+	border-radius: 6px;
+}
+
+.panel-blue {
+	border: 2px solid #8FC33D;  #2777AD; 
+}
+
+.panel-header {	
+	border-radius: 3px 3px 0 0;
+	padding: 8px;
+	font-size: 1.2em;
+}
+
+.panel-blue .panel-header {
+	background: #8FC33D;
+	color: #fff;
+}
+
+.panel-body {
+	padding: 8px;
+	padding-top: 12px;
+}
+*/

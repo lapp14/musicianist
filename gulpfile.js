@@ -10,7 +10,7 @@ var cssnano 	= require('gulp-cssnano');
 //var browserSync = require('browser-sync').create();
 
 gulp.task('watch', function() {
-	gulp.watch('src/assets/less/**/*.less', ['less']);
+	gulp.watch('src/assets/less/**/*.less', ['compile-less']);
 });
 
 
@@ -18,14 +18,14 @@ gulp.task('hello', function() {
 	console.log('Hello!');
 });
 
-gulp.task('less', function() {
+gulp.task('compile-less', function() {
 	return gulp.src('src/assets/less/**/*.less')
 		.pipe(less())
-		.pipe(gulp.dest('assets/css'));	
+		.on('error', swallowError)
+		.pipe(gulp.dest('src/assets/css'));	
 });
 
-
-gulp.task('build', ['clean:dist', 'build-js', 'build-css', 'build-html', 'build-copy', 'htaccess']);
+gulp.task('build', ['clean:dist', 'compile-less', 'build-js', 'build-css', 'build-html', 'build-copy', 'htaccess']);
 
 gulp.task('build-js', function() {
 	return gulp.src(['src/**/*.js'], {base: 'src'} )
@@ -59,3 +59,8 @@ gulp.task('htaccess', function() {
 gulp.task('clean:dist', function() {
 	return del.sync('dist');
 });
+
+function swallowError(error) {
+	console.log(error.toString());
+	this.emit('end');
+}

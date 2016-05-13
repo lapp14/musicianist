@@ -1,0 +1,90 @@
+div.surface-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  background-color: #ffx;
+}
+div.surface-container:after {
+  display: block;
+  content: '';
+}
+div.surface-container > div {
+  padding: 0 12px;
+}
+svg.scales {
+  width: 100%;
+  min-height: 300px;
+  max-height: 600px;
+}
+div.scale-info {
+  margin-left: 12px;
+  margin-bottom: 12px;
+}
+div.scale-info .scale {
+  font-size: 2em;
+  font-weight: 300;
+}
+div.scale-info .notes {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+/* Not sure? */
+svg:not(:root) {
+  overflow: hidden;
+}
+/** Instruments **/
+.left-handed {
+  -ms-transform: scale(-1, 1);
+  /* IE 9 */
+  -webkit-transform: scale(-1, 1);
+  /* Chrome, Safari, Opera */
+  transform: scale(-1, 1);
+}
+/** ! Instruments **/
+/** Zoom/Pan **/
+.zoom-pan-control {
+  float: right;
+  margin-right: 12px;
+}
+.zoom-pan-control i {
+  display: inline-block;
+  padding: 3px 6px;
+  margin-bottom: 12px;
+  text-decoration: none;
+  font-size: 1.4em;
+  color: #333;
+  border: 1px solid #eee;
+}
+.zoom-pan-control i:active {
+  color: #777;
+}
+.zoom-pan-control i.active {
+  background-color: #bf5;
+  border: 1px solid #333;
+}
+/** !Zoom/Pan **/
+/** Mouse Cursors **/
+svg.cursor-grab {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+svg.cursor-zoom {
+  cursor: move;
+  cursor: zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+}
+svg.cursor-grabbing {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+svg.select-disable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/** !Mouse Cursors **/
