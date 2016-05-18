@@ -6,21 +6,6 @@ div .div-inline {
   display: table-cell;
   vertical-align: top;
 }
-a.button {
-  padding-left: 12px;
-  padding-right: 12px;
-  text-decoration: none;
-}
-button:hover,
-input[type=submit]:hover,
-a.button:hover {
-  background-color: #bf5;
-  border: 1px solid #333;
-  color: #333;
-}
-img.button:hover {
-  cursor: pointer;
-}
 .container-options {
   margin-top: 18px;
   color: #eee;
@@ -80,17 +65,5 @@ div.settings-panel div.content .row {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6d6d6d', endColorstr='#777777', GradientType=0);
   /* IE6-9 */
-}
-.settings-panel .instrument-picture {
-  background: #eee;
-  margin: 6px 0;
-  padding: 12px;
-}
-.settings-panel .instrument-picture img {
-  width: 100%;
-}
-img.button {
-  margin: -8.5px 0;
-  height: 1.2em;
 }
 /******/

@@ -29,13 +29,28 @@ img.button {
   color: #333;
   background-color: #eee;
 }
+a.button {
+  padding-left: 12px;
+  padding-right: 12px;
+  text-decoration: none;
+}
+button:hover,
+input[type=submit]:hover,
+a.button:hover {
+  background-color: #bf5;
+  border: 1px solid #333;
+  color: #333;
+}
+img.button:hover {
+  cursor: pointer;
+}
 div.nav {
-  position: relative;
-  overflow: hidden;
-  /* Clearfix */
-  /*background: #333;*/
   border-bottom: 1px solid #ccc;
   color: #eee;
+  /** Removed 
+		position: relative;
+		overflow: hidden;
+	To use clearfix method instead **/
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#555555+0,333333+64 */
   background: #555555;
   /* Old browsers */
@@ -96,6 +111,14 @@ div.footer {
   background: #333;
   border-top: 6px solid #eee;
   min-height: 200px;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
 }
 /** Content **/
 div.content {
@@ -217,6 +240,7 @@ div.cookies div {
   right: 0;
   margin: 0 auto;
   padding: 3px 20px;
+  padding-bottom: 7px;
   font-size: 0.8em;
 }
 div.cookies a {

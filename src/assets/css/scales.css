@@ -40,6 +40,15 @@ svg:not(:root) {
   /* Chrome, Safari, Opera */
   transform: scale(-1, 1);
 }
+.instrument-picture {
+  background: #eee;
+  margin-top: 6px;
+  padding: 12px;
+  padding-bottom: 2px;
+}
+.instrument-picture img {
+  width: 100%;
+}
 /** ! Instruments **/
 /** Zoom/Pan **/
 .zoom-pan-control {

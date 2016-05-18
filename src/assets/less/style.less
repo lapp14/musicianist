@@ -1,32 +1,4 @@
-@weight-sm:     300;
-@weight-lg:     400;
-  
-@grey-dark:     #333;
-@grey-md-dark:  #555;
-@grey-md:       #777; 
-@grey-md-light: #ccc;
-@grey-light:    #eee;
-
-@lime:          #bf5;
-@blue-bright:   #0bf;
-
-@navy-dark:     #445966;
-
-
-@body-bg:       @navy-dark;
-@container-bg:  @grey-light;
-
-@header-bg:     @grey-dark;//@grey-dark;
-@header-text:   @grey-light;
-@header-active: @grey-md-dark;
-
-@button-bg:     @grey-dark;
-
-
-@tab-menu-inactive: @grey-md;
-@tab-menu-active:   @container-bg;
-
-@footer-bg:     @navy-dark;//@grey-md-light;
+@import "vars.less";
 
 .box-shadow() {
     -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
@@ -37,33 +9,13 @@
 
 span.subtitle {
     font-size: 1.5em;
-    font-weight: @weight-sm;
+    font-weight: @weight-light;
 }
 
 div .div-inline {
     display: table-cell;
     vertical-align: top;
 }
-
-a.button {
-    padding-left:  12px;
-    padding-right: 12px;
-    text-decoration: none;
-}
-
-button:hover, input[type=submit]:hover, a.button:hover {
-    background-color: @lime;
-    border: 1px solid @grey-dark;
-    color: @button-bg;
-    
-}
-
-img.button:hover {
-    cursor: pointer;
-}
-
-
-
 
 
 .container-options {
@@ -155,20 +107,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d6d6d', end
 
 }
 
-.settings-panel .instrument-picture {
-    background: #eee;
-    margin: 6px 0;
-    padding: 12px;
-}
 
-.settings-panel .instrument-picture img {    
-    width: 100%;    
-}
-
-
-img.button  {
-    margin: -8.5px 0;
-    height: 1.2em;
-}
     
 /******/

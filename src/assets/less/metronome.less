@@ -1,0 +1,104 @@
+@import "vars.less";
+
+@play-button: #64d220;
+@stop-button: #c13131;
+
+ul.navbar li {
+	position: relative; /* here for relative to metronome dialog */
+} 
+
+
+label[for="tempo"] {
+	margin-left: 20px;
+}
+
+input[name="tempo"] {
+	width: 5em
+}
+
+.metronome-dialog {
+	position: absolute;
+	float: right;
+	right: 0;
+	top: 40px;
+
+	background: lighten(@grey-dark, 5%);
+
+	padding: 16px;
+	border-radius: 8px;
+	width: 360px;
+
+}
+
+.metronome-dialog .container .row {
+	overflow: hidden;
+	border: 1px solid brown;
+}
+
+.metronome-dialog .container .row + .row {
+	margin-top: 12px;
+} 
+
+.metronome-dialog a.play-pause {
+	margin: 0;
+	border-radius: 35px;
+	font-size: 18px;
+}
+
+a.play-pause {
+	display: inline-block;
+	line-height: 0;
+	color: #fff;
+	text-align: center;
+}
+
+a.play-pause:active {
+	color: #ddd;
+}
+
+a.play-pause:active {	
+	position: relative;
+	margin-left: 1px;
+	margin-top: 1px;
+	margin-right: -1px;
+	margin-bottom: -1px;	
+}
+
+a.play-pause.play {
+	background: @play-button;	
+}
+
+a.play-pause.play:hover {
+	background: lighten(@play-button, 8%);	
+}
+
+a.play-pause.play:active {	
+	background: darken(@play-button, 15%);	
+}
+
+a.play-pause.stop {
+	background: @stop-button;	
+}
+
+a.play-pause.stop:hover {
+	background: lighten(@stop-button, 4%);	
+}
+
+a.play-pause.stop:active {	
+	background: darken(@stop-button, 15%);	
+}
+
+a.play-pause.play i {
+	margin-left: 2px;
+}
+
+.metronome-blip {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	margin-left: 16px;
+	margin-top: 10px;
+	border-radius: 10px;
+	border: 1px solid @grey-dark;
+	transition: background-color 0.5s ease;
+}

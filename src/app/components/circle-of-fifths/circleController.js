@@ -9,15 +9,21 @@
 
 		var background, foreground;
 		var surface = Snap('#circle-surface');		
-		surface.attr({ viewBox: '0 0 500 500'});
+		surface.attr({ viewBox: '0 0 500 500', transform: 'r15'});
+
+		var rotation = -1;
+
 
 		Snap.load('/assets/svg/circle/background.svg', function(f) {
-            background = f.select("g");
+            background = surface.g();
+            background.append(f.select("g"));
             drawCircle();
 		});
 
 		Snap.load('/assets/svg/circle/foreground.svg', function(f) {
-            foreground = f.select("g");  
+            foreground = surface.g();
+            foreground.append(f.select("g"));  
+            foreground.transform('r' + (rotation * 30) + ',250.5,250.5')
             drawCircle();  
 		});
 
@@ -36,14 +42,14 @@
 			'-3': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb'], 
 			'-2': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb'], 
 			'-1': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb'], 
-			'0': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb'],
-			'1': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb'],
-			'2': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'Ab', 'Eb', 'Bb'],
-			'3': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'Eb', 'Bb'],
-			'4': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'Bb'],
-			'5': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'A#'],
-			'6': ['E#', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'A#'],
-			'7': ['E#', 'B#', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'A#'],
+			 '0': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb'],
+			 '1': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb'],
+			 '2': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'Ab', 'Eb', 'Bb'],
+			 '3': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'Eb', 'Bb'],
+			 '4': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'Bb'],
+			 '5': ['F', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'A#'],
+			 '6': ['E#', 'C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'A#'],
+			 '7': ['E#', 'B#', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'A#']
 		}
 
 

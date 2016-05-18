@@ -1,0 +1,35 @@
+
+<a href="#" ng-click="Metronome.toggleDialog()">Metronome</a>
+
+<div class="metronome-dialog" ng-show="Metronome.dialog.show">
+	<div class="container" ng-show="Metronome.supportedMetronome > 0">
+		
+		<div class="row">
+			<a href="#" ng-click="Metronome.play()" class="play-pause" ng-class="{ 'play': !Metronome.isPlaying, 'stop': Metronome.isPlaying}">
+				<i class="fa" ng-class="{ 'fa-play': !Metronome.isPlaying, 'fa-stop': Metronome.isPlaying }"></i>
+			</a>
+			<!--<div class="metronome-blip" ng-style="{'background-color': blipColor}"></div>-->
+		
+			<label for="tempo">Tempo</label>
+			<input name="tempo" type="number" ng-model="Metronome.tempo" ng-change="Metronome.setTempo()"/>
+			<button>Tap</button>
+			<input name="upper" type="number" ng-model="Metronome.measure.upper" ng-change="Metronome.setMeasure()"/>
+		</div>
+
+		<div class="row">
+			<label>
+				<input type="radio" ng-model="Metronome.noteResolution" ng-value="2" ng-change="Metronome.setNoteResolution()">
+				Quarter
+			</label>
+			<label>
+				<input type="radio" ng-model="Metronome.noteResolution" ng-value="1" ng-change="Metronome.setNoteResolution()">
+				Eighth
+			</label>
+			<label>
+				<input type="radio" ng-model="Metronome.noteResolution" ng-value="0" ng-change="Metronome.setNoteResolution()">
+				Sixteenth
+			</label>
+		</div>
+	</div>
+</div>
+
