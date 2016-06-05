@@ -5,16 +5,11 @@
 		<div class="col col-12">
 			<div class="panel">
 				<span style="font-size: 2em; padding: 20px; margin: 20px; display: inline-block;">
-					{{Circle.getNotes()}}
+					{{Circle.getChordArray()}}
 				</span>
 				<br/>
 
-				<style>
-					svg.circle-of-fifths {border: 1px solid red; height: 500px; width: 500px;}
-				</style>
-
-
-				<select name="tonic" size="15" ng-model="Circle.tonic" style="overflow-y: hidden;">
+				<select name="tonic" size="15" ng-model="Circle.tonic" ng-change="Circle.draw()" >
 					<option value="-7">Cb</option>
 					<option value="-6">Gb</option>
 					<option value="-5">Db</option>
@@ -32,7 +27,7 @@
 					<option value="7">C#</option>
 				</select>
 
-				<select name="mode" size="7" ng-model="Circle.mode" style="overflow-y: hidden;">
+				<select name="mode" size="7" ng-model="Circle.mode" ng-change="Circle.draw()">
 					<option value="1">Lydian</option>
 					<option value="0">Major (Ionian)</option>
 					<option value="-1">Mixolydian</option>	

@@ -1,3 +1,4 @@
+/** Borders **/
 div.surface-container {
   display: inline-block;
   position: relative;
@@ -58,7 +59,7 @@ svg:not(:root) {
 .zoom-pan-control i {
   display: inline-block;
   padding: 3px 6px;
-  margin-bottom: 12px;
+  margin-top: 6px;
   text-decoration: none;
   font-size: 1.4em;
   color: #333;

@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <base href="/">
 
-
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
 
 
@@ -21,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/page-layout.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/scales.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/circle-of-fifths.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/modal.css">
 
     <link rel="stylesheet" type="text/css" href="/assets/css/metronome.css">
@@ -55,6 +55,23 @@
 
     <div class="content">
         <div ng-view></div>
+
+        <noscript>
+            <div class="container container-fixed"> 
+                <div class="row">
+                    <div class="col col-12">
+                        <div class="panel error">  
+                            <h1>Error!</h1>          
+                            <p>
+                                <i class="fa fa-exclamation" aria-hidden="true"></i>
+                                This web app requires Javascript to be enabled! Your browser currently has Javascript disabled.
+                                To learn more about how to enable Javascript and how it powers the modern web, visit <a href="http://enable-javascript.com/">www.enable-javascript.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </noscript>
     </div>
 
 

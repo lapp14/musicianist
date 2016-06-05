@@ -1,3 +1,4 @@
+/** Borders **/
 html,
 body {
   height: 100%;
@@ -86,7 +87,8 @@ ul.navbar {
 ul.navbar:after {
   content: '';
 }
-ul.navbar li {
+ul.navbar li,
+ul.navbar div.inline {
   display: inline;
   margin: 0;
   list-style: none;
@@ -133,6 +135,23 @@ div.container {
 }
 div.container-fixed {
   width: auto;
+}
+div.panel.error {
+  min-height: 400px;
+}
+div.error i {
+  float: left;
+  color: #B50004;
+  margin-right: 18px;
+  font-size: 3em;
+}
+div.error p {
+  padding: 12px;
+  background: #FCDCDC;
+  border: 1px solid  #B50004;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
 }
 /** Tablets **/
 @media (min-width: 768px) {

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="13.83637mm"
+   height="26.545086mm"
+   viewBox="0 0 49.026509 94.057391"
+   id="svg3356"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="quarter-note.svg"
+   inkscape:export-filename="C:\xampp\htdocs\q\src\assets\img\quarter-note.png"
+   inkscape:export-xdpi="47.843132"
+   inkscape:export-ydpi="47.843132">
+  <defs
+     id="defs3358" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="-119.93678"
+     inkscape:cy="3.2590926"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0.5"
+     fit-margin-left="0.5"
+     fit-margin-right="0.5"
+     fit-margin-bottom="0.5"
+     inkscape:window-width="1920"
+     inkscape:window-height="1018"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3361">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-255.61355,-619.0388)">
+    <g
+       id="g4135"
+       transform="translate(9.3584244,0)">
+      <ellipse
+         ry="9.5812464"
+         rx="13.864593"
+         cy="748.83905"
+         cx="-96.746536"
+         transform="matrix(0.89679891,-0.44243837,0.47744648,0.87866083,0,0)"
+         id="path2996"
+         style="fill:#eeeeee;fill-opacity:1;stroke:#eeeeee;stroke-width:0.25877926;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:6.19999981;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3770"
+         d="m 283.0453,620.81045 0,77.358"
+         style="fill:none;stroke:#eeeeee;stroke-width:2.19280052;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>
