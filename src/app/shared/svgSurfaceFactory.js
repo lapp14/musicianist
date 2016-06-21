@@ -113,15 +113,7 @@
 				        var markerX = instrument.markerX.slice();  //create a COPY of the coords
 			            var fretMarkers = surface.g();
 							
-							//reverse fret labels and flip fretboard for leftys
-			        	if(handedness == 'Left') {
-			        		background.transform('s-1,1');
-			        		for(var i = 0, end = markerX.length; i < end; i++) {
-			        			markerX[i] = 1000 - markerX[i];
-			        		}
-			        	}
-
-			        	var textAttr = { fontSize: '12px', 
+						var textAttr = { fontSize: '12px', 
 										opacity: 1, 
 										'text-anchor': 'middle', 
 										strokeWidth: 0.4,
@@ -134,7 +126,7 @@
 
 			            for(var i = 1, lim = markerX.length; i < lim; i++) {
 			            	var x = markerX[i];
-			            	var y = instrument.fretNumbers + instrument.fretNumberOffset * i;
+			            	var y = instrument.fretNumberSlope * x + instrument.fretNumbers;
 
 			                fretMarkers.append(surface.text(x, y, i).attr(textAttr));
 			            }

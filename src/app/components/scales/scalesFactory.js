@@ -121,13 +121,7 @@
             } else {
                 var markerY = inst.markerY;
                 var markerX = inst.markerX.slice(); //make COPY of markerX
-                var stringOffset = inst.stringOffset;
-                //reverse scale for leftys
-                if(handedness == 'Left') {
-                    for(var i = 0, end = markerX.length; i < end; i++) {
-                        markerX[i] = 1002 - markerX[i];
-                    }
-                }
+                var stringSlope = inst.stringSlope;
 
                 for(var string = 0, end = tuning.notes.length; string < end; string++) {
 
@@ -137,7 +131,10 @@
                         var note = openNote + fret;
 
                         if(this.isNoteInKey(scale, root, note)) { 
-                            var x = markerX[fret], y = markerY[string + markerY.length - end] + (stringOffset[string] * fret);
+                            var x = markerX[fret];
+
+                            var b = markerY[string + markerY.length - end]; // y-intercept, or starting y position
+                            var y = stringSlope[string] * x + b; // y = mx + b
 
                             if(this.isRootNote(root, note)) {
                                 m = surface.circle(x, y - 0.5, 8).attr({ fill: '#bf5', stroke: '#333', strokeWidth: 0.75, opacity: 1 });

@@ -39,7 +39,7 @@
 				lower: 4
 			}
 			vm.dialog = {
-				show: true
+				show: false
 			}
 
 			vm.setMeasure		 = setMeasure;

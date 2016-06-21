@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>asdf</title>
+    <script src="src/assets/lib/snap/snap.svg.js"></script>
+
+    <style>
+    	#svg-surface { width: 1600px;  height: 600px; border: 1px solid black; }
+
+    </style>
+</head>
+<body>
+
+	<svg 
+        id="svg-surface" 
+        preserveAspectRatio="xMidYMid meet">
+    </svg>
+    <br/>
+    Can i draw a straight line with a linear function?
+
+<script>
+
+	var surface = Snap('#svg-surface');
+	surface.attr({ viewBox: "0 0 800 600" });
+
+	var xCoords = [0, 56, 140, 222, 296, 368, 436, 498, 558, 614, 668, 717, 763, 808, 850, 890, 928, 963, 997, 1029, 1059, 1086, 1113];
+
+	for(var i = 0; i < 20; i++) {
+
+		var x = i * 50;
+		var y = i * 10;
+
+		surface.circle(x, y + 100, 8).attr({ fill: '#bf5', stroke: '#333', strokeWidth: 0.75, opacity: 1 });
+
+		surface.circle(xCoords[i], y + 100, 8).attr({ fill: '#f00', stroke: '#333', strokeWidth: 0.75, opacity: 1 });
+	}
+
+</script>
+
+</body>
+</html>

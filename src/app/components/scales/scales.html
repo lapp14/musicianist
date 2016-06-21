@@ -28,6 +28,48 @@
 
 <div class="container container-fixed">
     <div class="row">
+
+        <div class="col col-6">
+            <div class="panel">
+
+                <button style="float: right" ng-click="Scales.drawing.drawScale()">Draw</button>
+                E <input type='number' step='0.0001' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().stringSlope[0]"/> 
+                    <input type='number' step='1' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().markerY[0]"/> <br/>  
+
+                A <input type='number' step='0.0001' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().stringSlope[1]"/> 
+                    <input type='number' step='1' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().markerY[1]"/> <br/>
+
+                D <input type='number' step='0.0001' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().stringSlope[2]"/> 
+                    <input type='number' step='1' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().markerY[2]"/> <br/>
+
+                G <input type='number' step='0.0001' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().stringSlope[3]"/> 
+                    <input type='number' step='1' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().markerY[3]"/> <br/>
+
+                B <input type='number' step='0.0001' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().stringSlope[4]"/>
+                    <input type='number' step='1' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().markerY[4]"/>  <br/>
+
+                E <input type='number' step='0.0001' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().stringSlope[5]"/> 
+                    <input type='number' step='1' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().markerY[5]"/> <br/>
+
+                 <input type='number' step='0.0001' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().stringSlope[6]"/>
+                    <input type='number' step='1' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().markerY[6]"/>  <br/>
+
+                 <input type='number' step='0.0001' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().stringSlope[7]"/>
+                    <input type='number' step='1' value='0.00' placeholder='0.00' ng-model="Scales.instrument.getCurrentInstrument().markerY[7]"/>  <br/>
+                <br/>
+                
+
+                slopes = [<span ng-repeat="i in Scales.instrument.getCurrentInstrument().stringSlope as slope">
+                            {{i}}, 
+                </span>],<br/>
+
+                yCoords =  [<span ng-repeat="y in Scales.instrument.getCurrentInstrument().markerY as tt">
+                            {{y}}, 
+                </span>],
+            </div>
+        </div>
+
+
         <div class="col col-6">
             <div class="panel">
 
@@ -49,7 +91,7 @@
         </div>
         <div class="col col-6">
             <div class="panel">
-                <div class="header">Scale</div>
+                <div class="header">{{Scales.scale.getTitle()}} Scale {{Scales.scale.getSubtitle()}}</div>
 
                 <select name="tonic" class="select-sm" ng-model="Scales.state.tonic" ng-change="Scales.drawing.drawScale()">
                     <option value="{{key}}" ng-repeat="(key, val) in Scales.JSONData.tonics">{{val}}</option>  
@@ -59,8 +101,19 @@
                 </select>
 
                 <div ng-mouseover="Scales.tooltip = 'scale'" ng-mouseout="Scales.tooltip = null">
-                    <h1 class="inline-block">{{Scales.scale.getTitle()}} Scale</h1> {{Scales.scale.getSubtitle()}}<br/>
-                    <span class="subtitle" ng-repeat="pitch in Scales.JSONData.scales[Scales.state.scale].steps">{{pitch + ' '}}</span>
+                    
+                    <fieldset style="margin-top: 12px; padding: 10px; display: inline-block;">
+                        <legend
+                            style="margin-left: 0px; padding: 0 6px;"
+                        >Intervals</legend>
+
+                        <span 
+
+                            style="padding-left: 4px"
+
+                        class="subtitle" ng-repeat="pitch in Scales.JSONData.scales[Scales.state.scale].steps">{{pitch + ' '}}</span>
+
+                    </fieldset>
                 </div>
 
             </div>

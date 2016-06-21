@@ -110,8 +110,6 @@
 			}
 		}
 
-		function action() {
-			svgSurface.getGroup().transformGroup.transform("s0.5,0.5t200,10");
-		}
+		
 	}
 })();
