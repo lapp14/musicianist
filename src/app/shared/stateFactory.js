@@ -11,8 +11,6 @@
 
 		var consent = $cookies.get('consent');
 		var s = $cookies.getObject('state') || {};
-
-		console.log('crap ' +s.index)
 		
 		var type =  s.type || 'Guitar';		
 		var index = s.index || 0; //0 for default

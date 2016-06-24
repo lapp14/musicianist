@@ -81,8 +81,6 @@
         function drawScale(scale, root, tuning) {
 
             var inst       = instrument.getCurrentInstrument();
-            console.log('inst ' + inst.markerY)
-            console.log(tuning)
             var handedness = instrument.handedness;
             var surface = svgSurface.getSurface();
             var background = svgSurface.getGroup().background;
@@ -121,7 +119,19 @@
             } else {
                 var markerY = inst.markerY;
                 var markerX = inst.markerX.slice(); //make COPY of markerX
+
+                var offsets = {
+                    scale: 0,
+                    flip:  1
+                };                
+
                 var stringSlope = inst.stringSlope;
+
+                if(state.handedness == 'Left') {
+                    offsets.scale = inst.leftHanded.scaleOffset;        
+                    offsets.flip  = -1;           
+                }
+
 
                 for(var string = 0, end = tuning.notes.length; string < end; string++) {
 
@@ -130,11 +140,14 @@
                     for(var fret = 0; fret < markerX.length; fret++) {
                         var note = openNote + fret;
 
+
                         if(this.isNoteInKey(scale, root, note)) { 
-                            var x = markerX[fret];
+                            var x = markerX[fret] * offsets.flip;
 
                             var b = markerY[string + markerY.length - end]; // y-intercept, or starting y position
-                            var y = stringSlope[string] * x + b; // y = mx + b
+                            var y = (stringSlope[string] * offsets.flip) * x + b; // y = mx + b
+
+                            x += offsets.scale;
 
                             if(this.isRootNote(root, note)) {
                                 m = surface.circle(x, y - 0.5, 8).attr({ fill: '#bf5', stroke: '#333', strokeWidth: 0.75, opacity: 1 });
@@ -151,7 +164,7 @@
                 svgSurface.setGroup('markers', markers);
 
                 var transformGroup = surface.g();
-                transformGroup.add(background, markers, svgSurface.getGroup('fretMarkers'));
+                transformGroup.add(background, markers/*, svgSurface.getGroup('fretMarkers')*/);
 
                 svgSurface.setGroup('transformGroup', transformGroup);
             }

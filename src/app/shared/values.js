@@ -42,7 +42,10 @@ angular.module('musicianist').value('instruments',
             stringSlope: [ 0.0121, 0.0072, 0.0028, -0.0023, -0.0072, -0.01 ],
             fretNumbers: 130,
             fretNumberSlope: 0.013,
-            leftHandedOffset: 486,
+            leftHanded: {
+                instrumentOffset: 486,
+                scaleOffset: 1003
+            },
             attr: { viewBox: "-32 -75 1100 300" }
         }, {
             name:  'Stratocaster',
@@ -57,7 +60,10 @@ angular.module('musicianist').value('instruments',
             stringSlope: [0.0112, 0.0072, 0.0028, -0.0028, -0.0072, -0.0113],
             fretNumbers: 130,
             fretNumberSlope: 0.013,
-            leftHandedOffset: 488,
+            leftHanded: {
+                instrumentOffset: 488,
+                scaleOffset: 1003
+            },
             attr: { viewBox: "-50 -75 1100 300" }            
 	    }, {
             name:  'Telecaster',
@@ -72,6 +78,10 @@ angular.module('musicianist').value('instruments',
             stringSlope: [0.0112, 0.0072, 0.0028, -0.0028, -0.0072, -0.0113],
             fretNumbers: 126,
             fretNumberSlope: 0.013,
+            leftHanded: {
+                instrumentOffset: 488,
+                scaleOffset: 1005
+            },
             attr: { viewBox: "-50 -75 1100 300" }            
 	    },
 
@@ -89,6 +99,10 @@ angular.module('musicianist').value('instruments',
             stringSlope: [0.0112, 0.0072, 0.0028, 0, -0.0028, -0.0072, -0.0113],
             fretNumbers: 130,
             fretNumberSlope: 0.014,
+            leftHanded: {
+                instrumentOffset: 288,
+                scaleOffset: 1005
+            },
             attr: { viewBox: "-50 -75 1100 300" }            
 	    },
 
@@ -105,6 +119,10 @@ angular.module('musicianist').value('instruments',
             stringSlope:  [ 0.0133, 0.0074, 0.003, 0.0012, -0.0012, -0.003, -0.0074, -0.0133 ],
             fretNumbers: 142,
             fretNumberSlope:  0.020,
+            leftHanded: {
+                instrumentOffset: 353,
+                scaleOffset: 1005
+            },
             attr: { viewBox: "-50 -75 1100 300" }            
 	    },
 
@@ -122,6 +140,10 @@ angular.module('musicianist').value('instruments',
             stringSlope:  [ 0.012, 0.0063, -0.0042, -0.0114 ],
             fretNumbers: 122,
             fretNumberSlope: 0.017,
+            leftHanded: {
+                instrumentOffset: 446,
+                scaleOffset: 1005
+            },
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Jazz Bass',
@@ -136,6 +158,10 @@ angular.module('musicianist').value('instruments',
             stringSlope: [ 0.012, 0.0063, -0.0042, -0.0114 ],
             fretNumbers: 122,
             fretNumberSlope: 0.017,
+            leftHanded: {
+                instrumentOffset: 467,
+                scaleOffset: 1005
+            },
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Jazz Bass',
@@ -150,6 +176,10 @@ angular.module('musicianist').value('instruments',
             stringSlope: [ 0.012, 0.0063, -0.0042, -0.0114 ],
             fretNumbers: 122,
             fretNumberSlope:  0.017,
+            leftHanded: {
+                instrumentOffset: 467,
+                scaleOffset: 1005
+            },
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Precision Bass 5',
@@ -164,6 +194,10 @@ angular.module('musicianist').value('instruments',
             stringSlope:  [ 0.0149, 0.0085, 0.0009, -0.0085, -0.0153 ],
             fretNumbers: 122,
             fretNumberSlope: 0.023,
+            leftHanded: {
+                instrumentOffset: 446,
+                scaleOffset: 1005
+            },
             attr: { viewBox: "-50 -75 1100 300" }
 		}, {
 			name:  'Stiletto 6',
@@ -174,10 +208,14 @@ angular.module('musicianist').value('instruments',
             strings: 6,
 
             markerY:  [103, 87, 70, 53, 37, 21],  
-            markerX: [-3, 53, 145, 228, 311, 383, 457, 523, 582, 648, 699, 752, 801, 850, 895, 937, 980, 1018, 1055, 1088, 1120.5, 1150.5, 1178.5, 1205.5, 1231],
+            markerX: [-3, 53, 145, 228, 311, 383, 457, 523, 586, 646, 704, 757, 806, 854, 899, 940, 981, 1018, 1055, 1088, 1120.5, 1150.5, 1178.5, 1205.5, 1231],
             stringSlope: [ 0.0229, 0.0157, 0.0085, 0.002, -0.0063, -0.0128 ],
             fretNumbers: 135,
             fretNumberSlope: 0.023,
+            leftHanded: {
+                instrumentOffset: 483,
+                scaleOffset: 1002
+            },
             attr: { viewBox: "-50 -75 1100 300" }
 		},
 

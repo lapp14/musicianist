@@ -96,6 +96,7 @@
 		            background.append(f.select("defs"));
 		            surface.append(background);
 
+
 		            if(!instrument.strings) {
 		            	var coords = instrument.coords;
 		            	var x = coords.labels.x;
@@ -109,6 +110,7 @@
 			        	background.append(noteLabels);
 
 		            } else {
+
 				        var markerY = instrument.markerY;
 				        var markerX = instrument.markerX.slice();  //create a COPY of the coords
 			            var fretMarkers = surface.g();
@@ -122,6 +124,10 @@
 										stroke: '#fff', 
 										fill: '#000' };
 
+						if(handedness == 'Left') {
+							textAttr['transform'] = 's-1,1';
+						}
+
 			            fretMarkers.append(surface.text(markerX[0], instrument.fretNumbers, 'Open').attr(textAttr));
 
 			            for(var i = 1, lim = markerX.length; i < lim; i++) {
@@ -131,7 +137,13 @@
 			                fretMarkers.append(surface.text(x, y, i).attr(textAttr));
 			            }
 
-			        	groups.fretMarkers = fretMarkers;
+			            background.append(fretMarkers);
+
+		            	if(handedness == 'Left') {
+		            		background.transform('s-1,1t' + instrument.leftHanded.instrumentOffset + ',0');
+		            	}
+
+			        	//groups.fretMarkers = fretMarkers;
 			        }
 
 			        groups.background = background;
