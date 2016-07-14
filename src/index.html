@@ -13,10 +13,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     
-    <!--
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-    -->
-
+    <!--build:css css/app.css -->
     <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/page-layout.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/scales.css">
@@ -24,6 +21,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/modal.css">
 
     <link rel="stylesheet" type="text/css" href="/assets/css/metronome.css">
+
+    <!-- endbuild -->
 
 
     <!-- AngularJS -->
@@ -47,7 +46,7 @@
                 <metronome></metronome>
             </li>
             <li><a ng-class="app.menuClass('scales')" href="/scales/">Scales</a></li>
-            <li><a ng-class="app.menuClass('chords')" href="/chords/">Chords</a></li>
+            <!--<li><a ng-class="app.menuClass('chords')" href="/chords/">Chords</a></li>-->
             <li><a ng-class="app.menuClass('circle-of-fifths')" href="/circle-of-fifths/">Circle of Fifths</a></li>
         </ul>
     </div>
@@ -190,8 +189,11 @@
     <script src="/app/components/metronome/metronomeDirective.js"></script>
 
     <script src="/app/components/circle-of-fifths/circleController.js"></script>
-
     <!-- endbuild -->
+
+  
+
+
 
 </body>
 </html>

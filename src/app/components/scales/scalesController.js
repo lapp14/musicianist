@@ -55,7 +55,7 @@
 			var tuningIndex = vm.instrument.getCurrentTuning();
 			var tuning     	= vm.instrument.type == 'Piano' ? null : vm.JSONData.tunings[tuningIndex];
 
-			scales.drawScale(scale, tonic,  tuning);
+			scales.drawScale(scale, tonic, tuning);
 			vm.scaleNotes = scales.getNotesString(scale, tonic);
 
 			if(appLoaded) {
@@ -86,6 +86,11 @@
 			}
 
 			var index = vm.instrument.getCurrentTuning();
+
+			if(index == null) {
+				return null;
+			}
+
 			var notes = vm.JSONData.tunings[index].notes;
 			var string = '';
 

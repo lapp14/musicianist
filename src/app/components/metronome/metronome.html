@@ -1,7 +1,7 @@
 
 
-<div class="metronome-link">
-	<a href="#" class="metronome" 	  ng-click="Metronome.toggleDialog()" ng-class="{ 'show-button': Metronome.showToolbarControl }">Metronome</a>
+<div class="metronome-link" >
+	<a href="#" class="metronome" ng-click="Metronome.toggleDialog()" ng-class="{ 'show-button': Metronome.showToolbarControl, 'active': Metronome.dialog.show }">Metronome</a>
 	<a href="#" class="play-pause-sm" ng-click="Metronome.play()" ng-class="{ 'play': !Metronome.isPlaying, 'stop': Metronome.isPlaying}" ng-show="Metronome.showToolbarControl">
 		<i class="fa" ng-class="{ 'fa-play': !Metronome.isPlaying, 'fa-stop': Metronome.isPlaying }"></i>
 	</a>
@@ -41,6 +41,19 @@
 				</label>
 			</fieldset>
 		</div>
+	</div>
+
+
+	<div class="not-supported" ng-show="Metronome.supportedMetronome <= 0">
+		<p>
+			Our metronome currently is not supported by Internet Explorer, and some other older browsers
+		</p>
+		<p>
+			For an accurate metronome, and a better experience with modern web apps like <strong>Musicianist</strong>, we recommend using a modern browser such as Mozilla Firefox or Google Chrome.
+		</p>
+		<p>
+			To learn more about web browsers and the modern web, visit <a href="http://browsehappy.com/">BrowseHappy.com</a>
+		</p>
 	</div>
 </div>
 

@@ -17,7 +17,6 @@
 
 		function cookieController($scope) {
 			var c = $cookies.get('consent');
-			console.log('consent cookie: ' + c);
 
 			$scope.hideDialog = false;
 

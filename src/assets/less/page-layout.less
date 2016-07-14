@@ -18,6 +18,13 @@ h1 {
 	line-height: 1em;
 }
 
+h3 {	
+	font-weight: 500;
+	text-decoration: underline;
+	color: #333;
+	line-height: 0em;
+}
+
 select, input, button, a.button, img.button {
     font-size: 1em;
     padding: 4px;
@@ -106,7 +113,7 @@ ul.navbar li a:hover, ul.navbar li a.active {
 
 ul.navbar-right {
 	float: right !important;
-	margin-right: 25px;
+	margin-right: 55px;
 }
 
 .hover-pointer {
@@ -189,7 +196,7 @@ div.error p {
 
 
 div.panel {
-	border-radius: @corner-radius;
+	border-radius: @corner-radius-lg;
 	padding: 12px;
 	margin-bottom: 12px;
 	border: 1px solid #444;
@@ -202,7 +209,13 @@ div.panel div.header {
 	margin-bottom: 12px;
 }
 
+div.panel .information {
+	margin-left: 12px;
+}
+
 .panel:before, .panel:after { content: ""; display: table; clear: both; } 
+
+
 
 .pull-right {
     float: right;   

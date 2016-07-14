@@ -15,6 +15,12 @@ h1 {
   color: #333;
   line-height: 1em;
 }
+h3 {
+  font-weight: 500;
+  text-decoration: underline;
+  color: #333;
+  line-height: 0em;
+}
 select,
 input,
 button,
@@ -104,7 +110,7 @@ ul.navbar li a.active {
 }
 ul.navbar-right {
   float: right !important;
-  margin-right: 25px;
+  margin-right: 55px;
 }
 .hover-pointer {
   cursor: pointer;
@@ -172,7 +178,7 @@ div.error p {
   }
 }
 div.panel {
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 12px;
   margin-bottom: 12px;
   border: 1px solid #444;
@@ -182,6 +188,9 @@ div.panel div.header {
   font-size: 1.2em;
   border-bottom: 1px solid #444;
   margin-bottom: 12px;
+}
+div.panel .information {
+  margin-left: 12px;
 }
 .panel:before,
 .panel:after {

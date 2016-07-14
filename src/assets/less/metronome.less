@@ -21,7 +21,7 @@ div.metronome-link a.metronome.show-button {
 
 div.metronome-link a.play-pause-sm {
 	position: absolute; 
-	font-size: 10px; 
+	font-size: 10px;
 	line-height: 0;  
 	padding: 10px; 
 	left: 12px; 
@@ -37,11 +37,23 @@ div.metronome-link a.play-pause-sm {
 
 	background: lighten(@grey-dark, 5%);
 
-	padding: 16px;
+	padding: 6px;
 	border-radius: 8px;
 	width: 326px;
 
 }
+
+.metronome-dialog .not-supported a {
+	padding: 0;
+	margin: 0;
+	color: lighten(@blue-bright, 10%);
+}
+
+.metronome-dialog .not-supported a:hover {
+	background: 0;
+	color: lighten(@blue-bright, 20%);
+}
+
 /*
 .metronome-dialog .container .row {
 	overflow: hidden;
@@ -86,6 +98,7 @@ a.play-pause-sm.stop {
 a.play-pause {
 	display: inline-block;
 	margin-right: 18px;
+	margin-top: 8px;
 	font-size: 18px;
 	border-radius: 35px;
 	color: #fff;

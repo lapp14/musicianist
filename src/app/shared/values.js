@@ -221,8 +221,9 @@ angular.module('musicianist').value('instruments',
 
         {
 			name: 'Piano',
-			instSelect: '/assets/svg/instruments/piano_keys.svg',
-			path: '',
+			instSelect: { path: '/assets/svg/instruments/piano_keys.svg'},
+            instPanel: { path: '/assets/svg/instruments/piano_keys.svg'},
+			path: '/assets/svg/instruments/piano_keys.svg',
 			type: 'Piano',
 			strings: 0,
 	    	coords: {

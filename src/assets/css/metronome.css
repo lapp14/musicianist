@@ -24,9 +24,18 @@ div.metronome-link a.play-pause-sm {
   right: 0;
   top: 40px;
   background: #404040;
-  padding: 16px;
+  padding: 6px;
   border-radius: 8px;
   width: 326px;
+}
+.metronome-dialog .not-supported a {
+  padding: 0;
+  margin: 0;
+  color: #33c9ff;
+}
+.metronome-dialog .not-supported a:hover {
+  background: 0;
+  color: #66d6ff;
 }
 /*
 .metronome-dialog .container .row {
@@ -64,6 +73,7 @@ a.play-pause-sm.stop {
 a.play-pause {
   display: inline-block;
   margin-right: 18px;
+  margin-top: 8px;
   font-size: 18px;
   border-radius: 35px;
   color: #fff;

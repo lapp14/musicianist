@@ -28,7 +28,7 @@
 
 <div class="container container-fixed">
     <div class="row">
-
+    <!--
         <div class="col col-6">
             <div class="panel">
 
@@ -68,16 +68,22 @@
                 </span>],
             </div>
         </div>
-
+        -->
 
         <div class="col col-6">
             <div class="panel">
-
                 <div class="header">Instrument <i class="edit fa fa-gear" ng-click="Scales.modal = 'instrument'"></i></div>
-                {{Scales.instrument.arr[Scales.state.index].strings}} String
-                <span class="pull-right">
-                    {{Scales.JSONData.tunings[Scales.instrument.getCurrentTuning()].name.replace('Tuning', '')}} Tuning ({{Scales.getCurrentTuningNotes()}})
-                </span>
+
+                <div ng-show="!Scales.instrument.isStringedInstrument()">
+                    {{Scales.instrument.getCurrentInstrument().type}}
+                </div>                
+
+                <div ng-show="Scales.instrument.isStringedInstrument()">
+                    {{Scales.instrument.arr[Scales.state.index].strings}} String
+                    <span class="pull-right">
+                        {{Scales.JSONData.tunings[Scales.instrument.getCurrentTuning()].name.replace('Tuning', '')}} Tuning ({{Scales.getCurrentTuningNotes()}})
+                    </span>
+                </div>
 
                 <div class="instrument-picture hover-pointer" ng-click="Scales.modal = 'instrument'">
                     <img ng-class="{'left-handed': Scales.state.handedness == 'Left'}" 
@@ -100,20 +106,20 @@
                     <option value="{{key}}" ng-repeat="(key, val) in Scales.JSONData.scales">{{val.name}}</option>                           
                 </select>
 
-                <div ng-mouseover="Scales.tooltip = 'scale'" ng-mouseout="Scales.tooltip = null">
-                    
-                    <fieldset style="margin-top: 12px; padding: 10px; display: inline-block;">
-                        <legend
-                            style="margin-left: 0px; padding: 0 6px;"
-                        >Intervals</legend>
+                <div class="information">
+                    <h3>Scale Details</h3>
 
-                        <span 
-
-                            style="padding-left: 4px"
-
-                        class="subtitle" ng-repeat="pitch in Scales.JSONData.scales[Scales.state.scale].steps">{{pitch + ' '}}</span>
-
-                    </fieldset>
+                    <table>
+                        <tr>
+                            <td>Intervals: &nbsp;&nbsp;</td>
+                            <td>
+                                <span 
+                                    style="padding-left: 4px"   
+                                    class="subtitle" ng-repeat="pitch in Scales.JSONData.scales[Scales.state.scale].steps">{{pitch + ' '}}
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
             </div>

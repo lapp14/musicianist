@@ -104,7 +104,7 @@
 		            	var noteLabels = surface.g();
 		            	
 		            	for(var i = 0, lim = 21; i < lim; i++) {
-		            		noteLabels.append(s.text(x, coords.labels.y, notes[i % 7]).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
+		            		noteLabels.append(surface.text(x, coords.labels.y, notes[i % 7]).attr({ fontSize: '10px', opacity: 1, "text-anchor": "middle" }));
 		            		x += coords.labels.increment;
 			            }
 			        	background.append(noteLabels);

@@ -15,6 +15,7 @@
 			getCurrentInstrument: getCurrentInstrument,
 			getInstrumentIndex: getInstrumentIndex,
 			getCurrentTuning: getCurrentTuning,
+			isStringedInstrument: isStringedInstrument,
 			setStrings: setStrings,
 			setSelection: setSelection
 		}
@@ -31,10 +32,23 @@
 		}
 
 		function getCurrentTuning() {
-			var i = state.type;
+			var i = getCurrentInstrument().type;
+
+			if(state.selectedTuning[i] == null) {
+				console.log('undef')
+				return null;
+			}
 
 			return state.selectedTuning[i][state.selectedStrings[i]];
 		};
+
+		function isStringedInstrument() {
+			if(getCurrentTuning() == null) {
+				return false;
+			}
+
+			return true;
+		}
 
 		function setStrings(strings) {
 			state.selectedStrings[state.type] = strings;

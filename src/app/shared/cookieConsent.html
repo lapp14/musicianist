@@ -1,8 +1,7 @@
 <div class="cookies">
-	<div style="" ng-hide="hideDialog">
+	<div style="" ng-hide="consent() || hideDialog">
 		<span>This site uses cookies to enhance the user experience, by saving your instrument and scale selections for next time.</span>
 		<a href="#" class="button" ng-click="consent(true)">Accept</a> 
 		<a href="#" class="hide" ng-click="hide()">&#215;</a>
 	</div>
 </div>
-<button style="position: fixed; bottom: 0; right: 0; z-index:9999" ng-click="remove()" ng-show="consent()">Remove Cookies</button>

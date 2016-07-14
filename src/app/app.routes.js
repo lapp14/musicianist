@@ -18,15 +18,19 @@
 			controllerAs: 'Scales'
 		})
 
-		.when('/chords', {
+		/*.when('/chords', {
 			templateUrl : 'app/components/chords/chords.html',
 			controller  : null
-		})
+		})*/
 
 		.when('/circle-of-fifths', {
 			templateUrl : 'app/components/circle-of-fifths/circle-of-fifths.html',
 			controller  : 'circleCtrl',
 			controllerAs: 'Circle'
+		})
+
+		.otherwise({
+			redirectTo: '/'
 		});
 
 		$locationProvider.html5Mode(true);

@@ -5,7 +5,7 @@ var less 		= require('gulp-less');
 var useref		= require('gulp-useref');
 var ngAnnotate	= require('gulp-ng-annotate');
 var uglify		= require('gulp-uglify');
-var gulpIf  	= require('gulp-if');
+var gulpif  	= require('gulp-if');
 var cssnano 	= require('gulp-cssnano');
 
 
@@ -28,29 +28,26 @@ gulp.task('compile-less', function() {
 		.pipe(gulp.dest('src/assets/css'));	
 });
 
-gulp.task('build', ['clean:dist', 'compile-less', 'build-js', 'build-css', 'build-html', 'build-copy', 'htaccess']);
+gulp.task('build', ['clean:dist', 'compile-less', 'build-js', /*'build-css',*/ 'build-app', 'build-copy', 'htaccess']);
 
-gulp.task('build-js', function() {
-	return gulp.src(['src/**/*.js'], {base: 'src'} )
-		.pipe(ngAnnotate())
-		.pipe(uglify())
-		.pipe(gulp.dest('dist'));
-});
 
-gulp.task('build-css', function() {
-	return gulp.src(['src/**/*.css'], {base: 'src'} )
-		.pipe(cssnano())
-		.pipe(gulp.dest('dist'));
-});
-
-gulp.task('build-html', function() {
+gulp.task('build-app', function() {
 	return gulp.src(['src/**/*.html'], {base: 'src'} )
 		.pipe(useref())
+		.pipe(gulpif('*.js', ngAnnotate()))
+    	.pipe(gulpif('*.js', uglify({ mangle: false })))
 		.pipe(gulp.dest('dist'));
 });
 
 gulp.task('build-copy', function() {
 	return gulp.src(['src/**/*.{svg,png,jpg,gif,json}'], {base: 'src'} )
+		.pipe(gulp.dest('dist'));
+});
+
+gulp.task('build-js', function() {
+	return gulp.src(['src/app/components/metronome/metronomeWorker.js'], {base: 'src'} )
+		.pipe(ngAnnotate())
+		.pipe(uglify())
 		.pipe(gulp.dest('dist'));
 });
 
@@ -67,3 +64,16 @@ function swallowError(error) {
 	console.log(error.toString());
 	this.emit('end');
 }
+
+
+
+
+
+
+
+gulp.task('build-css', function() {
+	return gulp.src(['src/**/*.css'], {base: 'src'} )
+		.pipe(cssnano())
+		.pipe(gulp.dest('dist'));
+});
+

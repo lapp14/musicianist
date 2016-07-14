@@ -8,10 +8,7 @@
 			timerID = setInterval(tick, interval);
 
 		} else if (e.data.interval) {
-			console.log("setting interval");
 			interval = e.data.interval;
-
-			console.log("interval=" + interval);
 			
 			if (timerID) {
 				clearInterval(timerID);

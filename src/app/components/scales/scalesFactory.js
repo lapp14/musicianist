@@ -96,23 +96,26 @@
                     var note = (scale.halfSteps[i] + root) % 12;
                     var markerColour = '#0cf';
 
-                    x = instrument.notes[note].x;
-                    y = instrument.notes[note].y;
+                    x = inst.notes[note].x;
+                    y = inst.notes[note].y;
 
-                    if(Scales.key.isRootNote(root, note)) {
+                    if(this.isRootNote(root, note)) {
                         markerColour = '#bf5';
                     } 
 
                     for(var octave = 0; octave < 3; octave++) {                    
-                        m = surface.circle(x + (161 * octave) , y - 0.5, 8).attr({ fill: markerColour, stroke: '#333', strokeWidth: 0.75, opacity: 0.8 });
-                        var label = surface.text(x + (161 * octave) , y + 2, Scales.key.getNote(note, root, scale)).attr({ fontSize: '8px', opacity: 1, "text-anchor": "middle" });
+                        m = surface.circle(x + (161 * octave) , y - 0.5, 8).attr({ fill: markerColour, stroke: '#333', strokeWidth: 0.75, });
+                        var label = surface.text(x + (161 * octave) , y + 2, this.getNote(note, root, scale)).attr({ fontSize: '8px', opacity: 1, "text-anchor": "middle" });
                         markers.add(m, label);
                     }
                 }
 
-                core.svg.markers = markers;
-                core.svg.group = surface.g();
-                core.svg.group.add(background, markers);
+                svgSurface.setGroup('markers', markers);
+
+                var transformGroup = surface.g();
+                transformGroup.add(background, markers);
+
+                svgSurface.setGroup('transformGroup', transformGroup);
 
 
 
