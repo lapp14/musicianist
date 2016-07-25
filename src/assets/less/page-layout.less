@@ -55,6 +55,17 @@ img.button:hover {
     cursor: pointer;
 }
 
+fieldset {	
+	padding: 6px;
+	border-radius: @corner-radius-lg; 
+	border: 1px solid @grey-dark;
+}
+
+fieldset > legend {
+	margin: 6px;
+	padding: 6px;
+}
+
 div.nav {    	
 	border-bottom: 1px solid #ccc;
 	color: #eee; 
@@ -211,6 +222,16 @@ div.panel div.header {
 
 div.panel .information {
 	margin-left: 12px;
+}
+
+h1.page-title {
+	font-size: 1.8em;
+	font-weight: @weight-light;
+	border: 0;
+	margin: 0;
+	margin-top: 6px;
+	margin-right: 12px;
+	float: right;
 }
 
 .panel:before, .panel:after { content: ""; display: table; clear: both; } 

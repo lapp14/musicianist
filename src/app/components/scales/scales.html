@@ -2,7 +2,8 @@
 <div class="container">
     <div class="row">
         <div class="col col-12">
-            <div class="panel">
+            <div class="panel">            
+                <h1 class="page-title">{{Scales.instrument.getCurrentInstrument().type}} Scales</h1>
 
                 <div class="scale-info">
                     <span class="scale">{{Scales.JSONData.tonics[Scales.state.tonic]}} {{Scales.scale.getTitle()}}</span> {{Scales.scale.getSubtitle()}}<br/>
@@ -20,7 +21,6 @@
                     <i class="fa fa-search hover-pointer" ng-click="Scales.svgSurface.setActiveControl('zoom')" ng-class="{'active': Scales.svgSurface.activeControl == 'zoom'}"></i>
                     <i class="fa fa-hand-paper-o hover-pointer" ng-click="Scales.svgSurface.setActiveControl('pan')" ng-class="{'active': Scales.svgSurface.activeControl == 'pan'}"></i>
                 </div>
-
             </div>
         </div>
     </div>

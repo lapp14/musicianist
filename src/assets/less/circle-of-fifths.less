@@ -1,6 +1,81 @@
+@import "vars.less";
 
-svg.circle-of-fifths {
+.circle-of-fifths svg{
 	font-family: 'Roboto', sans-serif;
 	height: 500px; 
 	width: 500px;
+}
+
+.circle-of-fifths select, .circle-of-fifths label {
+	float: left;
+}
+
+.circle-of-fifths select.tonic option {
+	padding: 2px 10px;
+	font-size: 1.1em;
+}
+
+.circle-of-fifths select.mode option {
+	padding: 6px 10px;
+	font-size: 1.1em;
+}
+
+.circle-of-fifths div.container {
+	vertical-align: top;
+}
+
+.circle-of-fifths div.container div.controls {
+	display: inline-block;
+	float: left;
+}
+
+.circle-of-fifths div.container div.svg-container {
+}
+
+.circle-of-fifths div.container svg {
+	display: block;
+	margin: 0 auto;
+}
+
+.circle-of-fifths fieldset.scale-chords {
+	display: inline-block;
+	padding: 16px;
+	padding-left: 0;
+	padding-top: 0;
+}
+
+.circle-of-fifths fieldset.scale-chords div.container {
+	display: inline-block;
+	background: darken(@grey-light, 8%);
+	border: 1px solid @grey-md;
+	margin-left: 16px;
+}
+
+.circle-of-fifths fieldset.scale-chords span.title {
+	margin-right: 8px;
+	font-size: 1.4em;
+}
+
+.circle-of-fifths fieldset.scale-chords div.chords {
+	display: inline-block; 
+	border: 1px solid @grey-md;
+	font-size: 1.4em;
+	font-weight: @weight-light;
+}
+
+div.chords.major {
+	background: lighten(@blue-bright, 10%);
+}
+
+div.chords.minor {
+	background: @lime;
+}
+
+div.chords.diminished {
+	background: @gold;
+}
+
+.circle-of-fifths fieldset.scale-chords div.chords span {
+	padding: 12px;
+	line-height: 2em;
 }

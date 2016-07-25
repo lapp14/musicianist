@@ -53,7 +53,8 @@
 			var scale      	= vm.JSONData.scales[state.scale];
 			var tonic      	= parseInt(state.tonic);
 			var tuningIndex = vm.instrument.getCurrentTuning();
-			var tuning     	= vm.instrument.type == 'Piano' ? null : vm.JSONData.tunings[tuningIndex];
+
+			var tuning     	= vm.state.type == 'Piano' ? null : vm.JSONData.tunings[tuningIndex];
 
 			scales.drawScale(scale, tonic, tuning);
 			vm.scaleNotes = scales.getNotesString(scale, tonic);
