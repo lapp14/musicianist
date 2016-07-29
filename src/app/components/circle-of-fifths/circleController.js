@@ -111,9 +111,9 @@
 		var background, foreground, arrow, text;
 		var surface = Snap('#circle-surface');
 		var textAttr = {
-			active:   { fontSize: '44px', textAnchor: 'middle', alignmentBaseline: 'middle' },
-			inactive: { fontSize: '30px', textAnchor: 'middle', alignmentBaseline: 'middle' },
-			numbers:  { fontSize: '20px', textAnchor: 'middle', alignmentBaseline: 'middle' }
+			active:   { fontSize: '44px', textAnchor: 'middle', os: 11 }, //removed alignmentBaseline and dominantBaseline due to IE and FF text alignment bugs
+			inactive: { fontSize: '30px', textAnchor: 'middle', os: 7 },
+			numbers:  { fontSize: '20px', textAnchor: 'middle', os: 5 }
 		}
 		var rotation = -1;
 		var notes = {};
@@ -154,11 +154,18 @@
 			for(var i = 0; i < 12; i++) {
 				index = (rotation + 24 + i) % 12;
 				
-				text.append(surface.text(coords.notes[index].x, coords.notes[index].y, notes[i]).attr(i < 7 ? textAttr.active : textAttr.inactive)); 
+				var x = coords.notes[index].x;
+				var y = coords.notes[index].y;
+				var noteAttr = textAttr.inactive;
+
 
 				if(i < 7) {
-					text.append(surface.text(coords.numbers[index].x, coords.numbers[index].y, numbers[vm.mode][i]).attr(textAttr.numbers)); 					
+					noteAttr = textAttr.active;
+					text.append(surface.text(coords.numbers[index].x, coords.numbers[index].y + textAttr.numbers.os, numbers[vm.mode][i]).attr(textAttr.numbers)); 					
 				}
+
+				text.append(surface.text(x, y + noteAttr.os, notes[i]).attr(noteAttr)); 
+
 			}
 		}
 
@@ -219,7 +226,7 @@
 		
 		function start() {
 			if(background && foreground && arrow) {
-				surface.attr({ viewBox: '0 0 500 500', transform: 'r15'});
+				surface.attr({ viewBox: '0 0 500 500'/*, transform: 'r15'*/});
 				surface.append(background);
 				surface.append(foreground);
 				surface.append(arrow);

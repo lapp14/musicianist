@@ -23,7 +23,7 @@
 		return service;
 			
 
-		function getCurrentInstrument() {	
+		function getCurrentInstrument() {
 			return instruments[state.index];			
 		};
 

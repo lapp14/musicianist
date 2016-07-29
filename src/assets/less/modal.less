@@ -1,8 +1,8 @@
 @import "vars.less";
 
 .modal-dialog {
-    display: none;
-    position: absolute;
+    /*display: none;*/
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
@@ -11,16 +11,16 @@
     z-index: 9999;
     background: rgba(0,0,0,0.5);
 
-    /*opacity: 0;
+    opacity: 0;
     -webkit-transition: opacity 100ms ease-in;
     -moz-transition:    opacity 100ms ease-in;
-    transition:         opacity 100ms ease-in;*/
+    transition:         opacity 100ms ease-in;
     pointer-events: none;
 }
 
 .modal-show {
-    display: block;
-    /*opacity: 1;*/
+    /*display: block;*/
+    opacity: 1;
     pointer-events: auto;
 }
 
@@ -93,7 +93,7 @@
 /** Instrument Modal **/
 
 div.instrument-modal {
- color: @grey-light;   
+    color: @grey-light;   
 }
 
 div.instrument-modal .instrument {
@@ -102,11 +102,20 @@ div.instrument-modal .instrument {
     margin: 0 12px;
 }
 
+div.instrument-modal .instrument.piano {
+    width: 464px; /* IE needs width to be set */
+}
+
 div.instrument-modal .instrument img {
     display: block;
     margin: 0 auto;
     padding: 12px;
     height: 400px;
+}
+
+div.instrument-modal .instrument.piano img {    
+    width: 440px;
+    height: 300px;
 }
 
 div.instrument-modal .instrument.selected {

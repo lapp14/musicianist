@@ -29,12 +29,14 @@
                     </li>
                 </ul>
             </div>
-            <div class="instrument-selection">
+            <div class="instrument-selection" style="overflow: auto; overflow-y: hidden; height: 450px; width: 800px;   white-space:nowrap;">
                 <div class="instrument"
+
+
                      ng-repeat="i in Scales.instrument.arr track by $index" 
                      ng-show  ="i.type == Scales.state.type && (i.strings == Scales.state.selectedStrings[Scales.state.type] || i.strings == 0)" 
                      ng-click ="Scales.setInstrument($index)"
-                     ng-class ="{'selected': $index == Scales.instrument.getInstrumentIndex() }">
+                     ng-class ="{'selected': $index == Scales.instrument.getInstrumentIndex(), 'piano': Scales.state.type == 'Piano' }">
                     
                     <div class="shadow">
                         <img class="hover-pointer" src="{{i.instSelect.path}}" viewBox="i.instSelect.viewbox" ng-class="{ 'left-handed': Scales.state.handedness == 'Left' }"/>
