@@ -35,7 +35,7 @@
 			var i = getCurrentInstrument().type;
 
 			if(state.selectedTuning[i] == null) {
-				console.log('undef')
+				//console.log('undef')
 				return null;
 			}
 
@@ -58,8 +58,8 @@
 			index = parseInt(index);
 			state.index = index;
 			state.type = instruments[index].type;
-			console.log('state index ' + state.index);
-			console.log('state type ' + state.type);
+			//console.log('state index ' + state.index);
+			//console.log('state type ' + state.type);
 		};	
 	}
 })();

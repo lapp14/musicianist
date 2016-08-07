@@ -153,7 +153,7 @@
 						// console.log("tick!");
 						scheduler();
 					} else {
-						console.log("message: " + e.data);
+						//console.log("message: " + e.data);
 					}
 				};
 				
@@ -163,7 +163,7 @@
 				
 				if(typeof requestAnimFrame === 'undefined') {
 					requestAnim = false;
-					console.log('requestAnimFrame undefined');
+					//console.log('requestAnimFrame undefined');
 				}
 
 			  // if we wanted to load audio files, etc., this is where we should do it.

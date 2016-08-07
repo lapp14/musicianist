@@ -1,25 +1,20 @@
-var connect		= require('gulp-connect');
 var gulp 		= require('gulp');
-var del 		= require('del');
-var less 		= require('gulp-less');
-var useref		= require('gulp-useref');
-var ngAnnotate	= require('gulp-ng-annotate');
-var uglify		= require('gulp-uglify');
-var gulpif  	= require('gulp-if');
+var connect		= require('gulp-connect');
 var cssnano 	= require('gulp-cssnano');
+var gulpif  	= require('gulp-if');
+var less 		= require('gulp-less');
+var ngAnnotate	= require('gulp-ng-annotate');
+var strip		= require('gulp-strip-comments');
+var uglify		= require('gulp-uglify');
+var useref		= require('gulp-useref');
+var del 		= require('del');
 
-
-//var browserSync = require('browser-sync').create();
 
 gulp.task('watch', function() {
 	gulp.watch('src/assets/less/**/*.less', ['compile-less']);
 });
 
-
-
-gulp.task('hello', function() {
-	console.log('Hello!');
-});
+gulp.task('build', ['clean:dist', 'compile-less', 'build-js', /*'build-css',*/ 'build-app', 'build-copy', 'htaccess']);
 
 gulp.task('compile-less', function() {
 	return gulp.src('src/assets/less/**/*.less')
@@ -28,14 +23,12 @@ gulp.task('compile-less', function() {
 		.pipe(gulp.dest('src/assets/css'));	
 });
 
-gulp.task('build', ['clean:dist', 'compile-less', 'build-js', /*'build-css',*/ 'build-app', 'build-copy', 'htaccess']);
-
-
 gulp.task('build-app', function() {
 	return gulp.src(['src/**/*.html'], {base: 'src'} )
 		.pipe(useref())
 		.pipe(gulpif('*.js', ngAnnotate()))
     	.pipe(gulpif('*.js', uglify({ mangle: false })))
+    	.pipe(gulpif('*.html', strip({ safe: true })))
 		.pipe(gulp.dest('dist'));
 });
 
@@ -59,6 +52,7 @@ gulp.task('htaccess', function() {
 gulp.task('clean:dist', function() {
 	return del.sync('dist');
 });
+
 
 function swallowError(error) {
 	console.log(error.toString());

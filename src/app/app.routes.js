@@ -12,7 +12,13 @@
 			controller  : null
 		})
 
-		.when('/scales', {
+		.when('/scales/', {
+			templateUrl : 'app/components/scales/scales.html',
+			controller  : 'scalesCtrl',
+			controllerAs: 'Scales'
+		})
+
+		.when('/scales/:instType/:tonic/:scale', {
 			templateUrl : 'app/components/scales/scales.html',
 			controller  : 'scalesCtrl',
 			controllerAs: 'Scales'

@@ -4,7 +4,7 @@
 
 	self.onmessage=function(e){
 		if (e.data == "start") {
-			console.log("starting");
+			//console.log("starting");
 			timerID = setInterval(tick, interval);
 
 		} else if (e.data.interval) {
@@ -15,7 +15,7 @@
 				timerID = setInterval(tick ,interval)
 			}
 		} else if (e.data == "stop") {
-			console.log("stopping");
+			//console.log("stopping");
 			clearInterval(timerID);
 			timerID = null;
 		}

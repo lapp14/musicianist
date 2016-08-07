@@ -50,13 +50,13 @@
   font-weight: 300;
 }
 div.chords.major {
-  background: #33c9ff;
+  background: @blue-light;
 }
 div.chords.minor {
-  background: #bf5;
+  background: @lime;
 }
 div.chords.diminished {
-  background: #FFCE38;
+  background: @gold;
 }
 .circle-of-fifths fieldset.scale-chords div.chords span {
   padding: 12px;

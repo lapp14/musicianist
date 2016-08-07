@@ -53,9 +53,9 @@
 		function writeCookie() {
 			if($cookies.get('consent')) {
 				$cookies.putObject('state', service);
-				console.log('s.index ' + s.index);
-				console.log('service.index ' + service.index);
-				console.log('writing cookie');
+				//console.log('s.index ' + s.index);
+				//console.log('service.index ' + service.index);
+				//console.log('writing cookie');
 			}
 		}
 		

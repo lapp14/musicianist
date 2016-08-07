@@ -73,6 +73,10 @@
   right: 16px;
   top: 16px;
 }
+.shadow {
+  -webkit-filter: drop-shadow(8px 5px 10px #333);
+  filter: drop-shadow(8px 5px 10px #333);
+}
 /** Instrument Modal **/
 div.instrument-modal {
   color: #eee;

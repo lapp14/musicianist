@@ -11,7 +11,7 @@
                 </div>
 
                 <svg zoom-pan
-                    class="scales select-disable" 
+                    class="scales select-disable shadow" 
                     id="svg-surface" 
                     preserveAspectRatio="xMidYMid meet">
                 </svg>
@@ -87,6 +87,7 @@
 
                 <div class="instrument-picture hover-pointer" ng-click="Scales.modal = 'instrument'">
                     <img ng-class="{'left-handed': Scales.state.handedness == 'Left'}" 
+                        class="shadow"
                         src="{{Scales.instrument.getCurrentInstrument().instPanel.path}}" 
                         viewBox="{{Scales.instrument.getCurrentInstrument().instPanel.viewBox}}"
                     />
@@ -106,28 +107,21 @@
                     <option value="{{key}}" ng-repeat="(key, val) in Scales.JSONData.scales">{{val.name}}</option>                           
                 </select>
 
-                <div class="information">
-                    <h3>Scale Details</h3>
-
-                    <table>
-                        <tr>
-                            <td>Intervals: &nbsp;&nbsp;</td>
-                            <td>
-                                <span 
-                                    style="padding-left: 4px"   
-                                    class="subtitle" ng-repeat="pitch in Scales.JSONData.scales[Scales.state.scale].steps">{{pitch + ' '}}
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
+                <div class="scale-details">
+                    <div class="container">
+                        <span class="title">Intervals</span>
+                        <div class="chords major">
+                            <span 
+                                style="padding-left: 4px"   
+                                class="subtitle" ng-repeat="pitch in Scales.JSONData.scales[Scales.state.scale].steps">{{pitch + ' '}}
+                            </span>
+                        </div>
+                    </div> 
                 </div>
 
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 <div instrument-modal></div>

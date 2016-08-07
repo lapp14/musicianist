@@ -12,9 +12,11 @@ body {
 }
 
 h1 {
-	font-weight: 100;
+	font-weight: @weight-light;
 	border-bottom: 1px solid #333;
 	color: #333;
+	margin-top: 12px;
+	margin-left: 6px;
 	line-height: 1em;
 }
 
@@ -23,6 +25,11 @@ h3 {
 	text-decoration: underline;
 	color: #333;
 	line-height: 0em;
+}
+
+p {
+	line-height: 1.7em;
+	font-size: 1.2em;
 }
 
 select, input, button, a.button, img.button {
@@ -53,6 +60,10 @@ button:hover, input[type=submit]:hover, a.button:hover {
 
 img.button:hover {
     cursor: pointer;
+}
+
+img.border {
+	border: 1px solid @grey-dark;
 }
 
 fieldset {	
@@ -263,6 +274,8 @@ h1.page-title {
 .col-10 { width: 83.333333333%; }
 .col-11 { width: 91.666666667%; }
 .col-12 { width: 100%; }
+
+.row .col img { width: 100%; }
 /***************/
 
 

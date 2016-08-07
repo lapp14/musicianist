@@ -5,9 +5,9 @@
 		.module('musicianist')
 		.directive('cookies', cookiesDirective);
 
-	cookiesDirective.$inject = ['$cookies', 'state'];
+	cookiesDirective.$inject = ['$cookies', '$routeParams', 'state'];
 
-	function cookiesDirective($cookies, state) {		
+	function cookiesDirective($cookies, $routeParams, state) {		
 
 		return {
 			scope: {},

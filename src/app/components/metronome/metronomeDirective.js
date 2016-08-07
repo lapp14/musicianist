@@ -105,20 +105,20 @@
 			    	Metronome = defaultMetronome;
 			    	vm.supportedMetronome = 1;
 			    } else {
-			    	console.log('default metronome not supported')
+			    	//console.log('default metronome not supported')
 			    }
 			}
 
 			/** Tap Tempo **/
 			function tapButtonPress() {
-	        	console.log('tapClick ')
+	        	//console.log('tapClick ')
 	            var t = tap.lastTap;
 	            tap.lastTap = Date.now();
 
 	            if(t) {
 	                var c = tap.lastTap - t;
 	                tap.times.push(c);
-	                console.log('tap interval: ' + c);
+	                //console.log('tap interval: ' + c);
 	            }
 
 	            clearTimeout(tap.timeout);
@@ -128,10 +128,10 @@
 
 	        function tapSetTempo() {
 
-	        	console.log('clear')
+	        	//console.log('clear')
 
                 var bpm = msToBpm(tapGetAverageTempo(tap.times));
-                console.log('bpm ' + bpm);
+                //console.log('bpm ' + bpm);
                 vm.tempo = bpm;
                 $scope.$apply();
 
@@ -141,7 +141,7 @@
 	            setTempo();
 	            vm.isTapping = false;
 	            $scope.$apply();
-	            console.log('time '  + bpm)
+	            //console.log('time '  + bpm)
 	        }  
 
 	        function msToBpm(ms) {
@@ -157,7 +157,7 @@
 
 	                var avg = sum / arr.length;
 
-	                console.log('tapGetAverageTempo: ' + avg);
+	                //console.log('tapGetAverageTempo: ' + avg);
 
 	                if(avg >= 1) {
 	                	return avg;
