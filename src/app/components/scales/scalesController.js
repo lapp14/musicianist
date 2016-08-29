@@ -5,9 +5,9 @@
 		.module('musicianist')
 		.controller('scalesCtrl', scalesController);
 
-	scalesController.$inject = ['$location', 'async', 'state', 'svgSurface', 'scales', 'instrument'];
+	scalesController.$inject = ['$location', '$routeParams', 'async', 'state', 'svgSurface', 'scales', 'instrument'];
 
-	function scalesController($location, async, state, svgSurface, scales, instrument){
+	function scalesController($location, $routeParams, async, state, svgSurface, scales, instrument) {
 		var appLoaded = false;
 		var vm = this;
 
@@ -50,6 +50,7 @@
 
 
 		function drawScale() {
+			console.log('drawScale()');
 			var scale      	= vm.JSONData.scales[state.scale];
 			var tonic      	= parseInt(state.tonic);
 			var tuningIndex = vm.instrument.getCurrentTuning();
@@ -64,6 +65,7 @@
 			}
 
 			appLoaded = true;
+			setUrlParameters();
 		};
 
 		function setInstrument(index) {
@@ -72,11 +74,79 @@
 		}
 
 		function reload() {			
+			console.log('reload()');
 			svgSurface.loadBackground(instrument.getCurrentInstrument(), state.handedness).then(drawScale);	
+		}
+
+		function setUrlParameters() {
+			console.log('setUrlParameters()')
+			var j = vm.JSONData;
+			$location.update_path('/scales/' + vm.state.type.replace(/ /g, '-') + '/' + j.tonics[vm.state.tonic].replace(/\//g, '-') + '/' + j.scales[vm.state.scale].name.replace(/ /g, '-'));
+
+			/*
+
+			$location.search({
+				instType: vm.state.type,
+				tonic: j.tonics[vm.state.tonic],
+				scale: j.scales[vm.state.scale]
+			})*/
+			
+			/*$route.updateParams({
+				instType: vm.state.type,
+				scale: vm.state.scale,
+				tonic: vm.state.tonic
+			});*/
 		}
 
 		function start() {
 			if(vm.JSONData.tunings && vm.JSONData.scales && vm.JSONData.tonics) {
+				console.log('start()');
+
+				var updateCookie = false; 
+
+				if(typeof $routeParams.instType != 'undefined') {
+					var t = $routeParams.instType.replace(/-/g, ' ');
+
+					console.log('t: ' + t + ', state.type: ' + vm.state.type);
+
+					if(t != vm.state.type) {
+						setInstrument(vm.instrument.getInstrumentTypeIndex(t));
+					}
+
+					updateCookie = true;
+				}
+
+				if(typeof $routeParams.tonic != 'undefined') {
+					var t = 0;
+
+					for(var i = 0; i < vm.JSONData.tonics.length; i++) {
+						if(vm.JSONData.tonics[i] == $routeParams.tonic.replace(/-/g, '/')) {
+							t = i;
+						}
+					}
+
+					vm.state.setTonic(t);
+					updateCookie = true;
+				}
+
+				if(typeof $routeParams.scale != 'undefined') {
+					var s = 0;
+
+					for(var i = 0; i < vm.JSONData.scales.length; i++) {
+						if(vm.JSONData.scales[i].name == $routeParams.scale.replace(/-/g, ' ')) {
+							console.log('scale name match')
+							s = i;
+						}
+					}
+					
+					vm.state.setScale(s);
+					updateCookie = true;
+				}
+
+				if(updateCookie) {
+					vm.state.writeCookie();
+				}
+
 				vm.drawing.reload();
 			}
 		}

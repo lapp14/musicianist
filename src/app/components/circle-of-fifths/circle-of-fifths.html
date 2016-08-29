@@ -1,3 +1,5 @@
+
+<div class="content">
 <div class="container container-fixed">
 	<div class="row">
 		<div class="col col-12">
@@ -46,22 +48,22 @@
 				<fieldset class="scale-chords">
 					<legend>Chords</legend>
 
-					<div class="container">
+					<div class="info-box">
 						<span class="title">Major</span>
-		                <div class="chords major">
+		                <div class="info bg-blue">
 		                	<span ng-repeat="chord in Circle.getChordArray()['major']"> {{chord}}</span>
 		                </div>
 		            </div>
 
-		            <div class="container">
+		            <div class="info-box">
 		                <span class="title">Minor</span>
-		                <div class="chords minor">
+		                <div class="info bg-lime">
 		                	<span ng-repeat="chord in Circle.getChordArray()['minor']"> {{chord}}m</span>
 		                </div>
 		            </div>
-		            <div class="container">
+		            <div class="info-box">
 		                <span class="title">Diminished</span>
-		                <div class="chords diminished">
+		                <div class="info bg-gold">
 		                	<span ng-repeat="chord in Circle.getChordArray()['diminished']"> {{chord}}dim</span>
 		                </div>
 		            </div>
@@ -69,4 +71,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>

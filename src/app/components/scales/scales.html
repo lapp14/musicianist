@@ -1,4 +1,4 @@
-
+<div class="content">
 <div class="container">
     <div class="row">
         <div class="col col-12">
@@ -11,7 +11,7 @@
                 </div>
 
                 <svg zoom-pan
-                    class="scales select-disable shadow" 
+                    class="scales select-disable" 
                     id="svg-surface" 
                     preserveAspectRatio="xMidYMid meet">
                 </svg>
@@ -108,11 +108,10 @@
                 </select>
 
                 <div class="scale-details">
-                    <div class="container">
+                    <div class="info-box info-box-sm">
                         <span class="title">Intervals</span>
-                        <div class="chords major">
-                            <span 
-                                style="padding-left: 4px"   
+                        <div class="info bg-light-blue">
+                            <span  
                                 class="subtitle" ng-repeat="pitch in Scales.JSONData.scales[Scales.state.scale].steps">{{pitch + ' '}}
                             </span>
                         </div>
@@ -123,5 +122,5 @@
         </div>
     </div>
 </div>
-
+</div>
 <div instrument-modal></div>

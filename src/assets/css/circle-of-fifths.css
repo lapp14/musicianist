@@ -33,32 +33,6 @@
   padding-left: 0;
   padding-top: 0;
 }
-.circle-of-fifths fieldset.scale-chords div.container {
-  display: inline-block;
-  background: #dadada;
-  border: 1px solid #777;
+.circle-of-fifths fieldset.scale-chords div.info-box {
   margin-left: 16px;
-}
-.circle-of-fifths fieldset.scale-chords span.title {
-  margin-right: 8px;
-  font-size: 1.4em;
-}
-.circle-of-fifths fieldset.scale-chords div.chords {
-  display: inline-block;
-  border: 1px solid #777;
-  font-size: 1.4em;
-  font-weight: 300;
-}
-div.chords.major {
-  background: @blue-light;
-}
-div.chords.minor {
-  background: @lime;
-}
-div.chords.diminished {
-  background: @gold;
-}
-.circle-of-fifths fieldset.scale-chords div.chords span {
-  padding: 12px;
-  line-height: 2em;
 }

@@ -29,6 +29,9 @@ div.scale-info .notes {
   font-size: 1.5em;
   font-weight: 400;
 }
+div.scale-details {
+  margin-top: 12px;
+}
 /* Not sure? */
 svg:not(:root) {
   overflow: hidden;

@@ -27,7 +27,9 @@ gulp.task('build-app', function() {
 	return gulp.src(['src/**/*.html'], {base: 'src'} )
 		.pipe(useref())
 		.pipe(gulpif('*.js', ngAnnotate()))
-    	.pipe(gulpif('*.js', uglify({ mangle: false })))
+    	.pipe(gulpif('*.js', uglify({ 
+    		mangle: false
+		})))
     	.pipe(gulpif('*.html', strip({ safe: true })))
 		.pipe(gulp.dest('dist'));
 });

@@ -90,8 +90,15 @@
 }
 
 .shadow {
-    -webkit-filter: drop-shadow( 8px 5px 10px @grey-dark );
-    filter: drop-shadow( 8px 5px 10px @grey-dark );
+    -webkit-filter: drop-shadow( 2px 2px 3px @grey-dark );
+    filter: drop-shadow( 2px 2px 3px @grey-dark );
+}
+
+@media print {
+    .shadow {
+        -webkit-filter: none;
+        filter: none;
+    }
 }
 
 /** Instrument Modal **/

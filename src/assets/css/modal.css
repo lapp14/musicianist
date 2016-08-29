@@ -74,8 +74,14 @@
   top: 16px;
 }
 .shadow {
-  -webkit-filter: drop-shadow(8px 5px 10px #333);
-  filter: drop-shadow(8px 5px 10px #333);
+  -webkit-filter: drop-shadow(2px 2px 3px #333);
+  filter: drop-shadow(2px 2px 3px #333);
+}
+@media print {
+  .shadow {
+    -webkit-filter: none;
+    filter: none;
+  }
 }
 /** Instrument Modal **/
 div.instrument-modal {

@@ -14,6 +14,7 @@
 
 			getCurrentInstrument: getCurrentInstrument,
 			getInstrumentIndex: getInstrumentIndex,
+			getInstrumentTypeIndex: getInstrumentTypeIndex,
 			getCurrentTuning: getCurrentTuning,
 			isStringedInstrument: isStringedInstrument,
 			setStrings: setStrings,
@@ -29,6 +30,17 @@
 
 		function getInstrumentIndex() {
 			return state.index;						
+		}
+
+		//Returns first index found for given instrument type
+		function getInstrumentTypeIndex(type) {
+			for(var i = 0; i < instruments.length; i++) {
+				if(instruments[i].type == type) {
+					return i;
+				}
+			}
+
+			return 0;
 		}
 
 		function getCurrentTuning() {

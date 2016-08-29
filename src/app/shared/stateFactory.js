@@ -47,7 +47,22 @@
 			selectedTuning: selectedTuning,
 			scale: scale,
 			tonic: tonic,
-			writeCookie: writeCookie
+			writeCookie: writeCookie,
+			setTonic: setTonic,
+			setType: setType,
+			setScale: setScale
+		}
+
+		function setTonic(t) {
+			this.tonic = '' + t;
+		}
+
+		function setType(t) {
+			this.type = '' + t;
+		}
+
+		function setScale(s) {
+			this.scale = '' + s;
 		}
 
 		function writeCookie() {

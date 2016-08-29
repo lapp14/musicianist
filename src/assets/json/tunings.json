@@ -17,7 +17,7 @@
 	}, {
 		"type": "Guitar",
 		"strings": 6,
-		"name": "Dropped D",
+		"name": "Drop D",
 		"notes": [2, 9, 2, 7, 11, 4]
 	}, {
 		"type": "Guitar",
@@ -56,6 +56,27 @@
 		"strings": 4,
 		"name": "Standard",
 		"notes": [4, 9, 2, 7]
+	},
+
+	{
+		"type": "Bass Guitar",
+		"strings": 4,
+		"name": "Half Step Down",
+		"notes": [3, 8, 1, 6]
+	},
+
+	{
+		"type": "Bass Guitar",
+		"strings": 4,
+		"name": "Full Step Down",
+		"notes": [2, 7, 0, 5]
+	},
+
+	{
+		"type": "Bass Guitar",
+		"strings": 4,
+		"name": "Drop D",
+		"notes": [2, 9, 2, 7]
 	},
 
 
