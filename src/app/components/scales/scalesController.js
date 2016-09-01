@@ -5,9 +5,9 @@
 		.module('musicianist')
 		.controller('scalesCtrl', scalesController);
 
-	scalesController.$inject = ['$location', '$routeParams', 'async', 'state', 'svgSurface', 'scales', 'instrument'];
+	scalesController.$inject = ['$location', '$routeParams', '$rootScope', 'async', 'state', 'svgSurface', 'scales', 'instrument'];
 
-	function scalesController($location, $routeParams, async, state, svgSurface, scales, instrument) {
+	function scalesController($location, $routeParams, $rootScope, async, state, svgSurface, scales, instrument) {
 		var appLoaded = false;
 		var vm = this;
 
@@ -69,6 +69,7 @@
 		};
 
 		function setInstrument(index) {
+			console.log('setInstrument()');
 			instrument.setSelection(index || 0);
 			svgSurface.loadBackground(instrument.getCurrentInstrument(), state.handedness).then(drawScale);
 		}
@@ -81,8 +82,11 @@
 		function setUrlParameters() {
 			console.log('setUrlParameters()')
 			var j = vm.JSONData;
-			$location.update_path('/scales/' + vm.state.type.replace(/ /g, '-') + '/' + j.tonics[vm.state.tonic].replace(/\//g, '-') + '/' + j.scales[vm.state.scale].name.replace(/ /g, '-'));
+			var t = vm.state.type;
 
+			$location.update_path('/scales/' + t.replace(/ /g, '-') + '/' + j.tonics[vm.state.tonic].replace(/\//g, '-') + '/' + j.scales[vm.state.scale].name.replace(/ /g, '-'));
+			$rootScope.pageTitle = 'Musicianist - ' + j.tonics[vm.state.tonic] + ' ' + j.scales[vm.state.scale].name + ' ' + t + ' scale pattern';
+			$rootScope.pageDesc = 'Learn your ' + t.toLowerCase() + ' scales with our Interactive Scale Diagram app. Choose your instrument and tuning, and pick from the most popular scales.'
 			/*
 
 			$location.search({

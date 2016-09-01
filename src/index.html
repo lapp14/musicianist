@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html ng-app="musicianist">
+<html ng-app="musicianist" ng-controller="mainController as app">
 <head>
-    <title>Musicianist</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="fragment" content="!">   
     <base href="/">
 
+    <title ng-bind="pageTitle">Musicianist</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="description" content="{{pageDesc}}">  
+    
     <link href='https://fonts.googleapis.com/css?family=Roboto:700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
-
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     
     <!--build:css css/app.css -->
@@ -32,13 +33,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-cookies.js"></script>
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" type="text/css" href="ie7-and-down.css" />
     <![endif]-->
 
-    <!--[if gt IE 8]><!--> <!--<![endif]--> 
-
 </head>
-<body id="ng-app" ng-controller="mainController as app">
+<body>
 
     <div class="nav clearfix">
         <a class="brand" href="/">Musicianist</a>
@@ -51,7 +49,6 @@
             <li><a ng-class="app.menuClass('circle-of-fifths')" href="/circle-of-fifths/">Circle of Fifths</a></li>
         </ul>
     </div>
-
 
         <div ng-view></div>
 
