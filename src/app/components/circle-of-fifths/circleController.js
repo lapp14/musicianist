@@ -206,7 +206,7 @@
 			this.notes = {
 				major: [],
 				minor: [],
-				diminished: null
+				diminished: []
 			};
 
 			for(var i = 0; i < 7; i++) {
@@ -217,7 +217,7 @@
 				} else if(i < 6) {
 					this.notes.minor.push(keys[vm.tonic][index]);
 				} else {
-					this.notes.diminished = keys[vm.tonic][index];
+					this.notes.diminished.push(keys[vm.tonic][index]);
 				}
 			}
 

@@ -105,8 +105,11 @@
 		function start() {
 			if(vm.JSONData.tunings && vm.JSONData.scales && vm.JSONData.tonics) {
 				console.log('start()');
+				console.log(vm.JSONData.tonics.length * vm.JSONData.scales.length * 3)
 
 				var updateCookie = false; 
+
+
 
 				if(typeof $routeParams.instType != 'undefined') {
 					var t = $routeParams.instType.replace(/-/g, ' ');
