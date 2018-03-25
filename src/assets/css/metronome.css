@@ -133,7 +133,7 @@ a.play-pause.play i {
 button.tap-tempo {
   padding-left: 8px;
   padding-right: 8px;
-  background: #eee;
+  background: #fff;
   transition: background-color 500ms cubic-bezier(0, 0.09, 0, 1);
 }
 button.tap-tempo.tapping {

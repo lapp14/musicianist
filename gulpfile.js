@@ -10,6 +10,17 @@ var useref		= require('gulp-useref');
 var del 		= require('del');
 
 
+gulp.task('connect', function() {
+  connect.server({
+    name: 'M Localhost',
+    root: ['dist'],
+    port: 8000,
+    livereload: true
+  });
+});
+ 
+gulp.task('default', ['connect']);
+
 gulp.task('watch', function() {
 	gulp.watch('src/assets/less/**/*.less', ['compile-less']);
 });
@@ -60,10 +71,6 @@ function swallowError(error) {
 	console.log(error.toString());
 	this.emit('end');
 }
-
-
-
-
 
 
 

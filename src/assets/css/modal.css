@@ -25,14 +25,14 @@
   width: 400px;
   max-width: 90%;
   margin: 10% auto;
-  background: #eee;
+  background: #fff;
   padding: 20px;
 }
 .modal-dialog .modal-lg {
   position: relative;
   margin: 2% auto;
   width: 1000px;
-  background: #eee;
+  background: #fff;
   padding: 20px;
   overflow-y: auto;
   background: #333;
@@ -85,7 +85,7 @@
 }
 /** Instrument Modal **/
 div.instrument-modal {
-  color: #eee;
+  color: #fff;
 }
 div.instrument-modal .instrument {
   display: inline-block;
@@ -148,12 +148,12 @@ div.instrument-modal .guitar-settings {
   z-index: 0;
 }
 .tab-menu li.active {
-  background: #eee;
+  background: #fff;
   z-index: 200;
 }
 .tab-menu ~ div.content {
   display: table-cell;
-  background: #eee;
+  background: #fff;
   color: #333;
   width: 100%;
   padding: 12px;
@@ -190,7 +190,7 @@ div.string-selection {
 }
 .string-selection ul li.active {
   background: #333;
-  color: #eee;
+  color: #fff;
 }
 .instrument-icon img {
   width: 90px;

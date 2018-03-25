@@ -9,13 +9,13 @@ div .div-inline {
 }
 .container-options {
   margin-top: 18px;
-  color: #eee;
+  color: #fff;
 }
 svg.chords {
   position: relative;
   width: 600px;
   height: 500px;
-  background-color: #eee;
+  background-color: #fff;
 }
 .learn-more {
   float: right;
@@ -39,7 +39,7 @@ svg.chords {
   line-height: 1.3em;
   color: #333;
   border-radius: 4px;
-  background-color: #eee;
+  background-color: #fff;
   border: 1px solid #333;
   box-shadow: 2px 2px 4px #333;
   -moz-box-shadow: 2px 2px 4px #333;
@@ -52,7 +52,7 @@ svg.chords {
   opacity: 1;
 }
 div.settings-panel div.content .row {
-  background: #444;
+  background: #fff;
   margin: 6px 0;
   padding: 6px 12px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6d6d6d+1,313131+8,3a3a3a+46,313131+46,313131+93,777777+100 */

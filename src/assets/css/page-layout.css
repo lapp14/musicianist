@@ -43,7 +43,7 @@ img.button {
   border-radius: 4px;
   border: 1px solid #333;
   color: #333;
-  background-color: #eee;
+  background-color: #fff;
 }
 a.button {
   padding-left: 12px;
@@ -74,7 +74,7 @@ fieldset > legend {
 }
 div.nav {
   border-bottom: 1px solid #ccc;
-  color: #eee;
+  color: #fff;
   /** Removed 
 		position: relative;
 		overflow: hidden;
@@ -104,7 +104,7 @@ div.nav a.brand {
   font-size: 24px;
   font-weight: 300;
   padding: 10px 25px;
-  color: #eee;
+  color: #fff;
   text-decoration: none;
 }
 ul.navbar {
@@ -121,7 +121,7 @@ ul.navbar div.inline {
   list-style: none;
 }
 ul.navbar li a {
-  color: #eee;
+  color: #fff;
   padding: 16px;
   text-decoration: none;
 }
@@ -138,7 +138,7 @@ ul.navbar-right {
 }
 div.footer {
   background: #333;
-  border-top: 6px solid #eee;
+  border-top: 6px solid #fff;
   min-height: 200px;
 }
 .clearfix:before,
@@ -151,7 +151,7 @@ div.footer {
 }
 /** Content **/
 div.content {
-  background: #2777AD;
+  background: #fff;
   min-height: 65%;
   overflow-x: auto;
 }
@@ -185,7 +185,7 @@ div.panel {
   padding: 12px;
   margin-bottom: 12px;
   border: 1px solid #444;
-  background: #eee;
+  background: #fff;
 }
 div.panel div.header {
   font-size: 1.2em;
@@ -207,7 +207,7 @@ h1.page-title {
 div.info-box {
   padding: 12px;
   display: inline-block;
-  background: #dadada;
+  background: #ebebeb;
   border: 1px solid #777;
   font-size: 1.4em;
 }
@@ -225,7 +225,7 @@ div.info-box div.info span {
 }
 div.info-box.info-box-sm {
   font-size: 1.1em;
-  background: #e1e1e1;
+  background: #f2f2f2;
 }
 div.info-box.info-box-sm div.info {
   padding: 0 4px;
@@ -302,14 +302,14 @@ div.info-box.info-box-sm div.info span {
 /***************/
 /** Full Page Content **/
 .container.grey-light {
-  background: #eee;
+  background: #fff;
 }
 .container.blue {
-  color: #eee;
+  color: #fff;
 }
 .container.dark-grey {
   background: #333;
-  color: #eee;
+  color: #fff;
 }
 .section {
   width: 100%;
