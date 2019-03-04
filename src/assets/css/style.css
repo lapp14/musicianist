@@ -1,4 +1,11 @@
 /** Borders **/
+html {
+  background: url(/app/assets/img/drumkit-lg.jpg) #222 no-repeat center center fixed !important;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 span.subtitle {
   font-size: 1.5em;
   font-weight: 300;
@@ -15,7 +22,7 @@ svg.chords {
   position: relative;
   width: 600px;
   height: 500px;
-  background-color: #fff;
+  background-color: transparent;
 }
 .learn-more {
   float: right;

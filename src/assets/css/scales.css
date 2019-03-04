@@ -18,16 +18,17 @@ svg.scales {
   max-height: 600px;
 }
 div.scale-info {
+  color: #fff;
   margin-left: 12px;
   margin-bottom: 12px;
 }
 div.scale-info .scale {
-  font-size: 2em;
+  font-size: 1.6em;
   font-weight: 300;
 }
 div.scale-info .notes {
-  font-size: 1.5em;
-  font-weight: 400;
+  font-size: 1.2em;
+  font-weight: 300;
 }
 div.scale-details {
   margin-top: 12px;
@@ -45,13 +46,13 @@ svg:not(:root) {
   transform: scale(-1, 1);
 }
 .instrument-picture {
-  background: #fff;
+  display: inline-block;
   margin-top: 6px;
   padding: 12px;
   padding-bottom: 2px;
 }
 .instrument-picture img {
-  width: 100%;
+  width: 120px;
 }
 /** ! Instruments **/
 /** Zoom/Pan **/

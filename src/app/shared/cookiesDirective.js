@@ -10,9 +10,9 @@
 	function cookiesDirective($cookies, $routeParams, state) {		
 
 		return {
-			scope: {},
+			/*scope: {},
 			templateUrl: '/app/shared/cookieConsent.html',
-      		controller: cookieController
+      		controller: cookieController*/
 		}
 
 		function cookieController($scope) {

@@ -6,8 +6,19 @@
                 <h1 class="page-title">{{Scales.instrument.getCurrentInstrument().type}} Scales</h1>
 
                 <div class="scale-info">
+                        
                     <span class="scale">{{Scales.JSONData.tonics[Scales.state.tonic]}} {{Scales.scale.getTitle()}}</span> {{Scales.scale.getSubtitle()}}<br/>
                     <span class="notes">{{Scales.scaleNotes}}</span>
+                </div>
+                <div class="scale-details">
+                    <div class="info-box info-box-sm">
+                        <span class="title">Intervals</span>
+                        <div class="info bg-light-blue">
+                            <span  
+                                class="subtitle" ng-repeat="pitch in Scales.JSONData.scales[Scales.state.scale].steps">{{pitch + ' '}}
+                            </span>
+                        </div>
+                    </div> 
                 </div>
 
                 <svg zoom-pan
@@ -16,6 +27,35 @@
                     preserveAspectRatio="xMidYMid meet">
                 </svg>
 
+
+                
+                <div ng-show="!Scales.instrument.isStringedInstrument()">
+                    {{Scales.instrument.getCurrentInstrument().type}}
+                </div>                
+
+                <div ng-show="Scales.instrument.isStringedInstrument()">
+                    {{Scales.instrument.arr[Scales.state.index].strings}} String
+                    <span class="pull-right">
+                        {{Scales.JSONData.tunings[Scales.instrument.getCurrentTuning()].name.replace('Tuning', '')}} Tuning ({{Scales.getCurrentTuningNotes()}})
+                    </span>
+                </div>
+
+                <div class="instrument-picture hover-pointer" ng-click="Scales.modal = 'instrument'">
+                    <img ng-class="{'left-handed': Scales.state.handedness == 'Left'}" 
+                        class="shadow"
+                        src="{{Scales.instrument.getCurrentInstrument().instPanel.path}}" 
+                        viewBox="{{Scales.instrument.getCurrentInstrument().instPanel.viewBox}}"
+                    />
+                </div>     
+
+
+
+                <select name="tonic" class="select-sm" ng-model="Scales.state.tonic" ng-change="Scales.drawing.drawScale()">
+                    <option value="{{key}}" ng-repeat="(key, val) in Scales.JSONData.tonics">{{val}}</option>  
+                </select>
+                <select name="scale" class="select-lg" ng-model="Scales.state.scale" ng-change="Scales.drawing.drawScale()">     
+                    <option value="{{key}}" ng-repeat="(key, val) in Scales.JSONData.scales">{{val.name}}</option>                           
+                </select>
                 <div class="zoom-pan-control">
                     <i class="fa fa-arrows-alt hover-pointer" ng-click="Scales.svgSurface.resetZoomPan()"></i>
                     <i class="fa fa-search hover-pointer" ng-click="Scales.svgSurface.setActiveControl('zoom')" ng-class="{'active': Scales.svgSurface.activeControl == 'zoom'}"></i>
@@ -70,56 +110,6 @@
         </div>
         -->
 
-        <div class="col col-6">
-            <div class="panel">
-                <div class="header">Instrument <i class="edit fa fa-gear" ng-click="Scales.modal = 'instrument'"></i></div>
-
-                <div ng-show="!Scales.instrument.isStringedInstrument()">
-                    {{Scales.instrument.getCurrentInstrument().type}}
-                </div>                
-
-                <div ng-show="Scales.instrument.isStringedInstrument()">
-                    {{Scales.instrument.arr[Scales.state.index].strings}} String
-                    <span class="pull-right">
-                        {{Scales.JSONData.tunings[Scales.instrument.getCurrentTuning()].name.replace('Tuning', '')}} Tuning ({{Scales.getCurrentTuningNotes()}})
-                    </span>
-                </div>
-
-                <div class="instrument-picture hover-pointer" ng-click="Scales.modal = 'instrument'">
-                    <img ng-class="{'left-handed': Scales.state.handedness == 'Left'}" 
-                        class="shadow"
-                        src="{{Scales.instrument.getCurrentInstrument().instPanel.path}}" 
-                        viewBox="{{Scales.instrument.getCurrentInstrument().instPanel.viewBox}}"
-                    />
-                </div>      
-
-
-            </div>
-        </div>
-        <div class="col col-6">
-            <div class="panel">
-                <div class="header">{{Scales.scale.getTitle()}} Scale {{Scales.scale.getSubtitle()}}</div>
-
-                <select name="tonic" class="select-sm" ng-model="Scales.state.tonic" ng-change="Scales.drawing.drawScale()">
-                    <option value="{{key}}" ng-repeat="(key, val) in Scales.JSONData.tonics">{{val}}</option>  
-                </select>
-                <select name="scale" class="select-lg" ng-model="Scales.state.scale" ng-change="Scales.drawing.drawScale()">     
-                    <option value="{{key}}" ng-repeat="(key, val) in Scales.JSONData.scales">{{val.name}}</option>                           
-                </select>
-
-                <div class="scale-details">
-                    <div class="info-box info-box-sm">
-                        <span class="title">Intervals</span>
-                        <div class="info bg-light-blue">
-                            <span  
-                                class="subtitle" ng-repeat="pitch in Scales.JSONData.scales[Scales.state.scale].steps">{{pitch + ' '}}
-                            </span>
-                        </div>
-                    </div> 
-                </div>
-
-            </div>
-        </div>
     </div>
 </div>
 </div>

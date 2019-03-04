@@ -12,8 +12,8 @@
 		vm.menuClass = menuClass;
 
 		function menuClass(page) {
-			var current = $location.path().substring(1);			
-			return page === current ? 'active' : '';
+			var current = $location.path().substring(1);
+			return current.includes(page) ? 'active' : '';
 		}
 	} 
 })();

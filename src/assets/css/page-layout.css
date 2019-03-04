@@ -1,13 +1,16 @@
 /** Borders **/
-html,
+html {
+  background: url(/assets/img/drumkit-lg.jpg) #222 no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-}
-body {
   font-family: 'Oxygen', sans-serif;
-  background: #333;
 }
 h1 {
   font-weight: 300;
@@ -75,29 +78,7 @@ fieldset > legend {
 div.nav {
   border-bottom: 1px solid #ccc;
   color: #fff;
-  /** Removed 
-		position: relative;
-		overflow: hidden;
-	To use clearfix method instead **/
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#555555+0,333333+64 */
-  background: #555555;
-  /* Old browsers */
-  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzU1NTU1NSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY0JSIgc3RvcC1jb2xvcj0iIzMzMzMzMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-  background: -moz-linear-gradient(top, #555555 0%, #333333 64%);
-  /* FF3.6-15 */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555555), color-stop(64%, #333333));
-  /* Chrome4-9,Safari4-5 */
-  background: -webkit-linear-gradient(top, #555555 0%, #333333 64%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: -o-linear-gradient(top, #555555 0%, #333333 64%);
-  /* Opera 11.10-11.50 */
-  background: -ms-linear-gradient(top, #555555 0%, #333333 64%);
-  /* IE10 preview */
-  background: linear-gradient(to bottom, #555555 0%, #333333 64%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#333333', GradientType=0);
-  /* IE6-8 */
+  background: #000000ed;
 }
 div.nav a.brand {
   float: left;
@@ -127,7 +108,7 @@ ul.navbar li a {
 }
 ul.navbar li a:hover,
 ul.navbar li a.active {
-  background: #555;
+  background: #272727;
 }
 ul.navbar-right {
   float: right !important;
@@ -138,6 +119,7 @@ ul.navbar-right {
 }
 div.footer {
   background: #333;
+  opacity: 0.3;
   border-top: 6px solid #fff;
   min-height: 200px;
 }
@@ -151,7 +133,7 @@ div.footer {
 }
 /** Content **/
 div.content {
-  background: #fff;
+  background: transparent;
   min-height: 65%;
   overflow-x: auto;
 }
@@ -184,8 +166,8 @@ div.panel {
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 12px;
-  border: 1px solid #444;
-  background: #fff;
+  border: 1px solid #ccc;
+  background: #000000ed;
 }
 div.panel div.header {
   font-size: 1.2em;
